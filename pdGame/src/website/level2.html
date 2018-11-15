@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NextLevel</title>
+</head>
+<body>
+    <h1>This is the next level</h1>
+
+    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; color: white " onclick="sendData(); location.href='/'">Quit</button>
+
+
+    <script>
+          function sendData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/senddata", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                count: count,
+                quiet: quiet,
+                confess: confess,
+                log: log
+            }));
+
+    
+    </script>
+
+</body>
+</html>

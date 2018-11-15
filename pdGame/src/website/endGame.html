@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Results</title>
+    <!-- keep style tag here beacue of flask  -->
+    <style>
+        body {
+            background-color: white;
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        .header {
+            background-color: black;
+            border: black 15px solid;
+        }
+
+        .text-color__white {
+            color: white;
+        }
+
+        /* Popup container - can be anything you want */
+
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+
+        .popup .popuptext {
+            visibility: hidden;
+            width: 500px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 60%;
+            left: 20%;
+            margin-left: -80px;
+        }
+
+        /* Popup arrow */
+
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .button {
+            background-color: #008CBA;
+            /* BLUE */
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 1px 4px;
+            cursor: pointer;
+            border-radius: 12px;
+
+        }
+
+        .button1:hover {
+            box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .button2:hover {
+            padding: 15px 25px;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
+        }
+
+        .button3:hover {
+            padding: 15px 25px;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            position: bottom;
+            left: 500px;
+            bottom: 100px;
+
+        }
+
+        hr {
+            display: block;
+            margin-top: 3.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: double;
+            border-width: 10px;
+        }
+
+        .button4 {
+            background-color: #008000;
+            /* BLUE */
+            border: none;
+            color: white;
+            padding: 20x 80x;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 5px 6px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        .myButton {
+            -moz-box-shadow: 3px 4px 0px 0px #899599;
+            -webkit-box-shadow: 3px 4px 0px 0px #899599;
+            box-shadow: 3px 4px 0px 0px #899599;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #bab1ba));
+            background: -moz-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+            background: -webkit-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+            background: -o-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+            background: -ms-linear-gradient(top, #ededed 5%, #bab1ba 100%);
+            background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#bab1ba', GradientType=0);
+            background-color: #ededed;
+            -moz-border-radius: 15px;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+            border: 1px solid #d6bcd6;
+            display: inline-block;
+            cursor: pointer;
+            color: #3a8a9e;
+            font-family: Arial;
+            font-size: 17px;
+            padding: 7px 25px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #e1e2ed;
+        }
+
+        .myButton:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bab1ba), color-stop(1, #ededed));
+            background: -moz-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+            background: -webkit-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+            background: -o-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+            background: -ms-linear-gradient(top, #bab1ba 5%, #ededed 100%);
+            background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bab1ba', endColorstr='#ededed', GradientType=0);
+            background-color: #bab1ba;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .header-text__inline {
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        .header-text__spaceing {
+            margin-right: 5%;
+        }
+
+        .z-index__1{
+            z-index: -1;
+        }
+        .z-index__0{
+            z-index: 1;
+        }
+        .btnEndgame{
+            background-color: lightgray;
+            background: white;
+            color: black;
+        }
+
+        .gameScreen-text__position1{
+            text-align: center;
+            margin-top: 30%;
+        }
+        .gameScreen-text__position2{
+            text-align: center;
+        }
+        .btn-black{
+            border-radius: 20px;
+            background: black;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--Header-->
+    <div class="header">
+
+        <h1 class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
+
+        <h1 class="text-color__white header-text__inline header-text__spaceing" id="switch"> Current Turn: You </h1>
+
+        <h1 class="text-color__white header-text__inline" id="demo2"> Round : </h1>
+
+
+    </div>
+
+
+    <!-- <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header"> </div>
+
+            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px" onclick="StartOver()">Start Over</button>
+            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Quit</button>
+            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Next Level</button>
+        </div>
+    </nav> -->
+
+
+    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; margin-left: 10px;" onclick="StartOver()">Start Over</button>
+    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Quit</button>
+    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Next Level</button>
+
+
+
+    <br>
+
+ <!-- LOOK AT THIS LATER  -->
+    <!-- <div style="background: #D3D3D3; width: 30%; min-height: 45vh; padding-right: 45px;padding-left: 20px;top: 150px; left: 300px; position: fixed">
+        Insert the image in this div
+        <img id="image" src="https://cdn.pixabay.com/photo/2016/03/31/20/32/black-suit-1295853_960_720.png" width="200" height="200">
+        <img src="assests/images/test.png" alt="test to see if this works">
+        <p>Insert the Image here
+            <p>
+    </div> -->
+
+    <!--CONFESS AND KEEP QUIET BUTTONS-->
+
+
+    <br>
+
+   
+
+    <div>
+
+        <!--Confess button and onclick function to add to counters-->
+        <br>
+
+        <button style="right: 380px;bottom: 100px;position: absolute " class="button button1 btn-black" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+
+        <!--Quiet button and onclick functions to add to counters-->
+
+        <button class="button button2 btn-black" style="position: fixed;right: 550px;bottom: 100px" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
+
+        <button style=" position: absolute; left: 82%; bottom: 100px" class="button button3 btnEndgame z-index__0" id="demo4" onclick="sendData(); location.href='/'">End Game</button>
+        <!--DIV FOR COUNTER AND CURRENT PLAYER-->
+
+    </div>
+
+
+
+
+    <div style="width: 30%; min-height: 50vh;background: black; right: 350px; top:150px; padding-left: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
+        <br>
+        <font  color="white" size="3">
+            <!-- <p id="switch">Current Player: You </p> -->
+
+            <!-- <p id="demo2">Total Counter:</p> -->
+
+            <p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
+
+            <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p>
+
+            <!-- <p id="Opp_move"> Your opponent move is: Hidden</p> -->
+
+        </font>
+    </div>
+
+
+    <div style="width: 25%; min-height: 90vh;background: black; right: 0px; top:70px; padding-left: 40px; position: fixed; min-height: 90vh" class="z-index__1">
+        <br>
+        <!-- <font size="3">
+                <p id="switch">Current Player: You </p>
+    
+                <p id="demo2">Total Counter:</p>
+    
+                <p id="quiet1">Keep Quiet Counter: </p>
+    
+                <p id="confess1">Confess Counter: </p>
+    
+                <p id="Opp_move"> Your opponent move is: Hidden</p>
+    
+            </font> -->
+
+        <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1>
+
+        <ul class="text-color__white" style=" margin: 0px; padding: 0px; list-style-type: disc">
+
+            <!--bulleted list for rules of the game -->
+
+            <li>
+                <p> If each player confesses, each of them will serve 2 years in prison.
+                    <p>
+            </li>
+
+            <li>
+                <p> If one player confesses and the other remains silent, the player who confessed will be set free and the player
+                    who remained silent serves 3 years.</p>
+            </li>
+
+            <li>
+                <p>If both players remain silent, both will serve 1 year.</p>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+
+
+
+    <!-- <div class="popup" onclick="myPopUP()" style="width: 10%; background: #008CBA; min-height: 5vh; padding-right: 40px;padding-left: 40px;top: 350px; left: 50px; position: absoulte">
+        <font color="white">Rules</font>
+
+        <span class="popuptext" id="myPopup">
+            <p>
+                <b>
+                    <br> Rules</b>
+            </p>
+
+            <ul style="list-style-type: disc">
+
+                bulleted list for rules of the game
+
+                <li>
+                    <p> If each player confesses, each of them will serve 2 years in prison.
+                        <p>
+                </li>
+
+                <li>
+                    <p> If one player confesses and the other remains silent, the player who confessed will be set free and the
+                        player who remained silent serves 3 years.</p>
+                </li>
+
+                <li>
+                    <p>If both players remain silent, both will serve 1 year.</p>
+                </li>   
+                
+            </ul>
+        </span>
+    </div> -->
+
+
+
+
+    <!-- </div> -->
+
+
+
+    <!-- keep script in this file becuase of flask  -->
+    <script>
+        //Variables for counter
+        var count = 0;
+        var quiet = 0;
+        var confess = 0;
+        var log = [];
+        var Opponent_log = [];
+        var Opponentindex = 0;
+        var CurrMove = "None";
+        var turn = "None";
+
+        function StartOver() {
+            count = 0;
+            quiet = 0;
+            confess = 0;
+
+            Opponent_log = [];
+
+            log = [];
+            Opponentindex = 0;
+            CurrMove = "None";
+            turn = "None";
+            document.getElementById("demo2").innerText = "Round: " + count;
+            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
+            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+        }
+        //Telling the user who is the current player
+        function Switch() {
+            document.getElementById("switch").innerText = "Current Turn: User 2";
+            document.getElementById("demo").disabled = true;
+            document.getElementById("demo3").disabled = true;
+            document.getElementById("demo4").disabled = true;
+            setTimeout(Switch2, 1000);
+
+
+        }
+
+        function Switch2() {
+            document.getElementById("switch").innerText = "Current Turn: You";
+            document.getElementById("demo").disabled = false;
+            document.getElementById("demo3").disabled = false;
+            document.getElementById("demo4").disabled = false;
+        }
+        //Adding to keep quiet counter
+        function quietDecision() {
+            quiet = quiet + 1;
+            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
+            log.push('S');
+
+        }
+        //Adding to confess counter 
+        function confessDecision() {
+            confess = confess + 1;
+            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+            log.push('B');
+
+
+        }
+        //Adding to total counter when on-click 
+        function myFunction2() {
+            count = count + 1;
+
+            document.getElementById("demo2").innerText = "Round : " + count;
+            if ((count % 2) == 0) {
+                Opponent_log.push('S');
+
+            } else {
+                Opponent_log.push('B');
+
+            }
+
+            if (count > 10) {
+                if (Opponent_log[Opponentindex] == 'B') {
+                    CurrMove = "Betray";
+                    Opponentindex += 1;
+
+                } else {
+
+                    CurrMove = "Silent";
+                    Opponentindex += 1;
+                }
+                document.getElementById("Opp_move").innerText = "Your opponent move is: " + CurrMove;
+            }
+
+
+
+
+        }
+        //Sending data to backend
+        function sendData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/senddata", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                count: count,
+                quiet: quiet,
+                confess: confess,
+                log: log
+            }));
+
+
+            // When the user clicks on div, open the popup
+            function myPopUP() {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+            // When the user clicks on div, open the popup
+            function myPopUP() {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
