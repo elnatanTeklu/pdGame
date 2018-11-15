@@ -1,0 +1,15 @@
+
+count,quiet,confess,log
+6,3,3,"['S', 'B', 'S', 'B', 'S', 'B']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+9,5,4,"['S', 'S', 'B', 'S', 'B', 'B', 'S', 'B', 'S']"
+
+count,quiet,confess,log
+12,6,6,"['S', 'S', 'S', 'B', 'B', 'B', 'B', 'S', 'B', 'S', 'B', 'S']"

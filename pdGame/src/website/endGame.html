@@ -227,6 +227,9 @@
         .gameScreen-text__position2{
             text-align: center;
         }
+        .gameScreen-text__position3{
+            text-align: center;
+        }
         .btn-black{
             border-radius: 20px;
             background: black;
@@ -242,9 +245,9 @@
 
         <h1 class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
 
-        <h1 class="text-color__white header-text__inline header-text__spaceing" id="switch"> Current Turn: You </h1>
+        <!-- <h1 class="text-color__white header-text__inline header-text__spaceing" id="switch"> Current Turn: You </h1>
 
-        <h1 class="text-color__white header-text__inline" id="demo2"> Round : </h1>
+        <h1 class="text-color__white header-text__inline" id="demo2"> Round : </h1> -->
 
 
     </div>
@@ -261,9 +264,9 @@
     </nav> -->
 
 
-    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; margin-left: 10px;" onclick="StartOver()">Start Over</button>
+    <!-- <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; margin-left: 10px;" onclick="StartOver()">Start Over</button> -->
     <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Quit</button>
-    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Next Level</button>
+    <!-- <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Next Level</button> -->
 
 
 
@@ -287,16 +290,16 @@
 
     <div>
 
-        <!--Confess button and onclick function to add to counters-->
+        <!--Confess button and onclick function to add to counters
         <br>
 
-        <button style="right: 380px;bottom: 100px;position: absolute " class="button button1 btn-black" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+        <button style="right: 380px;bottom: 100px;position: absolute " class="button button1 btn-black" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button> -->
 
-        <!--Quiet button and onclick functions to add to counters-->
+        <!--Quiet button and onclick functions to add to counters
 
-        <button class="button button2 btn-black" style="position: fixed;right: 550px;bottom: 100px" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
+        <button class="button button2 btn-black" style="position: fixed;right: 550px;bottom: 100px" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button> -->
 
-        <button style=" position: absolute; left: 82%; bottom: 100px" class="button button3 btnEndgame z-index__0" id="demo4" onclick="sendData(); location.href='/'">End Game</button>
+        <!--<button style=" position: absolute; left: 82%; bottom: 100px" class="button button3 btnEndgame z-index__0" id="demo4" onclick="sendData(); location.href='/'">End Game</button> -->
         <!--DIV FOR COUNTER AND CURRENT PLAYER-->
 
     </div>
@@ -307,18 +310,42 @@
     <div style="width: 30%; min-height: 50vh;background: black; right: 350px; top:150px; padding-left: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
         <br>
         <font  color="white" size="3">
+
+            <p class="gameScreen-text__position1" id="quiet1"> Your Moves </p>
+            <p class="gameScreen-text__position2" id="quiet1"> Silent: </p>
+            <p class="gameScreen-text__position3" id="quiet1"> Betray: </p>
             <!-- <p id="switch">Current Player: You </p> -->
 
             <!-- <p id="demo2">Total Counter:</p> -->
 
-            <p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
+            <!--<p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
 
-            <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p>
+            <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p> -->
 
             <!-- <p id="Opp_move"> Your opponent move is: Hidden</p> -->
 
         </font>
     </div>
+
+    <div style="width: 30%; min-height: 50vh;background: black; right: 350px; top:150px; padding-left: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
+            <br>
+            <font  color="white" size="3">
+    
+                <p class="gameScreen-text__position1" id="quiet1"> Opponent Moves </p>
+                <p class="gameScreen-text__position2" id="quiet1"> Silent: </p>
+                <p class="gameScreen-text__position3" id="quiet1"> Betray: </p>
+                <!-- <p id="switch">Current Player: You </p> -->
+    
+                <!-- <p id="demo2">Total Counter:</p> -->
+    
+                <!--<p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
+    
+                <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p> -->
+    
+                <!-- <p id="Opp_move"> Your opponent move is: Hidden</p> -->
+    
+            </font>
+        </div>
 
 
     <div style="width: 25%; min-height: 90vh;background: black; right: 0px; top:70px; padding-left: 40px; position: fixed; min-height: 90vh" class="z-index__1">
@@ -336,11 +363,11 @@
     
             </font> -->
 
-        <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1>
-
+        <!-- <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1> -->
+        <!--
         <ul class="text-color__white" style=" margin: 0px; padding: 0px; list-style-type: disc">
 
-            <!--bulleted list for rules of the game -->
+            !-- bulleted list for rules of the game --
 
             <li>
                 <p> If each player confesses, each of them will serve 2 years in prison.
@@ -356,7 +383,7 @@
                 <p>If both players remain silent, both will serve 1 year.</p>
             </li>
 
-        </ul>
+        </ul> -->
 
 
     </div>
@@ -413,8 +440,8 @@
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
-
-        function StartOver() {
+         
+        /*function StartOver() {
             count = 0;
             quiet = 0;
             confess = 0;
@@ -428,7 +455,8 @@
             document.getElementById("demo2").innerText = "Round: " + count;
             document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
             document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-        }
+        } */
+
         //Telling the user who is the current player
         function Switch() {
             document.getElementById("switch").innerText = "Current Turn: User 2";
