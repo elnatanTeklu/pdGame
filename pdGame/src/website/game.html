@@ -649,17 +649,18 @@
                         CurrMove = "Silent";
                         Opponentindex += 1;
                     }
+                    // Display Moves of opponents and user
+                    listMarkup=`
+                    <ul>
+                    ${log.map((hist,index) =>`<li>Move ${index +1}: your move:${log[index]} opponent move:${Opponent_log[index]}</li>`).join('')}
+                    </ul>
+                `   ;
+                    document.getElementById("history").innerHTML=listMarkup;
                     document.getElementById("Opp_move").innerText = "Opponent move : " + CurrMove;
                 }
                 
             
-                // Display Moves of opponents and user
-                listMarkup=`
-                    <ul>
-                    ${log.map((hist,index) =>`<li>Move ${index +1}: your move:${log[index]} opponent move:${Opponent_log[index]}</li>`).join('')}
-                    </ul>
-                `;
-                document.getElementById("history").innerHTML=listMarkup;
+                
             
         }
         //Sending data to backend
