@@ -559,7 +559,6 @@
     <script>
         //Variables for counter
         var count = 0;
-        var count1 = 0;
         var quiet = 0;
         var confess = 0;
         var log = [];
@@ -572,8 +571,6 @@
         <ul class="historyList">
         ${log.map(l =>'<li>{l}</li>')}
         </ul>`;
-        // if condition to stop at 20.
-        //if (count1 >= 20 ){
 
         function StartOver() {
             count = 0;
@@ -607,6 +604,9 @@
             if ((quiet+confess) <= 20) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
+                document.getElementById("demo4").disabled = false;
+            }
+            else {
                 document.getElementById("demo4").disabled = false;
             }
         }
@@ -688,12 +688,7 @@
             }
 
         }
-        // new stuff for quit
-        //count1 = count1 + 1;
-        //}
-        //else {
-        //    quietDecision();
-        //}
+        
  
        
     </script>
