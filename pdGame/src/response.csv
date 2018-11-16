@@ -1,5 +1,8 @@
 
 count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
 6,3,3,"['S', 'B', 'S', 'B', 'S', 'B']"
 
 count,quiet,confess,log
@@ -9,9 +12,202 @@ count,quiet,confess,log
 0,0,0,[]
 
 count,quiet,confess,log
-9,5,4,"['S', 'S', 'B', 'S', 'B', 'B', 'S', 'B', 'S']"
+23,10,13,"['S', 'S', 'S', 'S', 'S', 'S', 'B', 'B', 'B', 'B', 'B', 'S', 'B', 'S', 'B', 'B', 'S', 'S', 'B', 'B', 'B', 'B', 'B']"
 
 count,quiet,confess,log
+3,2,1,"['S', 'B', 'S']"
+
+count,quiet,confess,log
+2,2,0,"['S', 'S']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+21,8,13,"['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K']"
+
+count,quiet,confess,log
+4,2,2,"['K', 'K', 'C', 'C']"
+
+count,quiet,confess,log
+12,11,1,"['K', 'K', 'K', 'K', 'K', 'C', 'K', 'K', 'K', 'K', 'K', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+21,11,10,"['K', 'C', 'K', 'C', 'K', 'C', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'K', 'C', 'C', 'K', 'C', 'C', 'K', 'K']"
+
+count,quiet,confess,log
+21,13,8,"['C', 'K', 'K', 'K', 'C', 'K', 'C', 'K', 'C', 'K', 'C', 'K', 'K', 'K', 'C', 'K', 'C', 'K', 'C', 'K', 'K']"
+
+count,quiet,confess,log
+21,10,11,"['K', 'C', 'C', 'C', 'K', 'K', 'C', 'K', 'C', 'K', 'C', 'K', 'C', 'K', 'K', 'C', 'C', 'K', 'C', 'K', 'C']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+21,11,10,"['C', 'K', 'K', 'K', 'C', 'C', 'C', 'K', 'K', 'C', 'C', 'C', 'K', 'K', 'K', 'C', 'K', 'C', 'K', 'C', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+8,5,3,"['K', 'C', 'C', 'C', 'K', 'K', 'K', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+12,6,6,"['C', 'C', 'C', 'C', 'K', 'K', 'C', 'K', 'C', 'K', 'K', 'K']"
+
+count,quiet,confess,log
+20,10,10,"['C', 'K', 'K', 'C', 'K', 'C', 'K', 'K', 'C', 'C', 'K', 'C', 'C', 'C', 'C', 'C', 'K', 'K', 'K', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+15,2,13,"['K', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+2,1,1,"['S', 'B']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+21,10,11,"['K', 'C', 'C', 'K', 'K', 'C', 'C', 'C', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'K', 'C', 'C', 'C', 'K', 'K']"
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+0,0,0,[]
+
+count,quiet,confess,log
+
 12,6,6,"['S', 'S', 'S', 'B', 'B', 'B', 'B', 'S', 'B', 'S', 'B', 'S']"
 
 count,quiet,confess,log
@@ -48,3 +244,6 @@ count,quiet,confess,log
 
 count,quiet,confess,log
 21,10,11,"['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B']"
+
+
+
