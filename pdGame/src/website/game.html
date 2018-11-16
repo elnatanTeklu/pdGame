@@ -559,6 +559,7 @@
     <script>
         //Variables for counter
         var count = 0;
+        var count1 = 0;
         var quiet = 0;
         var confess = 0;
         var log = [];
@@ -571,6 +572,8 @@
         <ul class="historyList">
         ${log.map(l =>'<li>{l}</li>')}
         </ul>`;
+        // if condition to stop at 20.
+        //if (count1 >= 20 ){
 
         function StartOver() {
             count = 0;
@@ -600,9 +603,12 @@
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
-            document.getElementById("demo").disabled = false;
-            document.getElementById("demo3").disabled = false;
-            document.getElementById("demo4").disabled = false;
+            // Stop game after 20 rounds
+            if ((quiet+confess) <= 20) {
+                document.getElementById("demo").disabled = false;
+                document.getElementById("demo3").disabled = false;
+                document.getElementById("demo4").disabled = false;
+            }
         }
         //Adding to keep quiet counter
         function quietDecision() {
@@ -621,9 +627,8 @@
         }
         //Adding to total counter when on-click 
         function myFunction2() {
-            // if condition to stop at 20.
             
-                count = count + 1;
+                count = count + 1; 
 
                 document.getElementById("demo2").innerText = "Round : " + count;
                 if ((count % 2) == 0) {
@@ -646,6 +651,7 @@
                     }
                     document.getElementById("Opp_move").innerText = "Opponent move : " + CurrMove;
                 }
+                
             
                 // Display Moves of opponents and user
                 listMarkup=`
@@ -682,8 +688,12 @@
             }
 
         }
-
-        
+        // new stuff for quit
+        //count1 = count1 + 1;
+        //}
+        //else {
+        //    quietDecision();
+        //}
  
        
     </script>
