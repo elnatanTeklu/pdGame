@@ -379,18 +379,15 @@
         </div>   -->
 
           <div class="row justify-content-end m-1 mt-5" >
-
-                <!-- <div class="col-sm-2 justify-content-start ">
+                <!-- Display history -->
+                 <div class="col-sm-3 " style="height: 30%; overflow-y: scroll">
                         <div class="card text-white mb-1" style="background-color: black;">
                           <div class="card-body">
                             <h5 class="card-title">History</h5>
-                            <p class="card-text">If each player confesses, each of them will serve 2 years in prison.</p>
-                            <p class="card-text"> If one player confesses and the other remains silent, the player who confessed will be set free and the
-                            player who remained silent serves 3 years.</p>
-                            <p class="card-text"> If both players remain silent, both will serve 1 year. </p> 
+                            <div id="history"></div>
                           </div>
                         </div>
-                      </div> -->
+                      </div> 
 
                 <div class=" col-sm-4" style="margin-right: 30px; border: black 5px solid; border-radius: 20px; margin: 2%; padding:1%;">
                   <div class="card" style="background: black; color: white;">
@@ -569,6 +566,11 @@
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
+        // Display history
+        var listMarkup=`
+        <ul class="historyList">
+        ${log.map(l =>'<li>{l}</li>')}
+        </ul>`;
 
         function StartOver() {
             count = 0;
@@ -619,33 +621,40 @@
         }
         //Adding to total counter when on-click 
         function myFunction2() {
-            count = count + 1;
+            // if condition to stop at 20.
+            
+                count = count + 1;
 
-            document.getElementById("demo2").innerText = "Round : " + count;
-            if ((count % 2) == 0) {
-                Opponent_log.push('S');
-
-            } else {
-                Opponent_log.push('B');
-
-            }
-
-            if (count > 10) {
-                if (Opponent_log[Opponentindex] == 'B') {
-                    CurrMove = "Betray";
-                    Opponentindex += 1;
+                document.getElementById("demo2").innerText = "Round : " + count;
+                if ((count % 2) == 0) {
+                    Opponent_log.push('S');
 
                 } else {
+                    Opponent_log.push('B');
 
-                    CurrMove = "Silent";
-                    Opponentindex += 1;
                 }
-                document.getElementById("Opp_move").innerText = "Opponent move : " + CurrMove;
-            }
 
+                if (count > 10) {
+                    if (Opponent_log[Opponentindex] == 'B') {
+                        CurrMove = "Betray";
+                        Opponentindex += 1;
 
+                    } else {
 
-
+                        CurrMove = "Silent";
+                        Opponentindex += 1;
+                    }
+                    document.getElementById("Opp_move").innerText = "Opponent move : " + CurrMove;
+                }
+            
+                // Display Moves of opponents and user
+                listMarkup=`
+                    <ul>
+                    ${log.map((hist,index) =>`<li>Move ${index +1}: your move:${log[index]} opponent move:${Opponent_log[index]}</li>`).join('')}
+                    </ul>
+                `;
+                document.getElementById("history").innerHTML=listMarkup;
+            
         }
         //Sending data to backend
         function sendData() {
