@@ -38,8 +38,14 @@ def game2():
    title = 'Create the input'
    return render_template('level2.html',
                           title=title)                           
-                          
 
+@app.route('/gameResults', methods=['GET'])
+def game3():
+   title = 'Create the input'
+   return render_template('gameResults.html',
+                          title=title)   
+
+                                                  
 
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():

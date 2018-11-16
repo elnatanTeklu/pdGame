@@ -16,7 +16,6 @@
             background-color: #f8f9fa;
             margin: 0px;
             padding: 0px;
-
         }
 
         .header {
@@ -111,7 +110,6 @@
             margin: 1px 4px;
             cursor: pointer;
             border-radius: 12px;
-
         }
 
         .button1:hover {
@@ -121,7 +119,6 @@
         .button2:hover {
             padding: 15px 25px;
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-
         }
 
         .button3:hover {
@@ -130,7 +127,6 @@
             position: bottom;
             left: 500px;
             bottom: 100px;
-
         }
 
         hr {
@@ -211,348 +207,207 @@
             margin-right: 5%;
         }
 
-        .z-index__1{
+        .z-index__1 {
             z-index: -1;
         }
-        .z-index__0{
+
+        .z-index__0 {
             z-index: 1;
         }
-        .btnEndgame{
+
+        .btnEndgame {
             background-color: lightgray;
             background: white;
             color: black;
         }
 
-        .gameScreen-text__position1{
+        .gameScreen-text__position1 {
             text-align: center;
             margin-top: 30%;
         }
-        .gameScreen-text__position2{
+
+        .gameScreen-text__position2 {
             text-align: center;
         }
-        .btn-black{
+
+        .btn-black {
             border-radius: 20px;
             background: black;
             color: white;
         }
 
+        .grow {
+            flex: 1;
+        }
+
+        .main {
+            overflow-y: auto;
+        }
+
+        .shadow {
+            -moz-box-shadow: 3px 3px 5px 6px #ccc;
+            -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+            box-shadow: 3px 3px 5px 6px #ccc;
+        }
     </style>
 </head>
 
+
+
 <body>
     <!--Header-->
-    <nav class="navbar navbar-expand-lg" style="background-color: black; color: white">
-            <h1 class="navbar-brand" style="color:white" onclick="sendData(); location.href='/'" >Prisoner's Dilemma</h1>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
+    <nav class="navbar  fixed-top navbar-expand-lg shadow" style="background-color: black; color: white">
+        <h1 class="navbar-brand" style="color:white" onclick="sendData(); location.href='/'">Prisoner's Dilemma</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <!-- <a style="color:white" class="nav-link" href="#">Home</a> -->
-                
+
                 </li>
-                <li class="nav-item">
+
+                <!-- <li class="nav-item ml-4">
+                        <h1 class="text-color__white " id="" style="font-size: 25px"> Sentence :  </h1>
+                    </li> -->
+
+                <li class="nav-item ml-4">
+                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : </h1>
+                </li>
+                <li class="nav-item ml-4">
+                    <h1 class="text-color__white " id="Opp_move" style="font-size: 25px"> User 2 : Hidden </h1>
+                </li>
+
+                <li class="nav-item ml-4">
                     <h1 class="text-color__white" id="switch" style=" font-size: 25px"> Current Turn: You </h1>
                 </li>
-                <li class="nav-item ml-4">
-                     <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : </h1>
-                </li>
-                <li class="nav-item ml-4">
-                        <h1 class="text-color__white " id="Opp_move" style="font-size: 25px"> Opponent Move : Hidden </h1>
-                   </li>
-              
-              </ul>
-            </div>
-          </nav>
+            </ul>
+        </div>
+    </nav>
 
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+
+
+    <div class="row" style="min-width: 100%; min-height: 100%">
+
+        <!-- history section  -->
+        <div class=" col-12 col-sm-2 col-md-2" style="background: black; color: white; overflow-y: scroll; height:110vh;">
+            <div style="text-align: center">
+                <h4 class="mb-5" style="margin-top: 40%;">History</h4>
+                <p id="history"> </p>
+            </div>
+        </div>
+
+        <!-- gamescreen -->
+
+
+
+        <div class="col-12 col-sm-5 col-md-6 mt-5">
+            <div class="card" style="background: black; color: white; width: 30rem; margin-left: 10%; margin-top: 15%; border-radius: 20px;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">User1</h6>
+                    <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
+                    <p class="card-text" id="confess1">Confess Counter: </p>
+                    <div class="card-body" style="background: white;">
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- gamescreen section END    -->
+
+
+        <!-- about the game section  -->
+
+        <div class="  col-12 col-sm-auto col-md-auto mt-5">
+
+            <div class="card text-white m-1 mt-5" style="background-color: black; width: 20rem; border-radius: 20px;">
+                <div class="card-body" style="border-radius: 30px;">
+                    <h5 class="card-title" style="text-align: center;">About The Game</h5>
+
+
+                    <ul>
+                        <li class="mt-2">
+                            <h6 style="color:red;">2 year sentece</h6>
+                            <p class="card-text">If both players confess, each will get a 2 year sentece. </p>
+                        </li>
+                        <li class="mt-2">
+                            <h6 style="color:red;">Set free or 3 year sentence</h6>
+                            <p class="card-text"> If one player confesses and the other player keeps quiet, the player that confessed will be set
+                                free but the player who keept quiet will get a 3 year sentence.</p>
+
+                        </li>
+                        <li class="mt-2">
+                            <h6 style="color:red;">1 year sentence</h6>
+                            <p class="card-text"> If both players keep quiet, each will get a 1 year sentence. </p>
+
+
+                        </li>
+                    </ul>
+
+
+
+
+                    <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href='/'" style="margin-left: 30%; margin-top: 10%;">Get Results</button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- about the game section END  -->
+
+
+
+
+
+
+
+    </div>
+
+    <!-- histroy section END -->
+
+
+
+    <!-- the footer -->
+    <div class="row">
+        <div class="col-12" style="background: black; color:white; ">
+            <nav class="navbar  navbar-expand-lg " style="background: black; color:white; ">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <!-- <a style="color:white" class="nav-link" href="#">Home</a> -->
-                    
-                    </li>
-                    <li class="nav-item mr-4">
-                            <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; margin-left: 10px;" onclick="StartOver()">Start Over</button>
-                    </li>
-                    <li class="nav-item mr-4">
-                            <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px " onclick="sendData(); location.href='/'">Quit</button>
-                    </li>
-                    <li class="nav-item mr-4">
-                            <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px" onclick="sendData(); location.href='/level2'">Next Level</button>
-                    </li>
-                  </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                        </li>
+
+                        <!-- <li class="nav-item mr-4" style="margin-left: 600px;">
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; margin-left: 10px; border-radius: 15px"
+                                onclick="StartOver()">Start Over</button>
+                        </li> -->
+
+                        <li class="nav-item mr-4">
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 600px; "
+                                onclick="sendData(); location.href='/'">Quit</button>
+                        </li>
+                    </ul>
                 </div>
-              </nav>
-    
-    <!-- <div class="header">
-
-        <h1 class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
-
-        <h1 class="text-color__white header-text__inline header-text__spaceing" id="switch"> Current Turn: You </h1>
-
-        <h1 class="text-color__white header-text__inline" id="demo2"> Round : </h1>
-
-
-    </div> -->
-
-
-    <!-- <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header"> </div>
-
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px" onclick="StartOver()">Start Over</button>
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Quit</button>
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Next Level</button>
+            </nav>
         </div>
-    </nav> -->
-
-
-    
-
- <!-- LOOK AT THIS LATER  -->
-    <!-- <div style="background: #D3D3D3; width: 30%; min-height: 45vh; padding-right: 45px;padding-left: 20px;top: 150px; left: 300px; position: fixed">
-        Insert the image in this div
-        <img id="image" src="https://cdn.pixabay.com/photo/2016/03/31/20/32/black-suit-1295853_960_720.png" width="200" height="200">
-        <img src="assests/images/test.png" alt="test to see if this works">
-        <p>Insert the Image here
-            <p>
-    </div> -->
-
-    <!--CONFESS AND KEEP QUIET BUTTONS-->
-
-<!-- 
-    <br>
-
-   
-
-    <div>
-
-       
-        <br>
-
-        <button style="right: 380px;bottom: 100px;position: absolute " class="button button1 btn-black" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
-
-
-        <button class="button button2 btn-black" style="position: fixed;right: 550px;bottom: 100px" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-
-        <button style=" position: absolute; left: 82%; bottom: 100px" class="button button3 btnEndgame z-index__0" id="demo4" onclick="sendData(); location.href='/endGame'">End Game</button>
-     
-
-    </div> -->
-    
-
-
-<!-- 
-    <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">GameScreen</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Counter</h6>
-              <p class="card-text" id="quiet1">Keep Quiet Counter:</p>
-              <p class="card-text" id="confess1">Confess Counter:</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div> -->
+    </div>
 
 
 
-
-
-        <!-- <div class="container">
-        <div class="row">
-          <div class="col">
-            1 of 2
-          </div>
-          <div class="col">
-            2 of 2
-          </div>
-          <div class="col">
-                2 of 2
-              </div>
-        </div>
-        </div>   -->
-
-          <div class="row justify-content-end m-1 mt-5" >
-                <!-- Display history -->
-                 <div class="col-sm-3 " style="height: 30%; overflow-y: scroll">
-                        <div class="card text-white mb-1" style="background-color: black;">
-                          <div class="card-body">
-                            <h5 class="card-title">History</h5>
-                            <div id="history"></div>
-                          </div>
-                        </div>
-                      </div> 
-
-                <div class=" col-sm-4" style="margin-right: 30px; border: black 5px solid; border-radius: 20px; margin: 2%; padding:1%;">
-                  <div class="card" style="background: black; color: white;">
-                    <div class="card-body">
-                    <h6  class="card-subtitle mb-2 text-muted">User1</h6>
-                      <!-- <h5 class="card-title">GameScreen</h5> -->
-                      <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
-                      <p class="card-text" id="confess1">Confess Counter: </p>
-                    </div>
-                  </div>
-                  <div class="card-body mt-1" style="background: #f8f9fa; ">
-                        <button class="button button2 btn-black m-2 " id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button  class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
-                      </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="card text-white mb-1" style="background-color: black;">
-                    <div class="card-body" style="border-radius: 30px;">
-                      <h5 class="card-title">Rules</h5>
-                      <p class="card-text">If each player confesses, each of them will serve 2 years in prison.</p>
-                      <p class="card-text"> If one player confesses and the other remains silent, the player who confessed will be set free and the
-                      player who remained silent serves 3 years.</p>
-                      <p class="card-text"> If both players remain silent, both will serve 1 year. </p>
-
-                      <button  class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href='/endGame'" style="margin-left: 30%; margin-top: 10%;" >End Game</button>
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-      
-
-            
-           
-
-    <!-- <div style="width: 400px; min-height: 50vh;background: black; right: 350px; top:150px; padding-left: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
-        <br>
-        <font  color="white" size="3">
-            <p id="switch">Current Player: You </p> 
-
-          <p id="demo2">Total Counter:</p>
-
-            <p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
-
-            <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p>
-
-           <p id="Opp_move"> Your opponent move is: Hidden</p> 
-
-        </font>
-    </div> -->
-
-<!-- 
-    <div style="width: 25%; min-height: 90vh;background: black; right: 0px; top:70px; padding-left: 40px; position: fixed; min-height: 90vh" class="z-index__1">
-            <br>
-     
-    
-            <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1>
-    
-            <ul class="text-color__white" style=" margin: 0px; padding: 0px; list-style-type: disc">
-    
-               
-    
-                <li>
-                    <p> If each player confesses, each of them will serve 2 years in prison.
-                        <p>
-                </li>
-    
-                <li>
-                    <p> If one player confesses and the other remains silent, the player who confessed will be set free and the player
-                        who remained silent serves 3 years.</p>
-                </li>
-    
-                <li>
-                    <p>If both players remain silent, both will serve 1 year.</p>
-                </li>
-    
-            </ul>
-    
-    
-        </div>
-     -->
-
-
-    <!-- <div style="width: 25%; min-height: 90vh;background: black; right: 0px; top:70px; padding-left: 40px; position: fixed; min-height: 90vh" class="z-index__1">
-        <br>
-        <font size="3">
-                <p id="switch">Current Player: You </p>
-    
-                <p id="demo2">Total Counter:</p>
-    
-                <p id="quiet1">Keep Quiet Counter: </p>
-    
-                <p id="confess1">Confess Counter: </p>
-    
-                <p id="Opp_move"> Your opponent move is: Hidden</p>
-    
-            </font>
-
-        <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1>
-
-        <ul class="text-color__white" style=" margin: 0px; padding: 0px; list-style-type: disc">
-
-           
-
-            <li>
-                <p> If each player confesses, each of them will serve 2 years in prison.
-                    <p>
-            </li>
-
-            <li>
-                <p> If one player confesses and the other remains silent, the player who confessed will be set free and the player
-                    who remained silent serves 3 years.</p>
-            </li>
-
-            <li>
-                <p>If both players remain silent, both will serve 1 year.</p>
-            </li>
-
-        </ul>
-
-
-    </div> -->
-
-
-
-
-    <!-- <div class="popup" onclick="myPopUP()" style="width: 10%; background: #008CBA; min-height: 5vh; padding-right: 40px;padding-left: 40px;top: 350px; left: 50px; position: absoulte">
-        <font color="white">Rules</font>
-
-        <span class="popuptext" id="myPopup">
-            <p>
-                <b>
-                    <br> Rules</b>
-            </p>
-
-            <ul style="list-style-type: disc">
-
-                bulleted list for rules of the game
-
-                <li>
-                    <p> If each player confesses, each of them will serve 2 years in prison.
-                        <p>
-                </li>
-
-                <li>
-                    <p> If one player confesses and the other remains silent, the player who confessed will be set free and the
-                        player who remained silent serves 3 years.</p>
-                </li>
-
-                <li>
-                    <p>If both players remain silent, both will serve 1 year.</p>
-                </li>   
-                
-            </ul>
-        </span>
-    </div> -->
-
-
-
-
-    <!-- </div> -->
-
+    <!-- the footer END -->
 
 
     <!-- keep script in this file becuase of flask  -->
@@ -567,7 +422,7 @@
         var CurrMove = "None";
         var turn = "None";
         // Display history
-        var listMarkup=`
+        var listMarkup = `
         <ul class="historyList">
         ${log.map(l =>'<li>{l}</li>')}
         </ul>`;
@@ -576,9 +431,7 @@
             count = 0;
             quiet = 0;
             confess = 0;
-
             Opponent_log = [];
-
             log = [];
             Opponentindex = 0;
             CurrMove = "None";
@@ -593,20 +446,17 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 1000);
-
-
+            setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
             // Stop game after 20 rounds
-            if ((quiet+confess) <= 20) {
+            if ((quiet + confess) <= 20) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
-            }
-            else {
+            } else {
                 document.getElementById("demo4").disabled = false;
             }
         }
@@ -614,54 +464,46 @@
         function quietDecision() {
             quiet = quiet + 1;
             document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            log.push('S');
-
+            log.push('K');
         }
         //Adding to confess counter 
         function confessDecision() {
             confess = confess + 1;
             document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-            log.push('B');
-
-
+            log.push('C');
         }
         //Adding to total counter when on-click 
         function myFunction2() {
-            
-                count = count + 1; 
 
-                document.getElementById("demo2").innerText = "Round : " + count;
-                if ((count % 2) == 0) {
-                    Opponent_log.push('S');
-
+            count = count + 1;
+            document.getElementById("demo2").innerText = "Round : " + count;
+            if ((count % 2) == 0) {
+                Opponent_log.push('K');
+            } else {
+                Opponent_log.push('C');
+            }
+            if (count > 10) {
+                if (Opponent_log[Opponentindex] == 'C') {
+                    CurrMove = "Confess";
+                    Opponentindex += 1;
                 } else {
-                    Opponent_log.push('B');
-
+                    CurrMove = "Keep Quiet";
+                    Opponentindex += 1;
                 }
-
-                if (count > 10) {
-                    if (Opponent_log[Opponentindex] == 'B') {
-                        CurrMove = "Betray";
-                        Opponentindex += 1;
-
-                    } else {
-
-                        CurrMove = "Silent";
-                        Opponentindex += 1;
-                    }
-                    // Display Moves of opponents and user
-                    listMarkup=`
+                // Display Moves of opponents and user
+                listMarkup =
+                    `
                     <ul>
-                    ${log.map((hist,index) =>`<li>Move ${index +1}: your move:${log[index]} opponent move:${Opponent_log[index]}</li>`).join('')}
+                    ${log.map((hist,index) =>`<li>Round :  ${index +1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]} </li> <br>`).join('')}
                     </ul>
-                `   ;
-                    document.getElementById("history").innerHTML=listMarkup;
-                    document.getElementById("Opp_move").innerText = "Opponent move : " + CurrMove;
-                }
-                
-            
-                
-            
+                `;
+                document.getElementById("history").innerHTML = listMarkup;
+                document.getElementById("Opp_move").innerText = "User 2 : " + CurrMove;
+            }
+
+
+
+
         }
         //Sending data to backend
         function sendData() {
@@ -674,28 +516,21 @@
                 confess: confess,
                 log: log
             }));
-
-
             // When the user clicks on div, open the popup
             function myPopUP() {
                 var popup = document.getElementById("myPopup");
                 popup.classList.toggle("show");
             }
-
             // When the user clicks on div, open the popup
             function myPopUP() {
                 var popup = document.getElementById("myPopup");
                 popup.classList.toggle("show");
             }
-
         }
-        
- 
-       
     </script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>
