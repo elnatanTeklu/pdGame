@@ -245,182 +245,56 @@
 
         <h1 class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
 
-        <!-- <h1 class="text-color__white header-text__inline header-text__spaceing" id="switch"> Current Turn: You </h1>
-
-        <h1 class="text-color__white header-text__inline" id="demo2"> Round : </h1> -->
-
-
-    </div>
-
-
-    <!-- <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header"> </div>
-
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px" onclick="StartOver()">Start Over</button>
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Quit</button>
-            <button class="btn btn-danger navbar-btn" style="background-color: #008CBA; border-color: #008CBA;padding: 8px 50px">Next Level</button>
-        </div>
-    </nav> -->
-
-
-    <!-- <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; margin-left: 10px;" onclick="StartOver()">Start Over</button> -->
-    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Quit</button>
-    <!-- <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px">Next Level</button> -->
-
-
-
-    <br>
-
- <!-- LOOK AT THIS LATER  -->
-    <!-- <div style="background: #D3D3D3; width: 30%; min-height: 45vh; padding-right: 45px;padding-left: 20px;top: 150px; left: 300px; position: fixed">
-        Insert the image in this div
-        <img id="image" src="https://cdn.pixabay.com/photo/2016/03/31/20/32/black-suit-1295853_960_720.png" width="200" height="200">
-        <img src="assests/images/test.png" alt="test to see if this works">
-        <p>Insert the Image here
-            <p>
-    </div> -->
-
-    <!--CONFESS AND KEEP QUIET BUTTONS-->
-
-
-    <br>
-
-   
-
-    <div>
-
-        <!--Confess button and onclick function to add to counters
-        <br>
-
-        <button style="right: 380px;bottom: 100px;position: absolute " class="button button1 btn-black" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button> -->
-
-        <!--Quiet button and onclick functions to add to counters
-
-        <button class="button button2 btn-black" style="position: fixed;right: 550px;bottom: 100px" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button> -->
-
-        <!--<button style=" position: absolute; left: 82%; bottom: 100px" class="button button3 btnEndgame z-index__0" id="demo4" onclick="sendData(); location.href='/'">End Game</button> -->
-        <!--DIV FOR COUNTER AND CURRENT PLAYER-->
 
     </div>
 
 
 
 
-    <div style="width: 30%; min-height: 50vh;background: black; right: 350px; top:150px; padding-left: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
+
+    <button class="btn btn-danger navbar-btn" style="background-color: black; border-color: black; padding: 8px 50px; " onclick="location.href='/'">Home</button>
+
+
+
+
+
+    <div style="width: 30%; min-height: 30vh;background: black; right: 50px; top:150px;  position: fixed; min-height: 30vh; border-radius: 45px;">
         <br>
         <font  color="white" size="3">
 
-            <p class="gameScreen-text__position1" id="quiet1"> Your Moves </p>
-            <p class="gameScreen-text__position2" id="quiet1"> Silent: </p>
-            <p class="gameScreen-text__position3" id="quiet1"> Betray: </p>
-            <!-- <p id="switch">Current Player: You </p> -->
-
-            <!-- <p id="demo2">Total Counter:</p> -->
-
-            <!--<p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
-
-            <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p> -->
-
-            <!-- <p id="Opp_move"> Your opponent move is: Hidden</p> -->
+            <p class="gameScreen-text__position1" > Your Moves </p>
+            <p id="quiet1" class="gameScreen-text__position2" > Silent: </p>
+            <p id="confess1" class="gameScreen-text__position3" > Betray: </p>
+            
 
         </font>
     </div>
 
-    <div style="width: 30%; min-height: 20vh;background: black; right: 350px; top:150px; padding-right: 40px; position: fixed; min-height: 45vh; border-radius: 45px;">
+    <div style="width: 30%; min-height: 30vh;background: black; left: 50px; top:150px; padding-left: 40px; position: fixed; min-height: 30vh; border-radius: 45px;">
             <br>
             <font  color="white" size="3">
     
-                <p class="gameScreen-text__position1" id="quiet1"> Opponent Moves </p>
-                <p class="gameScreen-text__position2" id="quiet1"> Silent: </p>
-                <p class="gameScreen-text__position3" id="quiet1"> Betray: </p>
-                <!-- <p id="switch">Current Player: You </p> -->
-    
-                <!-- <p id="demo2">Total Counter:</p> -->
-    
-                <!--<p class="gameScreen-text__position1" id="quiet1">Keep Quiet Counter: </p>
-    
-                <p class="gameScreen-text__position2" id="confess1">Confess Counter: </p> -->
-    
-                <!-- <p id="Opp_move"> Your opponent move is: Hidden</p> -->
+                <p class="gameScreen-text__position1" > Opponent Moves </p>
+                <p id="quiet2" class="gameScreen-text__position2" > Silent: </p>
+                <p id="confess2" class="gameScreen-text__position3" > Betray: </p>
+                
     
             </font>
         </div>
 
 
-    <div style="width: 25%; min-height: 90vh;background: black; right: 0px; top:70px; padding-left: 40px; position: fixed; min-height: 90vh" class="z-index__1">
+    <div style="width: 45%; min-height: 40vh;background: black; bottom: 0px; padding: 10px; position: fixed; min-height: 30vh; border-radius: 45px;">
         <br>
-        <!-- <font size="3">
-                <p id="switch">Current Player: You </p>
+         <font color="white" size="4">
+                <p id="demo2" class="gameScreen-text__position1" > Final Decision </p>
+                
     
-                <p id="demo2">Total Counter:</p>
-    
-                <p id="quiet1">Keep Quiet Counter: </p>
-    
-                <p id="confess1">Confess Counter: </p>
-    
-                <p id="Opp_move"> Your opponent move is: Hidden</p>
-    
-            </font> -->
-
-        <!-- <h1 class="text-color__white" style="margin-bottom:15%;">Rules</h1> -->
-        <!--
-        <ul class="text-color__white" style=" margin: 0px; padding: 0px; list-style-type: disc">
-
-            !-- bulleted list for rules of the game --
-
-            <li>
-                <p> If each player confesses, each of them will serve 2 years in prison.
-                    <p>
-            </li>
-
-            <li>
-                <p> If one player confesses and the other remains silent, the player who confessed will be set free and the player
-                    who remained silent serves 3 years.</p>
-            </li>
-
-            <li>
-                <p>If both players remain silent, both will serve 1 year.</p>
-            </li>
-
-        </ul> -->
+            </font>
 
 
     </div>
 
 
-
-
-    <!-- <div class="popup" onclick="myPopUP()" style="width: 10%; background: #008CBA; min-height: 5vh; padding-right: 40px;padding-left: 40px;top: 350px; left: 50px; position: absoulte">
-        <font color="white">Rules</font>
-
-        <span class="popuptext" id="myPopup">
-            <p>
-                <b>
-                    <br> Rules</b>
-            </p>
-
-            <ul style="list-style-type: disc">
-
-                bulleted list for rules of the game
-
-                <li>
-                    <p> If each player confesses, each of them will serve 2 years in prison.
-                        <p>
-                </li>
-
-                <li>
-                    <p> If one player confesses and the other remains silent, the player who confessed will be set free and the
-                        player who remained silent serves 3 years.</p>
-                </li>
-
-                <li>
-                    <p>If both players remain silent, both will serve 1 year.</p>
-                </li>   
-                
-            </ul>
-        </span>
-    </div> -->
 
 
 
@@ -428,97 +302,75 @@
     <!-- </div> -->
 
 
-
     <!-- keep script in this file becuase of flask  -->
     <script>
         //Variables for counter
         var count = 0;
-        var quiet = 0;
-        var confess = 0;
+        var quiet = getUrlVars()["quiet"];
+        var confess = getUrlVars()["confess"];
+        var quietComp = getUrlVars()["quietComp"];
+        var confessComp = getUrlVars()["confessComp"];
         var log = [];
         var Opponent_log = [];
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
          
-        /*function StartOver() {
-            count = 0;
-            quiet = 0;
-            confess = 0;
-
-            Opponent_log = [];
-
-            log = [];
-            Opponentindex = 0;
-            CurrMove = "None";
-            turn = "None";
-            document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-        } */
-
-        //Telling the user who is the current player
-        function Switch() {
-            document.getElementById("switch").innerText = "Current Turn: User 2";
-            document.getElementById("demo").disabled = true;
-            document.getElementById("demo3").disabled = true;
-            document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 1000);
-
-
+        
+        // get url 
+        function getUrlVars() {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                vars[key] = value;
+            });
+            return vars;
         }
 
-        function Switch2() {
-            document.getElementById("switch").innerText = "Current Turn: You";
-            document.getElementById("demo").disabled = false;
-            document.getElementById("demo3").disabled = false;
-            document.getElementById("demo4").disabled = false;
-        }
-        //Adding to keep quiet counter
-        function quietDecision() {
-            quiet = quiet + 1;
-            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            log.push('S');
+        
 
-        }
-        //Adding to confess counter 
-        function confessDecision() {
-            confess = confess + 1;
-            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-            log.push('B');
+        
+       
+         // Decision 
 
+        function Decision(){
 
-        }
-        //Adding to total counter when on-click 
-        function myFunction2() {
-            count = count + 1;
+            document.getElementById("quiet1").innerText=`Slient:${quiet}`;
+            document.getElementById("confess1").innerText=`Betray:${confess}`;
+            document.getElementById("quiet2").innerText=`Slient:${quietComp}`;
+            document.getElementById("confess2").innerText=`Betray:${confessComp}`;
+                /* if user silent score is higher than opponent silent score && 
+                opponent betray score is higher than user betray score
+	            then You each receive 3 years in prison. Your opponent receives 0 years in prison. */
 
-            document.getElementById("demo2").innerText = "Round : " + count;
-            if ((count % 2) == 0) {
-                Opponent_log.push('S');
-
-            } else {
-                Opponent_log.push('B');
-
-            }
-
-            if (count > 10) {
-                if (Opponent_log[Opponentindex] == 'B') {
-                    CurrMove = "Betray";
-                    Opponentindex += 1;
-
-                } else {
-
-                    CurrMove = "Silent";
-                    Opponentindex += 1;
+                if ((quiet > quietComp)){
+                    document.getElementById("demo2").innerText = "You receive 3 years in prison. Your opponent receives 0 years in prison.";
+                
                 }
-                document.getElementById("Opp_move").innerText = "Your opponent move is: " + CurrMove;
+
+                /* if user betray score is higher than opponent betray score &&
+                opponent silent score is higher than user silent score
+	            then You receive 0 years in prison. Your opponent receives 3 years in prison. */
+
+                if ((confess > confessComp)){
+                    document.getElementById("demo2").innerText = "You receive 0 years in prison. Your opponent receives 3 years in prison.";
+                }
+
+                /* if user silent score equals opponent silent score 
+	            then You each receive 1 year in prison */
+
+                if ((quiet == quietComp)&&(quiet >= confess)) {
+                    document.getElementById("demo2").innerText = "You each receive 1 year in prison";
+                }
+
+                /* if user betray score equals opponent betray score
+	            then You each receive 2 years in prison */
+                
+                if ((quiet == quietComp)&&(quiet < confess)) {
+                    document.getElementById("demo2").innerText = "You each receive 2 years in prison";
+                }
             }
+            Decision();
 
-
-
-
-        }
         //Sending data to backend
         function sendData() {
             var xhr = new XMLHttpRequest();

@@ -306,13 +306,18 @@
             <div class="card" style="background: black; color: white; width: 30rem; margin-left: 10%; margin-top: 15%; border-radius: 20px;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">User1</h6>
-                    <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
-                    <p class="card-text" id="confess1">Confess Counter: </p>
+                    <div style="display:flex">
+                    <div style="flex:49%">
+                        <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
+                        <p class="card-text" id="confess1">Confess Counter: </p>
+                    </div>
+                    <div style="flex:49%"><img id="avatar" style="width:100%" src="https://i.imgur.com/qde92cR.png"></div>
+                </div>
                     <div class="card-body" style="background: white;">
                         <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
                         <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
                     </div>
-
+                    
 
                 </div>
             </div>
@@ -354,7 +359,7 @@
 
 
 
-                    <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href='/'" style="margin-left: 30%; margin-top: 10%;">Get Results</button>
+                    <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`" style="margin-left: 30%; margin-top: 10%;">Get Results</button>
 
                 </div>
             </div>
@@ -416,6 +421,9 @@
         var count = 0;
         var quiet = 0;
         var confess = 0;
+        var countComp = 0;
+        var quietComp = 0;
+        var confessComp = 0;
         var log = [];
         var Opponent_log = [];
         var Opponentindex = 0;
@@ -431,6 +439,9 @@
             count = 0;
             quiet = 0;
             confess = 0;
+            countComp = 0;
+            quietComp = 0;
+            confessComp = 0;
             Opponent_log = [];
             log = [];
             Opponentindex = 0;
@@ -442,6 +453,10 @@
         }
         //Telling the user who is the current player
         function Switch() {
+            if(count%2==0)
+                document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
+            if(count%2==1)
+                document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
@@ -451,6 +466,7 @@
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
+            document.getElementById("avatar").src= ""
             // Stop game after 20 rounds
             if ((quiet + confess) <= 20) {
                 document.getElementById("demo").disabled = false;
@@ -476,11 +492,14 @@
         function myFunction2() {
 
             count = count + 1;
+            countComp = countComp + 1;
             document.getElementById("demo2").innerText = "Round : " + count;
             if ((count % 2) == 0) {
                 Opponent_log.push('K');
+                quietComp = quietComp + 1;
             } else {
                 Opponent_log.push('C');
+                confessComp = confessComp + 1;
             }
             if (count > 10) {
                 if (Opponent_log[Opponentindex] == 'C') {
@@ -514,7 +533,11 @@
                 count: count,
                 quiet: quiet,
                 confess: confess,
-                log: log
+                log: log,
+                countComp: count,
+                quietComp: quietComp,
+                confessComp: confessComp,
+                Opponent_log: Opponent_log
             }));
             // When the user clicks on div, open the popup
             function myPopUP() {
