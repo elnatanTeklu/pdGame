@@ -222,7 +222,7 @@
 
         .gameScreen-text__position1{
             text-align: center;
-            margin-top: 30%;
+            vertical-align: middle;
         }
         .gameScreen-text__position2{
             text-align: center;
@@ -243,7 +243,7 @@
     <!--Header-->
     <div class="header">
 
-        <h1 class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
+        <h1 style="font-family: cursive; font-weight=Bold" class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
 
 
     </div>
@@ -258,9 +258,10 @@
 
 
 
-    <div style="width: 30%; min-height: 30vh;background: black; right: 50px; top:150px;  position: fixed; min-height: 30vh; border-radius: 45px;">
+    <div style="display:flex; width: 50%; min-height: 30vh;background: black; right: 25%; top:150px;  position: fixed; min-height: 30vh; border-radius: 45px;align-items: center;">
+        <div style="flex:49%; vertical-align: middle">
         <br>
-        <font  color="white" size="3">
+        <font  style="font-family: cursive; font-weight=Bold" color="white" size="6">
 
             <p class="gameScreen-text__position1" > Your Moves </p>
             <p id="quiet1" class="gameScreen-text__position2" > Silent: </p>
@@ -270,9 +271,9 @@
         </font>
     </div>
 
-    <div style="width: 30%; min-height: 30vh;background: black; left: 50px; top:150px; padding-left: 40px; position: fixed; min-height: 30vh; border-radius: 45px;">
+    <div style="flex:49%; vertical-align: middle">
             <br>
-            <font  color="white" size="3">
+            <font  style="font-family: cursive; font-weight=Bold" color="white" size="6">
     
                 <p class="gameScreen-text__position1" > Opponent Moves </p>
                 <p id="quiet2" class="gameScreen-text__position2" > Silent: </p>
@@ -282,15 +283,16 @@
             </font>
         </div>
 
-
-    <div style="width: 45%; min-height: 40vh;background: black; bottom: 0px; padding: 10px; position: fixed; min-height: 30vh; border-radius: 45px;">
+    </div>
+    <div style="display:flex ;  width: 50%; min-height: 40vh;background: black;left: 25%; ;bottom: 10%; padding: 10px; position: fixed; min-height: 30vh; border-radius: 45px;align-items: center;">
+        <div style="flex:100%">
         <br>
-         <font color="white" size="4">
+         <font style="font-family: cursive; font-weight=Bold" color="white" size="10">
                 <p id="demo2" class="gameScreen-text__position1" > Final Decision </p>
                 
     
             </font>
-
+        </div>
 
     </div>
 
