@@ -304,7 +304,7 @@
         <!-- gamescreen -->
 
         <div class="col-12 col-sm-5 col-md-6 mt-5">
-                <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 10%; border-radius: 20px;">
+                <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 7%; border-radius: 20px;">
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-muted">Description</h6>
                             <p> You and your opponent have commited same crime and are convicted of it.  </p>
@@ -312,7 +312,7 @@
                         </div>
                     </div>
 
-            <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 5%; border-radius: 20px;">
+            <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 3%; border-radius: 20px;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">User1</h6>
                     <div style="display:flex;height: 219px;">
@@ -368,7 +368,7 @@
 
 
 
-                    <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`" style="margin-left: 30%; margin-top: 10%;">Get Results</button>
+                   <!-- <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`" style="margin-left: 30%; margin-top: 10%;">Get Results</button>-->
 
                 </div>
             </div>
@@ -400,18 +400,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
+                    <ul class="navbar-nav" style="width:100%">
+                        <li class="nav-item active" >
                         </li>
 
-                        <!-- <li class="nav-item mr-4" style="margin-left: 600px;">
+                        <li class="nav-item mr-4" style="width:100%">
+                            <button class="btn btn-danger navbar-btn" id="demo4" disabled style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 30%; "
+                                onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`">Get Results</button>
+
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 10px; "
+                                onclick="sendData(); location.href='/'">Quit</button>
+
                             <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; margin-left: 10px; border-radius: 15px"
                                 onclick="StartOver()">Start Over</button>
-                        </li> -->
-
-                        <li class="nav-item mr-4">
-                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 600px; "
-                                onclick="sendData(); location.href='/'">Quit</button>
                         </li>
                     </ul>
                 </div>
@@ -471,8 +472,7 @@
             Opponentindex = 0;
             CurrMove = "None";
             turn = "None";
-            Round = 1;
-            
+            RoundCount = 0;
             document.getElementById("demo2").innerText = "Round: " + RoundCount;
             document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
             document.getElementById("confess1").innerText = "Confess Counter: " + confess;
@@ -484,7 +484,6 @@
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
-            document.getElementById("demo4").disabled = true;
             setTimeout(Switch2, 2000);
         }
 
@@ -497,7 +496,6 @@
             if ((quiet + confess) <= 20) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
-                document.getElementById("demo4").disabled = false;
             } else {
                 document.getElementById("demo4").disabled = false;
             }
