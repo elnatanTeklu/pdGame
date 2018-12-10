@@ -243,8 +243,7 @@
     <!--Header-->
     <div class="header">
 
-        <h1 style="font-family: cursive; font-weight=Bold" class="text-color__white header-text__inline header-text__spaceing"> Prisoner's Dilemma </h1>
-
+        <img onclick="sendData(); location.href='/'" src="https://i.imgur.com/H0zSNIu.png"width="300" height="77" alt="">
 
     </div>
 
@@ -264,8 +263,8 @@
         <font  style="font-family: cursive; font-weight=Bold" color="white" size="6">
 
             <p class="gameScreen-text__position1" > Your Moves </p>
-            <p id="quiet1" class="gameScreen-text__position2" > Silent: </p>
-            <p id="confess1" class="gameScreen-text__position3" > Betray: </p>
+            <p id="quiet1" class="gameScreen-text__position2" > Silent:  </p>
+            <p id="confess1" class="gameScreen-text__position3" > Betray:  </p>
             
 
         </font>
@@ -276,8 +275,8 @@
             <font  style="font-family: cursive; font-weight=Bold" color="white" size="6">
     
                 <p class="gameScreen-text__position1" > Opponent Moves </p>
-                <p id="quiet2" class="gameScreen-text__position2" > Silent: </p>
-                <p id="confess2" class="gameScreen-text__position3" > Betray: </p>
+                <p id="quiet2" class="gameScreen-text__position2" > Silent:  </p>
+                <p id="confess2" class="gameScreen-text__position3" > Betray:  </p>
                 
     
             </font>
@@ -336,10 +335,10 @@
 
         function Decision(){
 
-            document.getElementById("quiet1").innerText=`Slient:${quiet}`;
-            document.getElementById("confess1").innerText=`Betray:${confess}`;
-            document.getElementById("quiet2").innerText=`Slient:${quietComp}`;
-            document.getElementById("confess2").innerText=`Betray:${confessComp}`;
+            document.getElementById("quiet1").innerText=`Silent: ${quiet}`;
+            document.getElementById("confess1").innerText=`Betray: ${confess}`;
+            document.getElementById("quiet2").innerText=`Silent: ${quietComp}`;
+            document.getElementById("confess2").innerText=`Betray: ${confessComp}`;
                 /* if user silent score is higher than opponent silent score && 
                 opponent betray score is higher than user betray score
 	            then You each receive 3 years in prison. Your opponent receives 0 years in prison. */
