@@ -257,13 +257,13 @@
 <body>
     <!--Header-->
     <nav class="navbar  fixed-top navbar-expand-lg shadow" style="background-color: black; color: white">
-        <img onclick="sendData(); location.href='/'" src="https://i.imgur.com/H0zSNIu.png"width="300" height="77" alt="">
+        <h1 style="font-family: cursive; font-weight=Bold; font-size: 2.5em" class="navbar-brand" style="color:white" onclick="sendData(); location.href='/'">Prisoner's Dilemma</h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul style="margin-left:10%" class="navbar-nav">
+            <ul class="navbar-nav">
                 <li class="nav-item active">
 
                 </li>
@@ -273,7 +273,7 @@
                     </li> -->
 
                 <li class="nav-item ml-4">
-                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : 0</h1>
+                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : </h1>
                 </li>
                 <li class="nav-item ml-4">
                     <h1 class="text-color__white " id="Opp_move" style="font-size: 25px"> User 2 : Hidden </h1>
@@ -291,36 +291,27 @@
     <div class="row" style="min-width: 100%; min-height: 100%">
 
         <!-- history section  -->
-        <div class=" col-12 col-sm-2 col-md-2" style="background: black; color: white; overflow-y: scroll; height:93vh;">
+        <div class=" col-12 col-sm-2 col-md-2" style="background: black; color: white; overflow-y: scroll; height:110vh;">
             <div style="text-align: center">
                 <h4 class="mb-5" style="margin-top: 50%;">History</h4>
                 <p id="history"> </p>
             </div>
         </div>
 
-        <!-- game scenario -->
-        
-
         <!-- gamescreen -->
 
-        <div class="col-12 col-sm-5 col-md-6 mt-5">
-                <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 7%; border-radius: 20px;">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">Description</h6>
-                            <p> You and your opponent have commited same crime and are convicted of it.  </p>
-        
-                        </div>
-                    </div>
 
-            <div class="card" style="background: black; color: white; width: 30rem; margin-left: 15%; margin-top: 3%; border-radius: 20px;">
+
+        <div class="col-12 col-sm-5 col-md-6 mt-5">
+            <div class="card" style="background: black; color: white; width: 30rem; margin-left: 10%; margin-top: 15%; border-radius: 20px;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">User1</h6>
-                    <div style="display:flex;height: 219px;">
+                    <div style="display:flex">
                     <div style="flex:49%">
                         <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
                         <p class="card-text" id="confess1">Confess Counter: </p>
                     </div>
-                    <div style="flex:49%"><img id="avatar" style="width:100%" src="https://i.imgur.com/Ik8uVx3.jpg"></div>
+                    <div style="flex:49%"><img id="avatar" style="width:100%" src=""></div>
                 </div>
                     <div class="card-body" style="background: white;">
                         <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
@@ -368,7 +359,7 @@
 
 
 
-                   <!-- <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`" style="margin-left: 30%; margin-top: 10%;">Get Results</button>-->
+                    <button class="button button3 btnEndgame" id="demo4" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`" style="margin-left: 30%; margin-top: 10%;">Get Results</button>
 
                 </div>
             </div>
@@ -391,7 +382,7 @@
 
 
     <!-- the footer -->
-    <div style="height: 7vh;" class="row">
+    <div class="row">
         <div class="col-12" style="background: black; color:white; ">
             <nav class="navbar  navbar-expand-lg " style="background: black; color:white; ">
 
@@ -400,10 +391,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav" style="width:100%">
-                        <li class="nav-item active" >
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
                         </li>
 
+<<<<<<< HEAD
                         <li class="nav-item mr-4" style="width:100%">
                             <button class="btn btn-danger navbar-btn" id="demo4" disabled style="background-color: white; border-color: black; color: black; padding: 8px 20px; border-radius: 15px; margin-left: 30%; "
                                 onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`">Get Results</button>
@@ -412,7 +404,16 @@
                                 onclick="sendData(); location.href='/'">Quit</button>
 
                             <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 20px; margin-left: 10px; border-radius: 15px"
+=======
+                        <!-- <li class="nav-item mr-4" style="margin-left: 600px;">
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; margin-left: 10px; border-radius: 15px"
+>>>>>>> b8538883c4bbd68b4f039165e182d531917a5cdf
                                 onclick="StartOver()">Start Over</button>
+                        </li> -->
+
+                        <li class="nav-item mr-4">
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 600px; "
+                                onclick="sendData(); location.href='/'">Quit</button>
                         </li>
                     </ul>
                 </div>
@@ -439,27 +440,13 @@
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
-        var RoundCount = 0;
-        
-
+		var recentMove='K';
         // Display history
         var listMarkup = `
         <ul class="historyList">
         ${log.map(l =>'<li>{l}</li>')}
         </ul>`;
-        var imgList=[];
-        imgList.push("https://i.imgur.com/TQmMkMd.jpg");
-        imgList.push("https://i.imgur.com/Zud6HJF.jpg");
-        imgList.push("https://i.imgur.com/edMDNx2.jpg");
-        imgList.push("https://i.imgur.com/tUYDEEu.jpg");
-        imgList.push("https://i.imgur.com/ENB1CSq.jpg");
-        imgList.push("https://i.imgur.com/LqmLkvx.jpg");
-        var image = imgList[Math.floor(Math.random()*imgList.length)];
 
-        var UimgList=[];
-       
-        var userImage = "https://i.imgur.com/Ik8uVx3.jpg";
-        
         function StartOver() {
             count = 0;
             quiet = 0;
@@ -472,30 +459,32 @@
             Opponentindex = 0;
             CurrMove = "None";
             turn = "None";
-            RoundCount = 0;
-            document.getElementById("demo2").innerText = "Round: " + RoundCount;
+			recentMove="None";
+            document.getElementById("demo2").innerText = "Round: " + count;
             document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
             document.getElementById("confess1").innerText = "Confess Counter: " + confess;
         }
         //Telling the user who is the current player
         function Switch() {
-            
-            document.getElementById("avatar").src= image;
+            if(count%2==0)
+                document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
+            if(count%2==1)
+                document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
+            document.getElementById("demo4").disabled = true;
             setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
-            document.getElementById("avatar").src= userImage;
             document.getElementById("switch").innerText = "Current Turn: You";
-            
-            //document.getElementById("userImage").src=`${image}`;
+            document.getElementById("avatar").src= ""
             // Stop game after 20 rounds
             if ((quiet + confess) <= 20) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
+                document.getElementById("demo4").disabled = false;
             } else {
                 document.getElementById("demo4").disabled = false;
             }
@@ -505,28 +494,81 @@
             quiet = quiet + 1;
             document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
+			recentMove='K';
         }
         //Adding to confess counter 
         function confessDecision() {
             confess = confess + 1;
             document.getElementById("confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
+			recentMove='C';
         }
+
+		//Opponent log (The three strategies)
+
+		//Computer quiet decision
+		function quietDecisionComp() {
+            quietComp = quietComp + 1;
+            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
+            Opponent_log.push('K');
+			
+        }
+
+		//Computer Confess Decision
+		function confessDecisionComp() {
+            confessComp = confessComp + 1;
+            document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
+            Opponent_log.push('C');
+        }
+
+		//Computer tit for tat
+		function  TitForTat(){
+	
+			//Initial decision of Keep quiet 
+			if (count==0){
+			quietComp = quietComp + 1;
+            Opponent_log.push('K');
+			}
+	
+			else{
+				if(recentMove=='K'){
+					quietComp=quietComp+1;
+					Opponent_log.push('K');
+			}
+			
+			else{
+				confessComp=confessComp+1;
+				Opponent_log.push('C');
+			}
+			
+		}
+		}
+
         //Adding to total counter when on-click 
         function myFunction2() {
 
-            count = count + 1;
+            
+			
+			
+			
+			
+		if (count == 0){
+		strategy = Math.floor(Math.random() * (4 - 1)) + 1;
+		}
+		if (strategy == 1){
+			quietDecisionComp();
+		}
+		if (strategy == 2){
+		confessDecisionComp();
+		}
+		if (strategy == 3){
+		 TitForTat();
+		}
+		count = count + 1;
             countComp = countComp + 1;
-            RoundCount = RoundCount + 1;
-            document.getElementById("demo2").innerText = "Round: " + RoundCount;
-            if ((count % 2) == 0) {
-                Opponent_log.push('K');
-                quietComp = quietComp + 1;
-            } else {
-                Opponent_log.push('C');
-                confessComp = confessComp + 1;
-            }
-            if (count > 10) {
+
+            document.getElementById("demo2").innerText = "Round : " + count;
+            if (count > 0) {
                 if (Opponent_log[Opponentindex] == 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
