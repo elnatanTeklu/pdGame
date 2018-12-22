@@ -225,9 +225,9 @@
             <div id="AgeDropdown" class="dropdown-content">
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left: 0%"  id="agebut" onclick="ageSelect('+18','agebut');changeColor('agebut')">18 - 24</button>
 		        <br>
-		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageUnder60" onclick="ageSelect(-60,'ageUnder60');changeColor('ageUnder60')">Under 60</button>
+		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageUnder60" onclick="ageSelect('-60','ageUnder60');changeColor('ageUnder60')">Under 60</button>
 		        <br>
-		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageOver60" onclick="ageSelect(+60,'ageOver60');changeColor('ageOver60')">Over 60</button>
+		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageOver60" onclick="ageSelect('+60','ageOver60');changeColor('ageOver60')">Over 60</button>
         </div>
     </div>  
     
@@ -308,7 +308,7 @@
     </div> -->
     
     <script>
-        
+        var demographics = ["","",""]
         var age = 0;
         var gender="NONE";
         var race="NONE";
@@ -331,6 +331,7 @@
         function ageSelect(age,buttonName) {
             age = age;
                 document.getElementById(buttonName).innerText = age;
+			demographics[0] = age;	
             }
         function AgeFunction() {
           document.getElementById("AgeDropdown").classList.toggle("show");
@@ -340,6 +341,7 @@
         function genderSelect(gender, buttonName) {
             gender=gender;
                 document.getElementById(buttonName).innerText = gender;
+			demographics[1] = gender;	
             }
         function GenderFunction() {
           document.getElementById("GenderDropdown").classList.toggle("show");
@@ -349,6 +351,7 @@
         function raceSelect(race,buttonName) {
             race = race;
                 document.getElementById(buttonName).innerText = race;
+			demographics[2] = race;	
             }
         function raceFunction() {
           document.getElementById("RaceDropdown").classList.toggle("show");
@@ -359,9 +362,9 @@
             xhr.open("POST", "/senddemogdata", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({			
-                age: age,
-				race: race,
-				gender: gender
+                age: demographics[0],
+				gender: demographics[1],
+				race: demographics[2]
             }));
         }
         
