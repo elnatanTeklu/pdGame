@@ -9,6 +9,9 @@ import uuid
 import json
 import csv
 
+#create global variables
+demogDict = {}
+
 
 app = Flask(__name__, template_folder='website')
 app.secret_key = 's3cr3t'
@@ -46,18 +49,35 @@ def game3():
                           title=title)   
 
                                                   
+@app.route('/senddemogdata', methods = ['POST'])
+def post_javascript_demogdata():
+    demogdata=request.data
+    global demogDict
+    demogDict = json.loads(demogdata)
+    print("demogdictfirst")
+    print(demogDict)
+    print("sending demographic data")
+    return demogDict
+
 
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
     data=request.data
     dataDict = json.loads(data)
+    print("demogDict")
+    print(demogDict)
+    dataDict.update(demogDict)
     package = zip(*dataDict.items())
     csv_columns = ('')
     csv_file = "response.csv"
+    print("Type of dataDict is")
     print(type(dataDict))
+    print("Type of package is")
+    print(type(package))
     for key, value in dataDict.items():
         print("key:", key)
         print("value",value)
+        csv_columns += key
     with open('response.csv', 'a') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(csv_columns)
@@ -68,6 +88,8 @@ def post_javascript_data():
     return "Done"
 
 
+    
+  
 
 def create_txt(text):
     with open('data.txt', 'a') as file:

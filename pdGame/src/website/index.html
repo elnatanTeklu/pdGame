@@ -203,13 +203,13 @@
         
     </li> -->
     
-    <button class="button button2 btn-black" style="margin-top:20%; margin-left: 36%;"  id="demo" onclick="location.href='/game' ">Play Now</button>
+    <button class="button button2 btn-black" style="margin-top:20%; margin-left: 36%;"  id="demo" onclick="senddemogdata();location.href='/game' ">Play Now</button>
 
     <!--DIV FOR DROPDOWN MENU FOR AGE WITH BUTTON FOR EACH-->
     <div class="dropdown " style="left: 100px;top: -250px" >
 	    <button onclick="AgeFunction()" class="dropbtn">Age</button>
             <div id="AgeDropdown" class="dropdown-content">
-		    <button class="button button2 btn-black" style="margin-top:0%; margin-left: 0%"  id="agebut" onclick="ageSelect(+18,'agebut');changeColor('agebut')">18 - 24</button>
+		    <button class="button button2 btn-black" style="margin-top:0%; margin-left: 0%"  id="agebut" onclick="ageSelect('+18','agebut');changeColor('agebut')">18 - 24</button>
 		        <br>
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageUnder60" onclick="ageSelect(-60,'ageUnder60');changeColor('ageUnder60')">Under 60</button>
 		        <br>
@@ -284,7 +284,7 @@
                 <div style="display: flex; justify-content: center">
 
                
-                    <button class="button button2 btn-black m-2"  id="demo" onclick="location.href='/game' ">Play Now</button>
+                    <button class="button button2 btn-black m-2"  id="demo" onclick="senddemogdata();location.href='/game' ">Play Now</button>
 
                 
                     <br> </div>
@@ -297,7 +297,7 @@
         var age = 0;
         var gender="NONE";
         var race="NONE";
-        //DIABLE START BUTTON 
+        //DISABLE START BUTTON 
         document.getElementById("demo").disabled = true;
         function EnableButton(){
         
@@ -338,7 +338,17 @@
         function raceFunction() {
           document.getElementById("RaceDropdown").classList.toggle("show");
         }
-        
+		//Sending data to backend
+        function senddemogdata() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/senddemogdata", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({			
+                age: age,
+				race: race,
+				gender: gender
+            }));
+        }
         
         // Close the dropdown menu if the user clicks outside of it
         window.onclick = function(event) {
