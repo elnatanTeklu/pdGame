@@ -497,7 +497,7 @@
             document.getElementById("switch").innerText = "Current Turn: You";
             document.getElementById("avatar").src= "https://i.imgur.com/Ik8uVx3.jpg"
             // Stop game after 20 rounds
-            if ((quiet + confess) <= 20) {
+            if ((quiet + confess) <= 100) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
@@ -584,7 +584,7 @@
             countComp = countComp + 1;
 
             document.getElementById("demo2").innerText = "Round : " + count;
-            if (count > 0) {
+            if (count > 50) { // hide first 50 moves
                 if (Opponent_log[Opponentindex] == 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
@@ -596,7 +596,7 @@
                 listMarkup =
                     `
                     <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index +1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]} </li> <br>`).join('')}
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]} </li> <br>`).join('')}
                     </ul>
                 `;
                 document.getElementById("history").innerHTML = listMarkup;

@@ -55,3 +55,24 @@ count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,ge
 c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
 count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
 3,2,1,"['K', 'K', 'C']",3,0,3,"['C', 'C', 'C']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+8,1,7,"['K', 'C', 'C', 'C', 'C', 'C', 'C', 'C']",8,0,8,"['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,age,race,gender
+0,1,7,[],0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+20,20,0,"['K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K']",20,20,0,"['K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+101,50,51,"['K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'K', 'C', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']",101,51,50,"['K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'K', 'C', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'K', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+0,0,0,[],0,0,0,[],0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+3,3,0,"['K', 'K', 'K']",3,0,3,"['C', 'C', 'C']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
+5,5,0,"['K', 'K', 'K', 'K', 'K']",5,5,0,"['K', 'K', 'K', 'K', 'K']",0,NONE,NONE
