@@ -76,3 +76,6 @@ count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,ge
 c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,r,a,c,e,g,e,n,d,e,r
 count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,race,gender
 5,5,0,"['K', 'K', 'K', 'K', 'K']",5,5,0,"['K', 'K', 'K', 'K', 'K']",0,NONE,NONE
+c,o,u,n,t,q,u,i,e,t,c,o,n,f,e,s,s,l,o,g,c,o,u,n,t,C,o,m,p,q,u,i,e,t,C,o,m,p,c,o,n,f,e,s,s,C,o,m,p,O,p,p,o,n,e,n,t,_,l,o,g,a,g,e,g,e,n,d,e,r,r,a,c,e
+count,quiet,confess,log,countComp,quietComp,confessComp,Opponent_log,age,gender,race
+3,3,0,"['K', 'K', 'K']",3,0,3,"['C', 'C', 'C']",+18,Female,African American
