@@ -359,16 +359,27 @@
                 /* if user silent score equals opponent silent score 
 	            then You each receive 1 year in prison */
 
-                if ((quiet == quietComp)&&(quiet >= confess)) {
+                // if ((quiet === quietComp)&&(quiet >= confess)) {
+                //     document.getElementById("demo2").innerText = "You each receive 1 year in prison";
+                // }
+
+                if ((quiet === quietComp)) {
                     document.getElementById("demo2").innerText = "You each receive 1 year in prison";
                 }
+
 
                 /* if user betray score equals opponent betray score
 	            then You each receive 2 years in prison */
                 
-                if ((quiet == quietComp)&&(quiet < confess)) {
+                // if ((quiet === quietComp)&&(quiet < confess)) {
+                //     document.getElementById("demo2").innerText = "You each receive 2 years in prison";
+                // }
+
+
+                if ((confefss === confessComp)) {
                     document.getElementById("demo2").innerText = "You each receive 2 years in prison";
                 }
+
             }
             Decision();
 

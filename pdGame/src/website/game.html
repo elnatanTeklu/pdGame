@@ -496,8 +496,8 @@
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
             document.getElementById("avatar").src= "https://i.imgur.com/Ik8uVx3.jpg"
-            // Stop game after 20 rounds
-            if ((quiet + confess) <= 100) {
+            // Stop game after 100 rounds
+            if ((quiet + confess) <= 99) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
