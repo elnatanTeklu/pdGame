@@ -509,14 +509,14 @@
         function quietDecision() {
             quiet = quiet + 1;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            log.push('K');
+            log.push('K,IK');
 			recentMove='K';
         }
         //Adding to confess counter 
         function confessDecision() {
             confess = confess + 1;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-            log.push('C');
+            log.push('C,IK');
 			recentMove='C';
         }
 
