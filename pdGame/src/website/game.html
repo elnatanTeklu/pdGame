@@ -323,8 +323,8 @@
                     <h6 class="card-subtitle mb-2 text-muted">User1</h6>
                     <div style="display:flex; height: 219px;">
                     <div style="flex:49%">
-                        <p class="card-text" id="quiet1">Keep Quiet Counter: </p>
-                        <p class="card-text" id="confess1">Confess Counter: </p>
+                        <p class="card-text" id="user_quiet1">Keep Quiet Counter: </p>
+                        <p class="card-text" id="user_confess1">Confess Counter: </p>
                     </div>
                     <div style="flex:49%"><img id="avatar" style="width:90%" src="https://i.imgur.com/Ik8uVx3.jpg"></div>
                 </div>
@@ -439,8 +439,8 @@
 
 
     <!-- the footer END -->
-
-
+    <!-- using the lodash libary through a cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
         //Variables for counter
@@ -476,8 +476,8 @@
             turn = "None";
 			recentMove="None";
             document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
+            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
         }
         //Telling the user who is the current player
         function Switch() {
@@ -508,14 +508,14 @@
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
-            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quiet;
+            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
 			recentMove='K';
         }
         //Adding to confess counter 
         function confessDecision() {
             confess = confess + 1;
-            document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
 			recentMove='C';
         }
@@ -525,7 +525,7 @@
 		//Computer quiet decision
 		function quietDecisionComp() {
             quietComp = quietComp + 1;
-            document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
+            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
 			
         }
@@ -533,7 +533,7 @@
 		//Computer Confess Decision
 		function confessDecisionComp() {
             confessComp = confessComp + 1;
-            document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
+            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -562,22 +562,17 @@
 
         //Adding to total counter when on-click 
         function myFunction2() {
-
-            
 			
-			
-			
-			
-		if (count == 0){
-		strategy = Math.floor(Math.random() * (4 - 1)) + 1;
+		if (count === 0){
+            strategy = _.random(1,3);
 		}
-		if (strategy == 1){
+		if (strategy === 1){
 			quietDecisionComp();
 		}
-		if (strategy == 2){
+		if (strategy === 2){
 		confessDecisionComp();
 		}
-		if (strategy == 3){
+		if (strategy === 3){
 		 TitForTat();
 		}
 		count = count + 1;
@@ -613,6 +608,7 @@
             xhr.open("POST", "/senddata", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
+                strategy: strategy,
                 count: count,
                 quiet: quiet,
                 confess: confess,
@@ -635,6 +631,7 @@
         }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
