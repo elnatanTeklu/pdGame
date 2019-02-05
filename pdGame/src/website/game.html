@@ -451,6 +451,7 @@
         var quietComp = 0;
         var confessComp = 0;
         var log = [];
+		var storedlog = [];
         var Opponent_log = [];
         var Opponentindex = 0;
         var CurrMove = "None";
@@ -471,6 +472,7 @@
             confessComp = 0;
             Opponent_log = [];
             log = [];
+			storedlog = [];
             Opponentindex = 0;
             CurrMove = "None";
             turn = "None";
@@ -509,14 +511,16 @@
         function quietDecision() {
             quiet = quiet + 1;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            log.push('K,IK');
+            log.push('K');
+			storedlog.push('K,IK')
 			recentMove='K';
         }
         //Adding to confess counter 
         function confessDecision() {
             confess = confess + 1;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-            log.push('C,IK');
+            log.push('C');
+			storedlog.push('C,IK');
 			recentMove='C';
         }
 
@@ -527,6 +531,7 @@
             quietComp = quietComp + 1;
             // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
+			
 			
         }
 
@@ -612,7 +617,7 @@
                 count: count,
                 quiet: quiet,
                 confess: confess,
-                log: log,
+                log: storedlog,
                 countComp: count,
                 quietComp: quietComp,
                 confessComp: confessComp,
