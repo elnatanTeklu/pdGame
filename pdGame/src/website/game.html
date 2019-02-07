@@ -546,13 +546,13 @@
 		function  TitForTat(){
 	
 			//Initial decision of Keep quiet 
-			if (count==0){
+			if (count===0){
 			quietComp = quietComp + 1;
             Opponent_log.push('K');
 			}
 	
 			else{
-				if(recentMove=='K'){
+				if(recentMove==='K'){
 					quietComp=quietComp+1;
 					Opponent_log.push('K');
 			}
@@ -573,6 +573,7 @@
 		}
 		if (strategy === 1){
 			quietDecisionComp();
+          
 		}
 		if (strategy === 2){
 		confessDecisionComp();
@@ -585,12 +586,16 @@
 
             document.getElementById("demo2").innerText = "Round : " + count;
             if (count > 50) { // hide first 50 moves
-                if (Opponent_log[Opponentindex] == 'C') {
+                if (Opponent_log[Opponentindex + 50] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
+                    document.getElementById("Opp_move").innerText = "User 2 : " + 
+                CurrMove;
                 } else {
                     CurrMove = "Keep Quiet";
                     Opponentindex += 1;
+                    document.getElementById("Opp_move").innerText = "User 2 : " + 
+                CurrMove;
                 }
                 // Display Moves of opponents and user
                 listMarkup =
@@ -599,8 +604,18 @@
                     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]} </li> <br>`).join('')}
                     </ul>
                 `;
+
+                console.log(`this is the opponent index: ${Opponentindex}`);
+
+       
+
                 document.getElementById("history").innerHTML = listMarkup;
-                document.getElementById("Opp_move").innerText = "User 2 : " + CurrMove;
+                // document.getElementById("Opp_move").innerText = "User 2 : " + 
+                // compScore;
+
+                
+               
+
             }
 
 
