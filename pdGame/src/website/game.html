@@ -514,10 +514,10 @@
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
             if (gameKnowledgetype = "firstFifty"){
-                if((quiet + confess) <=49){
+                if((quiet + confess) <=50){
                     storedlog.push('K,IK');
                 }
-                else if((quiet + confess) >=50) {
+                else if((quiet + confess) >=51) {
                     storedlog.push('K,PK');
                 }
             }    
@@ -532,10 +532,10 @@
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
 			if (gameKnowledgetype = "firstFifty"){
-                if((quiet + confess) <=49){
+                if((quiet + confess) <=50){
                     storedlog.push('K,IK');
                 }
-                else if((quiet + confess) >=50) {
+                else if((quiet + confess) >=51) {
                     storedlog.push('K,PK');
                 }
             }    
