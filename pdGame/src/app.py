@@ -40,7 +40,13 @@ def game1():
 def game2():
    title = 'Create the input'
    return render_template('level2.html',
-                          title=title)                           
+                          title=title)
+
+@app.route('/downloads', methods=['GET'])
+def game4():
+   title = 'Create the input'
+   return render_template('downloads.html',
+                          title=title)       
 
 @app.route('/gameResults', methods=['GET'])
 def game3():
