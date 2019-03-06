@@ -493,7 +493,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+            setTimeout(Switch2, 2000);
         }
      
         function Switch2() {
@@ -515,10 +515,10 @@
             log.push('K');
             if (gameKnowledgetype = "firstFifty"){
                 if((quiet + confess) <=50){
-                    storedlog.push('K,IK');
+                    storedlog.push('K,PK');
                 }
                 else if((quiet + confess) >=51) {
-                    storedlog.push('K,PK');
+                    storedlog.push('K,IK');
                 }
             }    
             
@@ -533,10 +533,10 @@
             log.push('C');
 			if (gameKnowledgetype = "firstFifty"){
                 if((quiet + confess) <=50){
-                    storedlog.push('K,IK');
+                    storedlog.push('K,PK');
                 }
                 else if((quiet + confess) >=51) {
-                    storedlog.push('K,PK');
+                    storedlog.push('K,IK');
                 }
             }    
 			recentMove='C';
@@ -614,7 +614,7 @@
 
 
         
-            if (count < 50) { // hide first 50 moves
+            if (count < 50) { // display first 50 moves
                 if (Opponent_log[Opponentindex + 50] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
