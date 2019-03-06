@@ -36,11 +36,20 @@ def game1():
    return render_template('endGame.html',
                           title=title)
 
-@app.route('/level2', methods=['GET'])
+
+@app.route('/game2', methods=['GET'])
 def game2():
-   title = 'Create the input'
-   return render_template('level2.html',
-                          title=title)
+    title = 'Create the input'
+    return render_template('game2.html',
+                           title=title)  
+
+
+
+# @app.route('/level2', methods=['GET'])
+# def game2():
+#    title = 'Create the input'
+#    return render_template('level2.html',
+#                           title=title)
 
 @app.route('/downloads', methods=['GET'])
 def game4():
