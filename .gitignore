@@ -4,6 +4,7 @@ pdGame/.DS_Store
 *.csv
 pdGame/src/response.csv
 *.csv
+pdGame\pdGame\src\response.csv
 *.csv
 *.csv
 pdGame/src/website/game.html
