@@ -613,19 +613,8 @@
             document.getElementById("demo2").innerText = "Round : " + count;
 
 
-              // Display Moves of opponents and user
-              listMarkup =
-                    `
-                    <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
-                    </ul>
-                `;
-
-                document.getElementById("history").innerHTML = listMarkup;
-
-
-
-            if (count > 50) { // hide first 50 moves
+        
+            if (count < 50) { // hide first 50 moves
                 if (Opponent_log[Opponentindex + 50] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
@@ -648,15 +637,21 @@
 
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
-       
-
                 document.getElementById("history").innerHTML = listMarkup;
                 // document.getElementById("Opp_move").innerText = "User 2 : " + 
                 // compScore;
 
-                
-               
 
+            } else {
+                     // Display Moves of opponents and user
+              listMarkup =
+                    `
+                    <ul>
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
+                    </ul>
+                `;
+
+                document.getElementById("history").innerHTML = listMarkup;
             }
 
 
