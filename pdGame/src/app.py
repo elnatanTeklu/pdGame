@@ -93,10 +93,6 @@ def post_javascript_data():
         print("done")
     return "Done"
 
-
-    
-  
-
 def create_txt(text):
     with open('data.txt', 'a') as file:
         file.write(text+"\n")
