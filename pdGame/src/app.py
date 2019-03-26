@@ -3,14 +3,18 @@ from __future__ import print_function
 from flask import Flask, render_template, make_response
 from flask import redirect, request, jsonify, url_for
 
+
 import io
 import os
 import uuid
 import json
 import csv
 
+
+
 #create global variables
 demogDict = {}
+
 
 
 app = Flask(__name__, template_folder='website')
@@ -44,13 +48,6 @@ def game2():
                            title=title)  
 
 
-
-# @app.route('/level2', methods=['GET'])
-# def game2():
-#    title = 'Create the input'
-#    return render_template('level2.html',
-#                           title=title)
-
 @app.route('/downloads', methods=['GET'])
 def game4():
    title = 'Create the input'
@@ -78,6 +75,10 @@ def post_javascript_demogdata():
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
     data=request.data
+    txtData = request.data
+    txtDict = json.loads(txtData)
+    strJson = json.dumps(txtDict)
+    create_txt(strJson)
     dataDict = json.loads(data)
     print("demogDict")
     print(demogDict)
@@ -99,12 +100,14 @@ def post_javascript_data():
         for data in package:
             writer.writerow(data)
         csvfile.close()    
-        print("done")
+        print("test")
+        
     return "Done"
 
 def create_txt(text):
+
     with open('data.txt', 'a') as file:
-        file.write(text+"\n")
+        file.write(text+ ',' + "\n" )
     return 'data'
 
 def get_file_content(uuid):

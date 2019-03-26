@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="level2.html">
 
     <title>Prisoner's Dilemma</title>
-    <!-- keep style tag here beacue of flask  -->
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -27,7 +27,7 @@
             color: white;
         }
 
-        /* Popup container - can be anything you want */
+    
 
         .popup {
             position: relative;
@@ -39,7 +39,7 @@
             user-select: none;
         }
 
-        /* The actual popup */
+      
 
         .popup .popuptext {
             visibility: hidden;
@@ -56,7 +56,7 @@
             margin-left: -80px;
         }
 
-        /* Popup arrow */
+
 
         .popup .popuptext::after {
             content: "";
@@ -69,7 +69,7 @@
             border-color: #555 transparent transparent transparent;
         }
 
-        /* Toggle this class - hide and show the popup */
+
 
         .popup .show {
             visibility: visible;
@@ -77,7 +77,7 @@
             animation: fadeIn 1s;
         }
 
-        /* Add animation (fade in the popup) */
+       
 
         @-webkit-keyframes fadeIn {
             from {
@@ -249,37 +249,6 @@
             -webkit-box-shadow: 3px 3px 5px 6px #ccc;
             box-shadow: 3px 3px 5px 6px #ccc;
         }
-
-
-
-        .modal{
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modalContent{
-            background-color: #f4f4f4;
-            margin: 20% auto;
-            padding: 20px;
-            width: 60%;
-            height: 30%;
-            text-align: center;
-            font-size: 2em;
-            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-
     </style>
 </head>
 
@@ -288,7 +257,7 @@
 <body>
     <!--Header-->
     <nav class="navbar  fixed-top navbar-expand-lg shadow" style="background-color: black; color: white">
-        <img onclick="sendData(); location.href='/'" src="https://i.imgur.com/H0zSNIu.png" width="300" height="77" alt="">
+        <img onclick="sendData(); location.href='/'" src="https://i.imgur.com/H0zSNIu.png"width="300" height="77" alt="">
         <h1 style="font-family: cursive; font-weight=Bold; font-size: 2.5em" class="navbar-brand" style="color:white" onclick="sendData(); location.href='/'"></h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -331,41 +300,39 @@
         </div>
 
         <!-- game scenario -->
-
+        
 
         <!-- gamescreen -->
 
         <div class="col-12 col-sm-5 col-md-6 mt-5">
             <div class="card" style="background: black; color: white; width: 40rem; margin-left: 10%; margin-top: 7%; border-radius: 20px;">
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">Description</h6>
-                    <p> You and your opponent have committed the same crime, and you both have been caught. You are being questioned,
-                        and are told that if you confess the crime, you could go free, but your opponent will be convicted
-                        for the crime. However, if you choose to stay silent, and your opponent confesses, you will be convicted
-                        for the crime, while your opponent goes free. What do you do?
-                    </p>
-
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Description</h6>
+                        <p> You and your opponent have committed the same crime, and you both have been caught. 
+                            You are being questioned, and are told that if you confess the crime, you could go free, but your opponent will be convicted for the crime. 
+                            However, if you choose to stay silent, and your opponent confesses, you will be convicted for the crime, while your opponent goes free. 
+                            What do you do? 
+                             </p>
+    
+                    </div>
                 </div>
-            </div>
 
-
+        
             <div class="card" style="background: black; color: white; width: 30rem; margin-left: 10%; margin-top: 5%; border-radius: 20px;">
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">User1</h6>
                     <div style="display:flex; height: 219px;">
-                        <div style="flex:49%">
-                            <p class="card-text" id="user_quiet1">Keep Quiet Counter: </p>
-                            <p class="card-text" id="user_confess1">Confess Counter: </p>
-                        </div>
-                        <div style="flex:49%">
-                            <img id="avatar" style="width:90%" src="https://i.imgur.com/Ik8uVx3.jpg">
-                        </div>
+                    <div style="flex:49%">
+                        <p class="card-text" id="user_quiet1">Keep Quiet Counter: </p>
+                        <p class="card-text" id="user_confess1">Confess Counter: </p>
                     </div>
+                    <div style="flex:49%"><img id="avatar" style="width:90%" src="https://i.imgur.com/Ik8uVx3.jpg"></div>
+                </div>
                     <div class="card-body" style="background: white;">
                         <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
                         <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
                     </div>
-
+                    
 
                 </div>
             </div>
@@ -400,9 +367,8 @@
                             <h6 style="color:red;">1 year sentence</h6>
                             <p class="card-text"> If both players keep quiet, each will get a 1 year sentence. </p>
 
-                        </li>
 
-                        
+                        </li>
                     </ul>
 
 
@@ -415,7 +381,6 @@
 
         </div>
 
-        
 
         <!-- about the game section END  -->
 
@@ -428,15 +393,6 @@
     </div>
 
     <!-- histroy section END -->
-
-
-
-    <div id="popupModal" class="modal">
-        <div class="modalContent">
-            <p>Return to Qualtrics to get your unique code</p>
-        </div>
-    </div>
-
 
 
 
@@ -455,15 +411,16 @@
                         </li>
 
                         <li class="nav-item mr-4" style="width: 100%;">
+                            
 
+                            <button class="btn btn-danger navbar-btn" id="demo4" disabled style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 30%; "
+                                onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`">Get Results</button>
 
-                            <button class="btn btn-danger navbar-btn" id="demo4" disabled style="background-color: black; border-color: black;" onclick="sendData(); location.href=`/endGame?quiet=${quiet}&confess=${confess}&quietComp=${quietComp}&confessComp=${confessComp}`"></button>
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; border-radius: 15px; margin-left: 10px; "
+                                onclick="sendData(); location.href='/'">Quit</button>
 
-                            <button class="btn btn-danger navbar-btn" disabled style="background-color: black; border-color: black;" onclick="sendData(); location.href='/'"></button>
-
-                            <button class="btn btn-danger navbar-btn" disabled style="background-color: black; border-color: black;" onclick="StartOver()"></button>
-
-                            <!-- <button onclick="sendData()">Button</button> -->
+                            <button class="btn btn-danger navbar-btn" style="background-color: white; border-color: black; color: black; padding: 8px 50px; margin-left: 10px; border-radius: 15px"
+                                onclick="StartOver()">Start Over</button>
                         </li>
 
                         <!--<li class="nav-item mr-4" style="width:100%">
@@ -487,8 +444,6 @@
     <!-- keep script in this file becuase of flask  -->
     <script>
         //Variables for counter
-        const game = 2;
-        let flag = 0;  //flag will 
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -496,20 +451,18 @@
         var quietComp = 0;
         var confessComp = 0;
         var log = [];
-        var storedlog = [];
+		var storedlog = [];
         var Opponent_log = [];
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
-        var recentMove = 'K';
+		var recentMove='K';
         var gameKnowledgetype = "lastFifty";
         // Display history
         var listMarkup = `
         <ul class="historyList">
         ${log.map(l =>'<li>{l}</li>')}
         </ul>`;
-
-
 
         function StartOver() {
             count = 0;
@@ -520,11 +473,11 @@
             confessComp = 0;
             Opponent_log = [];
             log = [];
-            storedlog = [];
+			storedlog = [];
             Opponentindex = 0;
             CurrMove = "None";
             turn = "None";
-            recentMove = "None";
+			recentMove="None";
             document.getElementById("demo2").innerText = "Round: " + count;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
@@ -536,41 +489,41 @@
             //if(count%2==1)
             //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
-            document.getElementById("avatar").src = "https://i.imgur.com/6v16xN9.jpg"
+            document.getElementById("avatar").src="https://i.imgur.com/6v16xN9.jpg"
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
             setTimeout(Switch2, 2000);
         }
-
+     
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
-            document.getElementById("avatar").src = "https://i.imgur.com/Ik8uVx3.jpg"
+            document.getElementById("avatar").src= "https://i.imgur.com/Ik8uVx3.jpg"
             // Stop game after 100 rounds
-            if (count <= 100) {
+            if ((quiet + confess) <= 99) {
                 document.getElementById("demo").disabled = false;
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
+            } else {
+                document.getElementById("demo4").disabled = false;
             }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
         }
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
-            if (gameKnowledgetype = "lastFifty") {
-                if ((quiet + confess) <= 50) {
-                    storedlog.push('K-PK');
-                } else if ((quiet + confess) >= 51) {
-                    storedlog.push('K-IK');
+            if (gameKnowledgetype = "firstFifty"){
+                if((quiet + confess) <=50){
+                    storedlog.push('K,PK');
                 }
-            }
-
-
-            recentMove = 'K';
+                else if((quiet + confess) >=51) {
+                    storedlog.push('K,IK');
+                }
+            }    
+            
+			
+			recentMove='K';
         }
         //Adding to confess counter 
 
@@ -578,306 +531,160 @@
             confess = confess + 1;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
-            if (gameKnowledgetype = "lastFifty") {
-                if ((quiet + confess) <= 50) {
-                    storedlog.push('C-PK');
-                } else if ((quiet + confess) >= 51) {
-                    storedlog.push('C-IK');
+			if (gameKnowledgetype = "firstFifty"){
+                if((quiet + confess) <=50){
+                    storedlog.push('K,PK');
                 }
-            }
-            recentMove = 'C';
+                else if((quiet + confess) >=51) {
+                    storedlog.push('K,IK');
+                }
+            }    
+			recentMove='C';
         }
 
-        //Opponent log (The three strategies)
+		//Opponent log (The three strategies)
 
-        //Computer quiet decision
-        function quietDecisionComp() {
+		//Computer quiet decision
+		function quietDecisionComp() {
             quietComp = quietComp + 1;
             // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
-
-
+			
+			
         }
 
-        //Computer Confess Decision
-        function confessDecisionComp() {
+		//Computer Confess Decision
+		function confessDecisionComp() {
             confessComp = confessComp + 1;
             // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
-        //Computer tit for tat
-        function TitForTat() {
-
-            //Initial decision of Keep quiet 
-            if (count === 0) {
-                quietComp = quietComp + 1;
-                Opponent_log.push('K');
-            } else {
-                if (recentMove === 'K') {
-                    quietComp = quietComp + 1;
-                    Opponent_log.push('K');
-                } else {
-                    confessComp = confessComp + 1;
-                    Opponent_log.push('C');
-                }
-
-            }
-        }
-
-
-
-        // Sending data to backend
-        function sendData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/senddata", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                flag: flag,
-                game: game,
-                strategy: strategy,
-                count: count,
-                quiet: quiet,
-                confess: confess,
-                log: log,
-                storedlog: storedlog,
-                countComp: count,
-                quietComp: quietComp, 
-                confessComp: confessComp,
-                Opponent_log: Opponent_log,
-                gameKnowledgetype: gameKnowledgetype
-            }));
-
-            // When the user clicks on div, open the popup
-            function myPopUP() {
-                var popup = document.getElementById("myPopup");
-                popup.classList.toggle("show");
-            }
-            // When the user clicks on div, open the popup
-            function myPopUP() {
-                var popup = document.getElementById("myPopup");
-                popup.classList.toggle("show");
-            }
-        }
+		//Computer tit for tat
+		function  TitForTat(){
+	
+			//Initial decision of Keep quiet 
+			if (count===0){
+			quietComp = quietComp + 1;
+            Opponent_log.push('K');
+			}
+	
+			else{
+				if(recentMove==='K'){
+					quietComp=quietComp+1;
+					Opponent_log.push('K');
+			}
+			
+			else{
+				confessComp=confessComp+1;
+				Opponent_log.push('C');
+			}
+			
+		}
+		}
 
 
 
-        function openModal(){
-            let modal = document.getElementById('popupModal');
-            modal.style.display = 'block';
-        }
+
+
+
+
 
 
         //Adding to total counter when on-click 
         function myFunction2() {
-
-            if (count === 0) {
-                strategy = _.random(1, 3);
-
-            }
-            if (strategy === 1) {
-                quietDecisionComp();
-
-            }
-            if (strategy === 2) {
-                confessDecisionComp();
-            }
-            if (strategy === 3) {
-                TitForTat();
-            }
-            count = count + 1;
+			
+		if (count === 0){
+            strategy = _.random(1,3);
+		}
+		if (strategy === 1){
+			quietDecisionComp();
+          
+		}
+		if (strategy === 2){
+		confessDecisionComp();
+		}
+		if (strategy === 3){
+		 TitForTat();
+		}
+		count = count + 1;
             countComp = countComp + 1;
 
-            if(count <=100){
-                document.getElementById("demo2").innerText = "Round : " + count;
-            }
-           
+            document.getElementById("demo2").innerText = "Round : " + count;
 
 
-            if (count < 50) { // hide last 50 moves
-                if (Opponent_log[Opponentindex] === 'C') {
+        
+            if (count < 50) { // display first 50 moves
+                if (Opponent_log[Opponentindex + 50] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
-                    document.getElementById("Opp_move").innerText = "User 2 : " +
-                        CurrMove;
+                    document.getElementById("Opp_move").innerText = "User 2 : " + 
+                CurrMove;
                 } else {
                     CurrMove = "Keep Quiet";
                     Opponentindex += 1;
-                    document.getElementById("Opp_move").innerText = "User 2 : " +
-                        CurrMove;
+                    document.getElementById("Opp_move").innerText = "User 2 : " + 
+                CurrMove;
                 }
 
                 // Display Moves of opponents and user
                 listMarkup =
                     `
                     <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]} </li> <br>`).join('')}
                     </ul>
                 `;
 
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
-
-
                 document.getElementById("history").innerHTML = listMarkup;
-               
-
+                // document.getElementById("Opp_move").innerText = "User 2 : " + 
+                // compScore;
 
 
             } else {
-
-                     
-                 document.getElementById("Opp_move").innerText = "User 2 : " +
-                        "Hidden";
-
-
-
-                        listMarkup =
+                     // Display Moves of opponents and user
+              listMarkup =
                     `
                     <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
                     </ul>
                 `;
 
-                console.log(`this is the opponent index: ${Opponentindex}`);
-
-
-
                 document.getElementById("history").innerHTML = listMarkup;
-               
-        
-
-                    // If Moves greater than 50 Hide the moves 
-
-                //     if( count > 50){
-                // //         listMarkup =
-                // //     `
-                // //     <ul>
-                // //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
-                // //     </ul>
-                // // `;
-
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
-
-
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     } else {
-
-                
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
-
-            
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     }
-             
-
-
-                // if the count is equal to 100 send the data to the backend
-                console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
-
-
-                if ((quiet + confess) === 100) {
-
-               
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
-
-
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
-
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
-
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
-
-                   
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-
-
-                        // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
-
-
-                    }
-
-        
-
-
-                    // Flag detrimes if any vaule is not equal to 100
-                    if( (quiet + confess) === 100 && (quietComp + confessComp) === 100 ){
-                        flag = 0; // All vaules are equal to 100
-                    } else{
-                        flag = 1; // Vaules are not equal to 100 
-                    }
-
-
-
-                    
-                    sendData();
-                
-                    // pop up modal says go back to Qualtrics
-                    openModal();
-                    
-
-
-                } // end of if statement 
-
-
-
-
             }
 
 
+
+
         }
-
-
-        
+        //Sending data to backend
+        function sendData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/senddata", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                strategy: strategy,
+                count: count,
+                quiet: quiet,
+                confess: confess,
+                log: storedlog,
+                countComp: count,
+                quietComp: quietComp,
+                confessComp: confessComp,
+                Opponent_log: Opponent_log
+            }));
+            // When the user clicks on div, open the popup
+            function myPopUP() {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+            // When the user clicks on div, open the popup
+            function myPopUP() {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
