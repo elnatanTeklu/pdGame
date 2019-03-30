@@ -60,16 +60,16 @@ def game3():
    return render_template('gameResults.html',
                           title=title)   
 
-                                                  
+
 @app.route('/senddemogdata', methods = ['POST'])
 def post_javascript_demogdata():
     demogdata=request.data
-##    global demogDict
+    global demogDict
     demogDict = json.loads(demogdata)
 ##    print("demogdictfirst")
 ##    print(demogDict)
 ##    print("sending demographic data")
-##    return demogDict
+    return "demogDictDone"
 
 
 @app.route('/senddata', methods = ['POST'])
@@ -80,8 +80,8 @@ def post_javascript_data():
     strJson = json.dumps(txtDict)
     create_txt(strJson)
     dataDict = json.loads(data)
-    print("demogDict")
-    print(demogDict)
+##    print("demogDict")
+##    print(demogDict)
     dataDict.update(demogDict)
     package = zip(*dataDict.items())
     csv_columns = ('')
