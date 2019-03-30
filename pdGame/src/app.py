@@ -48,6 +48,15 @@ def game2():
                            title=title)  
 
 
+
+@app.route('/level2', methods=['GET'])
+def game9():
+    title = 'Create the input'
+    return render_template('level2.html',
+                           title=title)
+
+
+
 @app.route('/downloads', methods=['GET'])
 def game4():
    title = 'Create the input'
