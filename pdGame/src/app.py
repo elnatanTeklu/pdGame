@@ -115,7 +115,7 @@ def post_javascript_data():
 
 def create_txt(text):
 
-    with open('data.txt', 'a') as file:
+    with open('data.txt', 'a+') as file:
         file.write(text+ ',' + "\n" )
     return 'data'
 
