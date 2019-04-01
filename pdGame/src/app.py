@@ -17,6 +17,7 @@ demogDict = {}
 
 
 
+
 app = Flask(__name__, template_folder='website')
 app.secret_key = 's3cr3t'
 app.debug = True
@@ -69,7 +70,7 @@ def post_javascript_demogdata():
     print("demogdictfirst")
     print(demogDict)
     print("sending demographic data")
-    return demogDict
+    return demogDict, secDict
 
 
 @app.route('/senddata', methods = ['POST'])
@@ -106,7 +107,7 @@ def post_javascript_data():
 
 def create_txt(text):
 
-    with open('data.txt', 'a') as file:
+    with open('data.txt', 'a+') as file:
         file.write(text+ ',' + "\n" )
     return 'data'
 
@@ -115,4 +116,4 @@ def get_file_content(uuid):
         return file.read()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=8085)
