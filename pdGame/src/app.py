@@ -65,7 +65,7 @@ def game4():
                           title=title)
 @app.route('/downloadcsv/<password>')
 def return_csv(password):
-	if(password!="Pris#572*"):
+	if(password!="Pris527"):
 		return "False Password"
 	try:
 		return send_file('response.csv',mimetype='text/csv',as_attachment=True , attachment_filename='response.csv')
