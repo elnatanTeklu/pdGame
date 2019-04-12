@@ -1,7 +1,7 @@
 
 from __future__ import print_function
 from flask import Flask, render_template, make_response
-from flask import redirect, request, jsonify, url_for
+from flask import redirect, request, jsonify, url_for, send_file
 
 
 import io
@@ -62,7 +62,13 @@ def game9():
 def game4():
    title = 'Create the input'
    return render_template('downloads.html',
-                          title=title)       
+                          title=title)
+@app.route('/downloadcsv/')
+def return_csv():
+	try:
+		return send_file('response.csv',mimetype='text/csv',as_attachment=True , attachment_filename='response.csv')
+	except Exception as e:
+		return str(e)						  
 
 @app.route('/gameResults', methods=['GET'])
 def game3():
