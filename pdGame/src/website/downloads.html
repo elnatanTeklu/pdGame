@@ -6,12 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Downloads</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+	<style>
+	
+	body{
+    margin: 0;
+    padding: 0;
+    border: border-box;
+}
+
+.container{
+    display: flex;
+	justify-content: center;
+	
+}
+
+.content{
+	margin-top: 30%;
+}
+
+.title{
+	margin-top: 10%;
+	text-align: center;
+}
+
+input{
+	font-size: 20px;
+	color: black;
+}
+	
+	</style>
+
+
+
 </head>
 <body>
-	<input type="text" name=password id=password>
-	<button onclick="download()">
-    <h1>Download the csv file here</h1>
-	</button>
+
+		<h1 class="title">Download Page</h1>
+
+	<div class="container">
+
+		
+
+		<div class="content">
+				<input class="u-full-width"type="text" name=password id=password placeholder="Password">
+				<button onclick="download()">
+				Submit
+				</button>
+		</div>
+		
+
+	</div>
+
+
 
 </body>
 <script>
