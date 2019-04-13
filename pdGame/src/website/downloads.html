@@ -7,8 +7,15 @@
     <title>Downloads</title>
 </head>
 <body>
-
+	<input type="text" name=password id=password>
+	<button onclick="download()">
     <h1>Download the csv file here</h1>
-    <a href="/downloadcsv/" download>"../response.csv"</a>
+	</button>
 
 </body>
+<script>
+	function download(){
+	
+		window.location.href = '/downloadcsv/'+document.getElementById('password').value;
+	}
+</script>
