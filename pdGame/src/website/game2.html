@@ -486,6 +486,28 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
+
+    let date = new Date();
+        
+      // Sending data to backend
+      function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+            }));
+
+        }
+
+       console.log(` ${date}`); 
+
+        window.addEventListener('load' , function() {
+            metaData()
+        }, false);
+
+
+
         //Variables for counter
         const game = 2;
         let flag = 0;  //flag will 
@@ -872,6 +894,18 @@
 
 
             }
+
+
+            window.onbeforeunload = function(){
+            sendData();
+                
+            // pop up modal says go back to Qualtrics
+            if(count === 99 || count === 100){
+                openModal();
+            }
+                  
+            }
+
 
 
         }

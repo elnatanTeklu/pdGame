@@ -136,6 +136,25 @@ def get_file_content(uuid):
         return file.read()
         
 
+@app.route('/metaData', methods = ['POST'])
+def post_javascript_metaData():
+    txtData = request.data
+    txtDict = json.loads(txtData)
+    strJson = json.dumps(txtDict)
+    createMetaData_txt(strJson)
+   
+
+    return "metaData sent"
+
+def createMetaData_txt(text):
+
+    with open('metaData.txt', 'a+') as file:
+        file.write(text+ ',' + "\n" )
+    return 'metaData'
+
+
+
+
 def user_count():
     file_name = "userCount.txt"
 
