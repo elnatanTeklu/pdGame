@@ -488,6 +488,27 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
+
+      let date = new Date();
+        
+      // Sending data to backend
+      function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+            }));
+
+        }
+
+
+        window.addEventListener('load' , function() {
+            metaData()
+        }, false);
+
+
+    
         //Variables for counter
         const game =1;
         let flag = 0;  //flag will 
@@ -542,7 +563,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         function Switch2() {
@@ -612,15 +633,17 @@
         function TitForTat() {
 
             //Initial decision of Keep quiet 
-            if (count === 0) {
+
+            // Add computer imbalance of power 
+            if (count === 0) { // if count is first move then always is always 'K'
                 quietComp = quietComp + 1;
                 Opponent_log.push('K');
             } else {
-                if (recentMove === 'K') {
+                if (recentMove === 'K') {  // look at the past moves 
                     quietComp = quietComp + 1;
                     Opponent_log.push('K');
                 } else {
-                    confessComp = confessComp + 1;
+                    confessComp = confessComp + 1; // past move 
                     Opponent_log.push('C');
                 }
 
@@ -827,6 +850,22 @@
 
         }
 
+
+        // function openModal(){
+        //     let modal = document.getElementById('popupModal');
+        //     modal.style.display = 'block';
+        // }
+
+
+        window.onbeforeunload = function(){
+            sendData();
+                
+            // pop up modal says go back to Qualtrics
+            if(count === 99 || count === 100){
+                openModal();
+            }
+                  
+            }
 
         
     </script>

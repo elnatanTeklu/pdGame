@@ -18,6 +18,7 @@ demogDict = {}
 
 
 
+
 app = Flask(__name__, template_folder='website')
 app.secret_key = 's3cr3t'
 app.debug = True
@@ -101,6 +102,8 @@ def post_javascript_data():
 ##    print("demogDict")
 ##    print(demogDict)
     dataDict.update(demogDict)
+    countDict = {"user number":user_count()}
+    dataDict.update(countDict)
     package = zip(*dataDict.items())
     csv_columns = ('')
     csv_file = "response.csv"
@@ -131,6 +134,47 @@ def create_txt(text):
 def get_file_content(uuid):
     with open('images/'+uuid+'.csv', 'r') as file:
         return file.read()
+        
+
+@app.route('/metaData', methods = ['POST'])
+def post_javascript_metaData():
+    txtData = request.data
+    txtDict = json.loads(txtData)
+    strJson = json.dumps(txtDict)
+    createMetaData_txt(strJson)
+   
+
+    return "metaData sent"
+
+def createMetaData_txt(text):
+
+    with open('metaData.txt', 'a+') as file:
+        file.write(text+ ',' + "\n" )
+    return 'metaData'
+
+
+
+
+def user_count():
+    file_name = "userCount.txt"
+
+    try:
+        with open(file_name, "r+") as f:
+            data = f.read().strip()
+            output = (int)(data) + 1
+            f.seek(0)
+            f.write((str)(output))
+            f.truncate()
+    except:
+        with open(file_name, "w") as f:
+            output = "1"
+            f.seek(0)
+            f.write((str)(output))
+            f.truncate()
+    print(output)        
+    return output
+    
+        
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
