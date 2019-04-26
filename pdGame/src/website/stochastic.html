@@ -528,7 +528,7 @@
         const code = codeGenerator();
 
         //Variables for counter
-        const game = 1;
+        const game = "stochastic";
         let flag = 0; //flag will 
         var count = 0;
         var quiet = 0;
@@ -597,6 +597,13 @@
             //     document.getElementById("demo4").disabled = false;
             // }
         }
+
+
+
+   
+
+
+
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
@@ -627,8 +634,41 @@
                 }
             }
             recentMove = 'C';
+
+
+
+            stochastic()
+
         }
 
+
+             // if a user defects they should not be able to for another 5 moves 
+
+                 // this will do these things for 5 rounds 
+
+                // have a modal popup saying you can't use this move for the next X amount of rounds 
+
+                // disable the button 
+             function stochastic(){
+
+                console.log(`the game count is at ${count}`);
+                
+                let resumeRound = count + 5;
+               
+
+                alert("You can't use this for the next 5 rounds");
+
+                if(count < resumeRound){
+                    document.getElementById("demo").disabled = false;
+
+                } else {
+                    document.getElementById("demo").disabled = true;
+                }
+
+             }
+
+
+            
         //Opponent log (The three strategies)
 
         //Computer quiet decision
@@ -869,14 +909,6 @@
 
 
         }
-
-
-        // function openModal(){
-        //     let modal = document.getElementById('popupModal');
-        //     modal.style.display = 'block';
-        // }
-
-
 
 
         window.onbeforeunload = function () {

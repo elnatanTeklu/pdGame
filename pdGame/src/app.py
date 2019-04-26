@@ -49,6 +49,12 @@ def game2():
     return render_template('game2.html',
                            title=title)  
 
+@app.route('/stochastic', methods=['GET'])
+def stochastic():
+    title = 'Create the input'
+    return render_template('stochastic.html',
+                           title=title)                             
+
 
 
 @app.route('/level2', methods=['GET'])
@@ -177,5 +183,5 @@ def user_count():
         
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=8086)
 
