@@ -552,6 +552,31 @@
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
         }
         //Telling the user who is the current player
+
+
+        function imgPicker() {
+            let imagesArray
+            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
+                'https://i.imgur.com/6v16xN9.jpg'
+            ];
+            console.log("test");
+            const tempInd = _.random(0, imagesArray.length);
+            const ind = tempInd;
+            let img = imagesArray[ind];
+            console.log(img);
+
+
+            return img;
+        }
+        const img = imgPicker();
+
+        document.getElementById("avatar").src = img;
+      
+
+
+
+
+
         function Switch() {
             //if(count%2==0)
             //    document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"

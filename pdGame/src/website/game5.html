@@ -252,7 +252,7 @@
 
 
 
-        .modal {
+        .modal{
             display: none;
             position: fixed;
             z-index: 1;
@@ -264,7 +264,7 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modalContent {
+        .modalContent{
             background-color: #f4f4f4;
             margin: 20% auto;
             padding: 20px;
@@ -277,6 +277,9 @@
             justify-content: center;
             align-items: center;
         }
+
+
+
     </style>
 </head>
 
@@ -399,7 +402,7 @@
 
                         </li>
 
-
+                        
                     </ul>
 
 
@@ -412,7 +415,7 @@
 
         </div>
 
-
+        
 
         <!-- about the game section END  -->
 
@@ -430,8 +433,7 @@
 
     <div id="popupModal" class="modal">
         <div class="modalContent">
-            <p class="modalText"> Game Over Here is your unique <br>   </p>
-            <p id="text"></p>
+            <p>Return to Qualtrics to get your unique code</p>
         </div>
     </div>
 
@@ -484,88 +486,31 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
-        let date = new Date();
 
-        // Sending data to backend
-        function metaData() {
+    let date = new Date();
+        
+      // Sending data to backend
+      function metaData() {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/metaData", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
                 date: date,
-                code: code
             }));
 
         }
 
+       console.log(` ${date}`); 
 
-
-
-        window.addEventListener('load', function () {
-            metaData();
+        window.addEventListener('load' , function() {
+            metaData()
         }, false);
 
 
-        function codeGenerator() {
-            let one = _.random(0, 9);
-            let two = _.random(0, 9);
-            let three = _.random(0, 9);
-            let four = _.random(0, 9);
-            let five = _.random(0, 9);
-
-            one = one.toString();
-            two = two.toString();
-            three = three.toString();
-            four = four.toString();
-            five = five.toString();
-
-
-            const code = one + two + three + four + five;
-
-
-            return code;
-
-        }
-
-        const code = codeGenerator();
-
-
-        // function imgNames(ind){
-        //     let imgNmae = ['name1', 'name2', 'name3'];
-        //     const theImgName = imgName[ind];
-        //     console.log(` the image name: ${theImgName}`);
-        //     return theImgName;
-
-        // }
-
-
-
-        function imgPicker() {
-            let imagesArray
-            imagesArray = ["https://i.imgur.com/6v16xN9.jpg","https://i.imgur.com/6v16xN9.jpg",
-            "https://i.imgur.com/6v16xN9.jpg"
-            ];
-            console.log("test");
-            const tempInd = _.random(0, imagesArray.length);
-            const ind = tempInd;
-            let img = imagesArray[ind];
-            console.log(img);
-
-
-            return img;
-        }
-        const img = imgPicker();
-      
-
-
-
-        // const imgName = img[0][1];
-
-        // console.log(` The image name:  ${imgName}`);
 
         //Variables for counter
-        const game = 1;
-        let flag = 0; //flag will 
+        const game = 5;
+        let flag = 0;  //flag will 
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -579,7 +524,7 @@
         var CurrMove = "None";
         var turn = "None";
         var recentMove = 'K';
-        var gameKnowledgetype = "firstFifty";
+        var gameKnowledgetype = "lastFifty";
         // Display history
         var listMarkup = `
         <ul class="historyList">
@@ -609,22 +554,26 @@
         //Telling the user who is the current player
 
 
-
-        // function imgPicker(){
-        //     let imagesArray
-        // imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',];
-
-
-        // const temoInd = _.random(0, imagesArray.length );
-        // const ind = tempInd;
-
-        // let img = imagesArray[ind];
-        //     return img;
-        // }
+        function imgPicker() {
+            let imagesArray
+            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
+                'https://i.imgur.com/6v16xN9.jpg'
+            ];
+            console.log("test");
+            const tempInd = _.random(0, imagesArray.length);
+            const ind = tempInd;
+            let img = imagesArray[ind];
+            console.log(img);
 
 
+            return img;
+        }
 
-        console.log(img);
+        
+        const img = imgPicker();
+
+      
+      
 
         function Switch() {
             //if(count%2==0)
@@ -632,11 +581,6 @@
             //if(count%2==1)
             //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
-
-            
-            // add array for all the images. 
-            //"https://i.imgur.com/6v16xN9.jpg"
-
             document.getElementById("avatar").src = img;
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
@@ -662,11 +606,11 @@
             quiet = quiet + 1;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
-            if (gameKnowledgetype = "firstFifty") {
+            if (gameKnowledgetype = "lastFifty") {
                 if ((quiet + confess) <= 50) {
-                    storedlog.push('K-IK');
-                } else if ((quiet + confess) >= 51) {
                     storedlog.push('K-PK');
+                } else if ((quiet + confess) >= 51) {
+                    storedlog.push('K-IK');
                 }
             }
 
@@ -679,11 +623,11 @@
             confess = confess + 1;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
-            if (gameKnowledgetype = "firstFifty") {
+            if (gameKnowledgetype = "lastFifty") {
                 if ((quiet + confess) <= 50) {
-                    storedlog.push('C-IK');
-                } else if ((quiet + confess) >= 51) {
                     storedlog.push('C-PK');
+                } else if ((quiet + confess) >= 51) {
+                    storedlog.push('C-IK');
                 }
             }
             recentMove = 'C';
@@ -711,17 +655,15 @@
         function TitForTat() {
 
             //Initial decision of Keep quiet 
-
-            // Add computer imbalance of power 
-            if (count === 0) { // if count is first move then always is always 'K'
+            if (count === 0) {
                 quietComp = quietComp + 1;
                 Opponent_log.push('K');
             } else {
-                if (recentMove === 'K') { // look at the past moves 
+                if (recentMove === 'K') {
                     quietComp = quietComp + 1;
                     Opponent_log.push('K');
                 } else {
-                    confessComp = confessComp + 1; // past move 
+                    confessComp = confessComp + 1;
                     Opponent_log.push('C');
                 }
 
@@ -736,7 +678,6 @@
             xhr.open("POST", "/senddata", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
-                code: code,
                 flag: flag,
                 game: game,
                 strategy: strategy,
@@ -746,7 +687,7 @@
                 log: log,
                 storedlog: storedlog,
                 countComp: count,
-                quietComp: quietComp,
+                quietComp: quietComp, 
                 confessComp: confessComp,
                 Opponent_log: Opponent_log,
                 gameKnowledgetype: gameKnowledgetype
@@ -766,10 +707,9 @@
 
 
 
-        function openModal() {
+        function openModal(){
             let modal = document.getElementById('popupModal');
             modal.style.display = 'block';
-            document.getElementById("text").innerText = "code: " + code;
         }
 
 
@@ -793,26 +733,14 @@
             count = count + 1;
             countComp = countComp + 1;
 
-            if (count <= 100) {
+            if(count <=100){
                 document.getElementById("demo2").innerText = "Round : " + count;
             }
+           
 
 
-
-            // Display Moves of opponents and user
-            listMarkup =
-                `
-                    <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
-                    </ul>
-                `;
-
-            document.getElementById("history").innerHTML = listMarkup;
-
-
-
-            if (count > 50) { // hide first 50 moves
-                if (Opponent_log[Opponentindex + 50] === 'C') {
+            if (count < 50) { // hide last 50 moves
+                if (Opponent_log[Opponentindex] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
                     document.getElementById("Opp_move").innerText = "User 2 : " +
@@ -837,9 +765,68 @@
 
 
                 document.getElementById("history").innerHTML = listMarkup;
-                // document.getElementById("Opp_move").innerText = "User 2 : " + 
-                // compScore;
+               
 
+
+
+            } else {
+
+                     
+                 document.getElementById("Opp_move").innerText = "User 2 : " +
+                        "Hidden";
+
+
+
+                        listMarkup =
+                    `
+                    <ul>
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
+                    </ul>
+                `;
+
+                console.log(`this is the opponent index: ${Opponentindex}`);
+
+
+
+                document.getElementById("history").innerHTML = listMarkup;
+               
+        
+
+                    // If Moves greater than 50 Hide the moves 
+
+                //     if( count > 50){
+                // //         listMarkup =
+                // //     `
+                // //     <ul>
+                // //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
+                // //     </ul>
+                // // `;
+
+                // listMarkup =
+                //     `
+                //     <ul>
+                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
+                //     </ul>
+                // `;
+
+
+                // document.getElementById("history").innerHTML = listMarkup;
+
+                //     } else {
+
+                
+                // listMarkup =
+                //     `
+                //     <ul>
+                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
+                //     </ul>
+                // `;
+
+            
+                // document.getElementById("history").innerHTML = listMarkup;
+
+                //     }
+             
 
 
                 // if the count is equal to 100 send the data to the backend
@@ -848,7 +835,7 @@
 
                 if ((quiet + confess) === 100) {
 
-
+               
                     count = count - 1;
                     countComp = countComp - 1;
                     Opponent_log.pop();
@@ -867,7 +854,7 @@
                     if (strategy === 3) {
                         console.log(`the strategy is ${strategy}`);
 
-
+                   
                         // check if  any are over 100
                         if (quietComp > 100) {
                             quietComp = quietComp - 1;
@@ -904,52 +891,50 @@
 
                     }
 
-
+        
 
 
                     // Flag detrimes if any vaule is not equal to 100
-                    if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
+                    if( (quiet + confess) === 100 && (quietComp + confessComp) === 100 ){
                         flag = 0; // All vaules are equal to 100
-                    } else {
+                    } else{
                         flag = 1; // Vaules are not equal to 100 
                     }
 
 
-                    sendData();
 
+                    
+                    sendData();
+                
                     // pop up modal says go back to Qualtrics
                     openModal();
-
+                    
 
 
                 } // end of if statement 
 
 
+
+
             }
 
 
-        }
-
-
-        // function openModal(){
-        //     let modal = document.getElementById('popupModal');
-        //     modal.style.display = 'block';
-        // }
-
-
-
-
-        window.onbeforeunload = function () {
+            window.onbeforeunload = function(){
             sendData();
-
-
+                
             // pop up modal says go back to Qualtrics
-            if (count === 99 || count === 100) {
-
+            if(count === 99 || count === 100){
                 openModal();
             }
+                  
+            }
+
+
 
         }
+
+
+        
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

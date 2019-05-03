@@ -359,8 +359,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch();flagActivated()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch();onClickCounter()">Confess</button>
                     </div>
 
 
@@ -578,28 +578,76 @@
             //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("avatar").src = "https://i.imgur.com/6v16xN9.jpg"
+
+            // onclick of the confess button disable it for 5 turns 
             document.getElementById("demo").disabled = true;
-            document.getElementById("demo3").disabled = true;
+
+             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+
+
+            setTimeout(Switch2, 2000);
         }
+
+        // global var's
+        let onClickFlag = false;
+        let clickCounter = 0;
+        const disabledRounds = 5;
+        let roundCount = disabledRounds;
+
+
+
+        function onClickCounter(){
+            if(clickCounter === disabledRounds ){
+                clickCounter = 0;
+                onClickFlag = false;
+                roundCount = disabledRounds;
+            } else {
+                if(onClickFlag === true ){
+                    clickCounter += 1;
+                    let roundCount = disabledRounds;
+                    roundCount -= 1;
+                }
+            }
+        } // end of function 
+
+        function flagActivated(){
+            // open popup
+            alert(`For the next ${roundCount} rounds you will not be able to use this button`);
+
+            return onClickFlag = true;
+        }
+
+
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
             document.getElementById("avatar").src = "https://i.imgur.com/Ik8uVx3.jpg"
             // Stop game after 100 rounds
             if (count <= 100) {
+
                 document.getElementById("demo").disabled = false;
-                document.getElementById("demo3").disabled = false;
+
+                if(onClickFlag === true){
+                    document.getElementById("demo3").disabled = true;
+                } else {
+                    document.getElementById("demo3").disabled = false;
+                }
+
+                // document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
-            }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
+            } 
+          
         }
 
 
+/*
 
+
+Every on click event this get's triggered 
+
+
+ */
    
 
 
@@ -637,7 +685,7 @@
 
 
 
-            stochastic()
+            // stochastic()
 
         }
 
@@ -649,23 +697,23 @@
                 // have a modal popup saying you can't use this move for the next X amount of rounds 
 
                 // disable the button 
-             function stochastic(){
+            //  function stochastic(){
 
-                console.log(`the game count is at ${count}`);
+            //     console.log(`the game count is at ${count}`);
                 
-                let resumeRound = count + 5;
+            //     let resumeRound = count + 5;
                
 
-                alert("You can't use this for the next 5 rounds");
+            //     alert("You can't use this for the next 5 rounds");
 
-                if(count < resumeRound){
-                    document.getElementById("demo").disabled = false;
+            //     if(count < resumeRound){
+            //         document.getElementById("demo").disabled = false;
 
-                } else {
-                    document.getElementById("demo").disabled = true;
-                }
+            //     } else {
+            //         document.getElementById("demo").disabled = true;
+            //     }
 
-             }
+            //  }
 
 
             

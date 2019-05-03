@@ -430,7 +430,7 @@
 
     <div id="popupModal" class="modal">
         <div class="modalContent">
-            <p class="modalText"> Game Over Here is your unique <br>   </p>
+            <p class="modalText">Return to Qualtrics to get your unique code</p>
             <p id="text"></p>
         </div>
     </div>
@@ -542,8 +542,8 @@
 
         function imgPicker() {
             let imagesArray
-            imagesArray = ["https://i.imgur.com/6v16xN9.jpg","https://i.imgur.com/6v16xN9.jpg",
-            "https://i.imgur.com/6v16xN9.jpg"
+            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
+                'https://i.imgur.com/6v16xN9.jpg'
             ];
             console.log("test");
             const tempInd = _.random(0, imagesArray.length);
@@ -555,7 +555,9 @@
             return img;
         }
         const img = imgPicker();
-      
+
+     
+     
 
 
 
@@ -564,7 +566,7 @@
         // console.log(` The image name:  ${imgName}`);
 
         //Variables for counter
-        const game = 1;
+        const game = 4;
         let flag = 0; //flag will 
         var count = 0;
         var quiet = 0;
@@ -641,7 +643,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+            setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
