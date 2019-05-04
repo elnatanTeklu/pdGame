@@ -278,6 +278,13 @@
             align-items: center;
         }
 
+        .modalSpacing{
+            text-align: center;
+        }
+
+        .modalText{
+            text-align: center;
+        }
 
 
     </style>
@@ -433,10 +440,10 @@
 
     <div id="popupModal" class="modal">
         <div class="modalContent">
-            <p>Return to Qualtrics to get your unique code</p>
+            <div class="modalText"> <div class="modalSpacing">Game Over </div> Here is your unique <span id="text"></span> <div>Please return to Amazon Mechanical Turk to submit it  </div> </div>
+           
         </div>
     </div>
-
 
 
 
@@ -554,23 +561,31 @@
         //Telling the user who is the current player
 
 
-        function imgPicker() {
-            let imagesArray
-            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
-                'https://i.imgur.com/6v16xN9.jpg'
-            ];
-            console.log("test");
-            const tempInd = _.random(0, imagesArray.length);
-            const ind = tempInd;
-            let img = imagesArray[ind];
-            console.log(img);
+        function codeGenerator() {
+            let one = _.random(0, 9);
+            let two = _.random(0, 9);
+            let three = _.random(0, 9);
+            let four = _.random(0, 9);
+            let five = _.random(0, 9);
+
+            one = one.toString();
+            two = two.toString();
+            three = three.toString();
+            four = four.toString();
+            five = five.toString();
 
 
-            return img;
+            const code = one + two + three + four + five;
+
+
+            return code;
+
         }
-        const img = imgPicker();
 
-        document.getElementById("avatar").src = img;
+        const code = codeGenerator();
+
+
+  
       
 
 
@@ -587,7 +602,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+            setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
@@ -680,6 +695,7 @@
             xhr.open("POST", "/senddata", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
+                code: code,
                 flag: flag,
                 game: game,
                 strategy: strategy,
@@ -712,6 +728,7 @@
         function openModal(){
             let modal = document.getElementById('popupModal');
             modal.style.display = 'block';
+            document.getElementById("text").innerText = "code: " + code;
         }
 
 

@@ -277,6 +277,14 @@
             justify-content: center;
             align-items: center;
         }
+
+        .modalSpacing{
+            text-align: center;
+        }
+
+        .modalText{
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -430,8 +438,8 @@
 
     <div id="popupModal" class="modal">
         <div class="modalContent">
-            <p class="modalText"> Game Over Here is your unique <br>   </p>
-            <p id="text"></p>
+            <div class="modalText"> <div class="modalSpacing">Game Over </div> Here is your unique <span id="text"></span> <div>Please return to Amazon Mechanical Turk to submit it  </div> </div>
+           
         </div>
     </div>
 
@@ -540,21 +548,21 @@
 
 
 
-        function imgPicker() {
-            let imagesArray
-            imagesArray = ["https://i.imgur.com/6v16xN9.jpg","https://i.imgur.com/6v16xN9.jpg",
-            "https://i.imgur.com/6v16xN9.jpg"
-            ];
-            console.log("test");
-            const tempInd = _.random(0, imagesArray.length);
-            const ind = tempInd;
-            let img = imagesArray[ind];
-            console.log(img);
+        // function imgPicker() {
+        //     let imagesArray
+        //     imagesArray = ["https://i.imgur.com/6v16xN9.jpg","https://i.imgur.com/6v16xN9.jpg",
+        //     "https://i.imgur.com/6v16xN9.jpg"
+        //     ];
+        //     console.log("test");
+        //     const tempInd = _.random(0, imagesArray.length);
+        //     const ind = tempInd;
+        //     let img = imagesArray[ind];
+        //     console.log(img);
 
 
-            return img;
-        }
-        const img = imgPicker();
+        //     return img;
+        // }
+        // const img = imgPicker();
       
 
 
@@ -624,7 +632,7 @@
 
 
 
-        console.log(img);
+        // console.log(img);
 
         function Switch() {
             //if(count%2==0)
@@ -637,11 +645,11 @@
             // add array for all the images. 
             //"https://i.imgur.com/6v16xN9.jpg"
 
-            document.getElementById("avatar").src = img;
+            document.getElementById("avatar").src = "https://i.imgur.com/6v16xN9.jpg"
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+            setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
