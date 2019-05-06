@@ -367,8 +367,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
                     </div>
 
 
@@ -649,7 +649,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         function Switch2() {
@@ -802,7 +802,7 @@
             countComp = countComp + 1;
 
             if (count <= 100) {
-                document.getElementById("demo2").innerText = "Round : " + count;
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}` ;
             }
 
 
@@ -854,63 +854,63 @@
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
 
-                if ((quiet + confess) === 100) {
+                if ((count) === 100) {
 
 
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
+                    // count = count - 1;
+                    // countComp = countComp - 1;
+                    // Opponent_log.pop();
 
 
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
+                    // if (strategy === 2) {
+                    //     console.log(`the strategy is ${strategy}`);
+                    //     confessComp = confessComp - 1;
+                    // }
 
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
+                    // if (strategy === 1) {
+                    //     console.log(`the strategy is ${strategy}`);
+                    //     quietComp = quietComp - 1;
+                    // }
 
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
+                    // if (strategy === 3) {
+                    //     console.log(`the strategy is ${strategy}`);
 
 
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
+                    //     // check if  any are over 100
+                    //     if (quietComp > 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
+                    //     if (confessComp > 100) {
+                    //         confessComp = confessComp - 1;
+                    //     }
 
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
+                    //     // greates one -1
+                    //     if (quietComp > confessComp && quietComp != 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
+                    //     if (confessComp > quietComp && confessComp != 100) {
+                    //         confessComp = confessComp - 1;
+                    //     }
 
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
+                    //     if (quietComp === 1 && confessComp === 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
 
 
                         // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
+                        // if (quietComp > 50 && confessComp === 50) {
+                        //     quietComp = quietComp - 1;
+                        // }
 
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
+                        // if (confessComp > 50 && quietComp === 50) {
+                        //     confessComp = confessComp - 1;
+                        // }
 
 
-                    }
+                    // }
 
 
 
@@ -930,13 +930,12 @@
 
 
 
-                } // end of if statement 
-
+                // } // end of if statement 
 
             }
-
-
-        }
+                    
+        }  
+     }
 
 
         // function openModal(){

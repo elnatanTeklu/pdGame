@@ -312,7 +312,7 @@
                     </li> -->
 
                 <li class="nav-item ml-4">
-                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : 0</h1>
+                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : 1</h1>
                 </li>
                 <li class="nav-item ml-4">
                     <h1 class="text-color__white " id="Opp_move" style="font-size: 25px"> User 2 : Hidden </h1>
@@ -369,8 +369,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
                     </div>
 
 
@@ -507,15 +507,25 @@
 
         }
 
+        function roundSetToOne(){
+            if( count === 0){
+                document.getElementById("demo2").innerText = "Round : " + roundNumberOne;
+            }
+        }
+
+
        console.log(` ${date}`); 
 
         window.addEventListener('load' , function() {
             metaData()
+            roundSetToOne();
         }, false);
 
 
 
+    
         //Variables for counter
+        let roundNumberOne = 1;
         const game = 2;
         let flag = 0;  //flag will 
         var count = 0;
@@ -527,6 +537,7 @@
         var log = [];
         var storedlog = [];
         var Opponent_log = [];
+        let test_log = [];
         var Opponentindex = 0;
         var CurrMove = "None";
         var turn = "None";
@@ -586,7 +597,7 @@
 
 
   
-      
+        // console.log(` AT THE START quiet = ${quiet} and confess = ${confess} and count = ${count} log = ${log.length} opp= ${Opponent_log.length} log array = ${log}`);
 
 
 
@@ -602,7 +613,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         function Switch2() {
@@ -618,6 +629,13 @@
             //     document.getElementById("demo4").disabled = false;
             // }
         }
+
+
+    
+      
+
+
+
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
@@ -704,6 +722,7 @@
                 confess: confess,
                 log: log,
                 storedlog: storedlog,
+                test_log: test_log, 
                 countComp: count,
                 quietComp: quietComp, 
                 confessComp: confessComp,
@@ -735,6 +754,16 @@
         //Adding to total counter when on-click 
         function myFunction2() {
 
+        //   let roundNumber = `${
+        //       log.map((hist,index) =>  `${index + 1}`
+        //        )}`
+
+        // let tempRoundNumber = count + 1;
+        // let roundNumber = tempRoundNumber;
+
+    
+
+
             if (count === 0) {
                 strategy = _.random(1, 3);
 
@@ -752,10 +781,18 @@
             count = count + 1;
             countComp = countComp + 1;
 
-            if(count <=100){
-                document.getElementById("demo2").innerText = "Round : " + count;
+            console.log(`test count: ${count}`)
+
+            
+                if(count <=100){
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}` ;
             }
-           
+              
+
+          
+            // console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
+
+            // console.log(` 2 quiet = ${quiet} and confess = ${confess} and count = ${count} log = ${log.length} opp= ${Opponent_log.length} log array = ${log} Opp_log array = ${Opponent_log}  test log = ${test_log.length} test log array = ${test_log}`);
 
 
             if (count < 50) { // hide last 50 moves
@@ -772,6 +809,8 @@
                 }
 
                 // Display Moves of opponents and user
+
+
                 listMarkup =
                     `
                     <ul>
@@ -851,64 +890,65 @@
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
+                    //quiet + confess
 
-                if ((quiet + confess) === 100) {
+                if ((count) === 100) {
 
                
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
+                    // count = count - 1;
+                    // countComp = countComp - 1;
+                    // Opponent_log.pop();
 
 
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
+                    // if (strategy === 2) {
+                    //     console.log(`the strategy is ${strategy}`);
+                    //     confessComp = confessComp - 1;
+                    // }
 
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
+                    // if (strategy === 1) {
+                    //     console.log(`the strategy is ${strategy}`);
+                    //     quietComp = quietComp - 1;
+                    // }
 
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
+                    // if (strategy === 3) {
+                    //     console.log(`the strategy is ${strategy}`);
 
                    
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
+                    //     // check if  any are over 100
+                    //     if (quietComp > 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
+                    //     if (confessComp > 100) {
+                    //         confessComp = confessComp - 1;
+                    //     }
 
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
+                    //     // greates one -1
+                    //     if (quietComp > confessComp && quietComp != 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
+                    //     if (confessComp > quietComp && confessComp != 100) {
+                    //         confessComp = confessComp - 1;
+                    //     }
 
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-
-
-                        // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
+                    //     if (quietComp === 1 && confessComp === 100) {
+                    //         quietComp = quietComp - 1;
+                    //     }
 
 
-                    }
+
+                    //     // handle 50/50 split 
+                    //     if (quietComp > 50 && confessComp === 50) {
+                    //         quietComp = quietComp - 1;
+                    //     }
+
+                    //     if (confessComp > 50 && quietComp === 50) {
+                    //         confessComp = confessComp - 1;
+                    //     }
+
+
+                    // }
 
         
 
