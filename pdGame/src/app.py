@@ -30,6 +30,19 @@ def index():
     return render_template('index.html',
                            title=title)
 
+@app.route('/game1Demographics', methods=['GET'])
+def game1Demographics():
+    title = 'Create the input'
+    return render_template('game1Demographics.html',
+                           title=title)
+
+
+@app.route('/game2Demographics', methods=['GET'])
+def game2Demographics():
+    title = 'Create the input'
+    return render_template('game2Demographics.html',
+                           title=title)                                                      
+
 @app.route('/game', methods=['GET'])
 def game():
     title = 'Create the input'

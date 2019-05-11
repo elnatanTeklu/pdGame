@@ -522,6 +522,14 @@
         }, false);
 
 
+        function kMethod() {
+            test_log.push('C');
+        }
+
+        function cMethod() {
+            test_log.push('C');
+        }
+
 
     
         //Variables for counter
@@ -722,7 +730,6 @@
                 confess: confess,
                 log: log,
                 storedlog: storedlog,
-                test_log: test_log, 
                 countComp: count,
                 quietComp: quietComp, 
                 confessComp: confessComp,
@@ -761,7 +768,8 @@
         // let tempRoundNumber = count + 1;
         // let roundNumber = tempRoundNumber;
 
-    
+        console.log(`user= ${log.length} and opp = ${Opponent_log.length} 
+        testLog=${test_log.length}`);
 
 
             if (count === 0) {
@@ -848,7 +856,7 @@
 
                 document.getElementById("history").innerHTML = listMarkup;
                
-        
+              
 
                     // If Moves greater than 50 Hide the moves 
 

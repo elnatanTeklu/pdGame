@@ -252,7 +252,7 @@
 
 
 
-        .modal {
+        .modals {
             display: none;
             position: fixed;
             z-index: 1;
@@ -278,14 +278,15 @@
             align-items: center;
         }
 
-        .modalSpacing{
+        .modalSpacing {
             text-align: center;
         }
 
-        .modalText{
+        .modalText {
             text-align: center;
         }
     </style>
+    
 </head>
 
 
@@ -435,13 +436,54 @@
     <!-- histroy section END -->
 
 
-
-    <div id="popupModal" class="modal">
+    <div id="popupNotifyUser" class="modals">
         <div class="modalContent">
-            <div class="modalText"> <div class="modalSpacing">Game Over </div> Here is your unique <span id="text"></span> <div>Please return to Amazon Mechanical Turk to submit it  </div> </div>
-           
+            <div class="modalText">
+                <div class="modalSpacing">You can now see user 2's past moves </div>
+            </div>
         </div>
     </div>
+
+    <div id="popupModal" class="modals">
+        <div class="modalContent">
+            <div class="modalText">
+                <div class="modalSpacing">Game Over </div> Here is your unique
+                <span id="text"></span>
+                <div>Please return to Amazon Mechanical Turk to submit it </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- <div id="popupNotifyUser" class="modals">
+        <div class="modalContent">
+            <div class="modalText">
+                <div class="modalSpacing">You can now see user 2's past moves </div>
+            </div>
+        </div> -->
+
+  
+
+        <!-- <div  id="popupNotifyUser" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can now see user 2's past moves</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
 
 
 
@@ -506,9 +548,6 @@
 
         }
 
-
-
-
         window.addEventListener('load', function () {
             metaData();
         }, false);
@@ -538,42 +577,9 @@
         const code = codeGenerator();
 
 
-        // function imgNames(ind){
-        //     let imgNmae = ['name1', 'name2', 'name3'];
-        //     const theImgName = imgName[ind];
-        //     console.log(` the image name: ${theImgName}`);
-        //     return theImgName;
-
-        // }
-
-
-
-        // function imgPicker() {
-        //     let imagesArray
-        //     imagesArray = ["https://i.imgur.com/6v16xN9.jpg","https://i.imgur.com/6v16xN9.jpg",
-        //     "https://i.imgur.com/6v16xN9.jpg"
-        //     ];
-        //     console.log("test");
-        //     const tempInd = _.random(0, imagesArray.length);
-        //     const ind = tempInd;
-        //     let img = imagesArray[ind];
-        //     console.log(img);
-
-
-        //     return img;
-        // }
-        // const img = imgPicker();
-      
-
-
-
-        // const imgName = img[0][1];
-
-        // console.log(` The image name:  ${imgName}`);
-
         //Variables for counter
         const game = 1;
-        let flag = 0; //flag will 
+        let flag = 0;
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -588,6 +594,8 @@
         var turn = "None";
         var recentMove = 'K';
         var gameKnowledgetype = "firstFifty";
+
+
         // Display history
         var listMarkup = `
         <ul class="historyList">
@@ -595,56 +603,8 @@
         </ul>`;
 
 
-
-        function StartOver() {
-            count = 0;
-            quiet = 0;
-            confess = 0;
-            countComp = 0;
-            quietComp = 0;
-            confessComp = 0;
-            Opponent_log = [];
-            log = [];
-            storedlog = [];
-            Opponentindex = 0;
-            CurrMove = "None";
-            turn = "None";
-            recentMove = "None";
-            document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-        }
-        //Telling the user who is the current player
-
-
-
-        // function imgPicker(){
-        //     let imagesArray
-        // imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',];
-
-
-        // const temoInd = _.random(0, imagesArray.length );
-        // const ind = tempInd;
-
-        // let img = imagesArray[ind];
-        //     return img;
-        // }
-
-
-
-        // console.log(img);
-
         function Switch() {
-            //if(count%2==0)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
-            //if(count%2==1)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
-
-            
-            // add array for all the images. 
-            //"https://i.imgur.com/6v16xN9.jpg"
-
             document.getElementById("avatar").src = "https://i.imgur.com/6v16xN9.jpg"
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
@@ -661,10 +621,8 @@
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
             }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
         }
+
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
@@ -677,7 +635,6 @@
                     storedlog.push('K-PK');
                 }
             }
-
 
             recentMove = 'K';
         }
@@ -697,21 +654,16 @@
             recentMove = 'C';
         }
 
-        //Opponent log (The three strategies)
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
-            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
-
-
         }
 
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
-            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -780,6 +732,17 @@
             document.getElementById("text").innerText = "code: " + code;
         }
 
+        function notifyUserModal() {
+            let modal2 = document.getElementById('popupNotifyUser');
+            modal2.style.display = 'block';
+        }
+
+        function closeNotifyUserModal() {
+            let modal3 = document.getElementById('popupNotifyUser');
+            modal3.style.display = 'none';
+        }
+
+
 
         //Adding to total counter when on-click 
         function myFunction2() {
@@ -802,10 +765,8 @@
             countComp = countComp + 1;
 
             if (count <= 100) {
-                document.getElementById("demo2").innerText = "Round : " + `${count + 1}` ;
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}`;
             }
-
-
 
             // Display Moves of opponents and user
             listMarkup =
@@ -818,6 +779,12 @@
             document.getElementById("history").innerHTML = listMarkup;
 
 
+            if (count === 51) {
+                notifyUserModal();
+                setTimeout(function () {
+                    closeNotifyUserModal();
+                }, 2900);
+            }
 
             if (count > 50) { // hide first 50 moves
                 if (Opponent_log[Opponentindex + 50] === 'C') {
@@ -843,11 +810,7 @@
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
 
-
                 document.getElementById("history").innerHTML = listMarkup;
-                // document.getElementById("Opp_move").innerText = "User 2 : " + 
-                // compScore;
-
 
 
                 // if the count is equal to 100 send the data to the backend
@@ -855,104 +818,26 @@
 
 
                 if ((count) === 100) {
-
-
-                    // count = count - 1;
-                    // countComp = countComp - 1;
-                    // Opponent_log.pop();
-
-
-                    // if (strategy === 2) {
-                    //     console.log(`the strategy is ${strategy}`);
-                    //     confessComp = confessComp - 1;
-                    // }
-
-                    // if (strategy === 1) {
-                    //     console.log(`the strategy is ${strategy}`);
-                    //     quietComp = quietComp - 1;
-                    // }
-
-                    // if (strategy === 3) {
-                    //     console.log(`the strategy is ${strategy}`);
-
-
-                    //     // check if  any are over 100
-                    //     if (quietComp > 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-                    //     if (confessComp > 100) {
-                    //         confessComp = confessComp - 1;
-                    //     }
-
-                    //     // greates one -1
-                    //     if (quietComp > confessComp && quietComp != 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-                    //     if (confessComp > quietComp && confessComp != 100) {
-                    //         confessComp = confessComp - 1;
-                    //     }
-
-                    //     if (quietComp === 1 && confessComp === 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-
-
-                        // handle 50/50 split 
-                        // if (quietComp > 50 && confessComp === 50) {
-                        //     quietComp = quietComp - 1;
-                        // }
-
-                        // if (confessComp > 50 && quietComp === 50) {
-                        //     confessComp = confessComp - 1;
-                        // }
-
-
-                    // }
-
-
-
-
                     // Flag detrimes if any vaule is not equal to 100
                     if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
                         flag = 0; // All vaules are equal to 100
                     } else {
                         flag = 1; // Vaules are not equal to 100 
                     }
-
-
                     sendData();
-
                     // pop up modal says go back to Qualtrics
                     openModal();
-
-
-
-                // } // end of if statement 
+                }
 
             }
-                    
-        }  
-     }
-
-
-        // function openModal(){
-        //     let modal = document.getElementById('popupModal');
-        //     modal.style.display = 'block';
-        // }
-
+        }
 
 
 
         window.onbeforeunload = function () {
+
             sendData();
-
-
-            // pop up modal says go back to Qualtrics
             if (count === 99 || count === 100) {
-
                 openModal();
             }
 

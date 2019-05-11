@@ -4,14 +4,14 @@
 <head>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-
-    <!------ Include the above in your HEAD tag ---------->
+    
+    
+<!------ Include the above in your HEAD tag ---------->
     <!-- keep css in index.html for flask  -->
     <style>
         body {
-            background-color: lightblue;
-            /* background-image: url("https://i.imgur.com/m8arVYO.png"); */
+            background-color: #f8f9fa;
+            background-image: url("https://i.imgur.com/m8arVYO.png");
             background-repeat: no-repeat;
             background-size: cover;
             margin: 0px;
@@ -75,7 +75,6 @@
             border-style: double;
             border-width: 10px;
         }
-
         .button1:hover {
             box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
         }
@@ -85,24 +84,21 @@
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 
         }
-
         .shadow {
             -moz-box-shadow: 3px 3px 5px 6px #ccc;
             -webkit-box-shadow: 3px 3px 5px 6px #ccc;
             box-shadow: 3px 3px 5px 6px #ccc;
         }
-
+       
         /* added this to see if we could use to scroll race */
-
         .scrollable-menu {
             height: auto;
             max-height: 200px;
             overflow-x: hidden;
         }
-
+        
         /* Dropdown Button */
-
-        .dropbtn {
+        .dropbtn{
             background-color: midnightblue;
             border: none;
             color: white;
@@ -117,24 +113,20 @@
         }
 
         /* Dropdown button on hover & focus */
-
-        .dropbtn:hover,
-        .dropbtn:focus {
+        .dropbtn:hover, .dropbtn:focus{
             background-color: black;
         }
 
         /* the container - needed to position the dropdown content */
-
-        .dropdown {
+        .dropdown{
             position: relative;
             left: 0;
             display: inline-block;
-
+            
         }
 
         /* Dropdown Content (Hidden by Default) */
-
-        .dropdown-content {
+        .dropdown-content{
             display: none;
             position: absolute;
             background-color: #f1f1f1;
@@ -146,31 +138,25 @@
         }
 
         /* Links inside the dropdown */
-
-        .dropdown-content a {
-            color: whitesmoke;
+        .dropdown-content a{
+            color:whitesmoke;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
 
         /* Change color of dropdown links on hover */
-
-        .dropdown-content a::hover {
-            background-color: gray;
-        }
+        .dropdown-content a: :hover {background-color: gray;}
 
         /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-
-        .show {
-            display: block;
-        }
-
-        .wrapper {
-            margin-left: auto;
-            margin-right: auto;
-            width: 960px;
-        }
+		.show {display:block;} 
+			
+		wrapper {
+            margin-left:auto;
+            margin-right:auto;
+            width:960px;
+        } 
+        
     </style>
 
 </head>
@@ -181,12 +167,12 @@
 
     <!-- <img src=" " alt="CSU Logo" style="  width:200px;height:100px; position: fixed; right: 50px; top:0px;" > -->
 
-    <div class="header">
+    <!-- <div class="header">
 
         <h1 class="text-color__white"> Prisoner's Dilemma </h1>
 
 
-    </div>
+    </div> -->
 
     <!--<nav class="navbar shadow fixed-top navbar-expand-lg" style="background-color: black; color: white">
             <img onclick="sendData(); location.href='/'" src="https://i.imgur.com/H0zSNIu.png"width="300" height="77" alt="">
@@ -202,25 +188,17 @@
 
     <!-- <hr> -->
 
-    <div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5">
 
 
 
 
-        <div class="card mt-5" style="width: 50rem; height: 30rem; background: white; bottom: 10%;position: fixed;">
+<div class="card mt-5" style="width: 50rem; height: 30rem; background: white; bottom: 10%;position: fixed;">
 
-            <div class="card-body">
-                <h5 class="card-title ml-5 mt-5 "></h5>
-                <b>
-                    <p class="card-text mt-2" style="font-size: 20px; margin-top:30%;">Welcome to the Prisoner's Dilemma paradox! A game that shows why two rational individuals might not cooperate,
-                        even if it appears that it is in their best interests to do so.
-                        
-                </b>
-
-            </div>
-        </div>
-
-    </div>
+  <div class="card-body">
+    <h5 class="card-title ml-5 mt-5 "></h5>
+    <b> <p class="card-text mt-2" style="font-size: 20px; margin-top:30%;">Welcome to the Prisoner's Dilemma paradox! A game that shows why two rational individuals might not cooperate, even if it appears that it is in their best interests to do so.<br> 
+          Select the correct demographics and Click Play Now to begin!</p> </b>
     <!--<li class="nav-item mr-4" style="width: 100%;">
         <p style="font-size: 20px; "> Sex</p>
         <form action="/action_page.php"> 
@@ -237,12 +215,12 @@
             </select> 
         
     </li> -->
-
-
-    <!-- <button class="button button2 btn-black" style="margin-top:20%; margin-left: 36%;"  id="demo" onclick="senddemogdata();location.href='/game' ">Play Now</button> -->
+        
+    
+    <button class="button button2 btn-black" style="margin-top:20%; margin-left: 36%;"  id="demo" onclick="senddemogdata();location.href='/game2' ">Play Now</button>
 
     <!--DIV FOR DROPDOWN MENU FOR AGE WITH BUTTON FOR EACH -->
-    <!-- <div class="dropdown " style="left: -180px;top: -150px" >
+    <div class="dropdown " style="left: -180px;top: -150px" >
 	    <button onclick="AgeFunction()" class="dropbtn">Age</button>
             <div id="AgeDropdown" class="dropdown-content">
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left: 0%"  id="agebut" onclick="ageSelect('+18','agebut');changeColor('agebut')">18 - 24</button>
@@ -251,20 +229,20 @@
 		        <br>
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="ageOver60" onclick="ageSelect('+60','ageOver60');changeColor('ageOver60')">Over 60</button>
         </div>
-    </div>   -->
-
-    <!--DIV FOR DROPDOWN MENU FOR GENDER WITH BUTTON FOR EACH -->
-    <!-- <div class="dropdown " style="left: -150px;top: -150px" >
+    </div>  
+    
+     <!--DIV FOR DROPDOWN MENU FOR GENDER WITH BUTTON FOR EACH -->
+    <div class="dropdown " style="left: -150px;top: -150px" >
 	    <button onclick="GenderFunction(); EnableButton()" class="dropbtn">Gender</button>
         <div id="GenderDropdown" class="dropdown-content" style="position: fixed">
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left: 0%"  id="Male" onclick="genderSelect('Male','Male');changeColor('Male')">Male</button>
 		    <br>
 		    <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="Female" onclick="genderSelect('Female','Female');changeColor('Female')">Female</button>
 	    </div>
-    </div>  -->
+    </div> 
 
     <!--DIV FOR DROPDOWN MENU FOR RACE WITH BUTTON FOR EACH -->
-    <!-- <div class="dropdown " style="left: -550px;top: -150px" >
+ <div class="dropdown " style="left: -550px;top: -150px" >
 	<button onclick="raceFunction();" class="dropbtn scrollable-menu">Race</button>
       <div id="RaceDropdown" class="dropdown-content"style="background: transparent; position: fixed">
 		<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="AfricanAmerican" onclick="raceSelect('African American','AfricanAmerican');changeColor('AfricanAmerican')">African American</button>
@@ -272,21 +250,21 @@
 		<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%;padding-right:60%"  id="Latino" onclick="raceSelect('Lation','Latino');changeColor('Latino')">Latino</button>
 		<br>
 		<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%;padding-right:60%"  id="White" onclick="raceSelect('White','White');changeColor('White')">White</button>
+		<br>
+		<!--<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%;padding-right: 20%"  id="PacificIslander" onclick="raceSelect('Pacific Islander','PacificIslander');changeColor('PacificIslander')">Pacific Islander</button>
 		<br> -->
-    <!--<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%;padding-right: 20%"  id="PacificIslander" onclick="raceSelect('Pacific Islander','PacificIslander');changeColor('PacificIslander')">Pacific Islander</button>
-		<br> -->
-    <!-- <button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="NativeAmerican" onclick="raceSelect('Native American','NativeAmerican');changeColor('NativeAmerican')">Native American</button>
+		<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%"  id="NativeAmerican" onclick="raceSelect('Native American','NativeAmerican');changeColor('NativeAmerican')">Native American</button>
 		<br>
     	<button class="button button2 btn-black" style="margin-top:0%; margin-left:0%;padding-right: 50%"  id="Other" onclick="raceSelect('Other','Other');changeColor('Other')">Other</button>
-	</div> -->
-    <!-- </div>  -->
+	</div>
+ </div> 
 
 
-    <!-- </div>
+  </div>
 </div>
 
-</div> -->
-    <!-- 
+</div>
+<!-- 
     <div style="width: 90%; min-height: 50vh; background: white; position: fixed; right: 90px; top:150px; ">
 
         <p align="center">
@@ -327,8 +305,8 @@
             </li>
         </ul>
     </div> -->
-
-    <!-- <script>
+    
+    <script>
         var demographics = ["","",""]
         var age = 0;
         var gender="NONE";
@@ -402,11 +380,11 @@
             }
           }
         } 
-        </script> -->
-
+        </script>
+        
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+    
 </body>
 
 </html>
