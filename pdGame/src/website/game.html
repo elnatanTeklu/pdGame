@@ -534,24 +534,6 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
-        let date = new Date();
-
-        // Sending data to backend
-        function metaData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/metaData", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                date: date,
-                code: code
-            }));
-
-        }
-
-        window.addEventListener('load', function () {
-            metaData();
-        }, false);
-
 
         function codeGenerator() {
             let one = _.random(0, 9);
@@ -576,6 +558,24 @@
 
         const code = codeGenerator();
 
+        let date = new Date();
+
+
+     // Sending data to backend
+     function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+                code: code
+            }));
+
+        }
+
+        window.addEventListener('load', function () {
+            metaData();
+        }, false);
 
         //Variables for counter
         const game = 1;
@@ -609,7 +609,7 @@
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         function Switch2() {
@@ -833,15 +833,16 @@
         }
 
 
-
-        window.onbeforeunload = function () {
-
-            sendData();
-            if (count === 99 || count === 100) {
-                openModal();
+        window.onbeforeunload = function(){
+            
+            if( count < 100 ){
+                
+                sendData();
+                
             }
 
-        }
+               
+            }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

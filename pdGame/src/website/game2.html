@@ -494,93 +494,36 @@
     <!-- keep script in this file becuase of flask  -->
     <script>
 
-    let date = new Date();
+    // let date = new Date();
         
-      // Sending data to backend
-      function metaData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/metaData", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                date: date,
-            }));
+    //   // Sending data to backend
+    //   function metaData() {
+    //         var xhr = new XMLHttpRequest();
+    //         xhr.open("POST", "/metaData", true);
+    //         xhr.setRequestHeader('Content-Type', 'application/json');
+    //         xhr.send(JSON.stringify({
+    //             date: date,
+    //             code
+    //         }));
 
-        }
+    //     }
 
-        function roundSetToOne(){
-            if( count === 0){
-                document.getElementById("demo2").innerText = "Round : " + roundNumberOne;
-            }
-        }
-
-
-       console.log(` ${date}`); 
-
-        window.addEventListener('load' , function() {
-            metaData()
-            roundSetToOne();
-        }, false);
+    //     function roundSetToOne(){
+    //         if( count === 0){
+    //             document.getElementById("demo2").innerText = "Round : " + roundNumberOne;
+    //         }
+    //     }
 
 
-        function kMethod() {
-            test_log.push('C');
-        }
+    //    console.log(` ${date}`); 
 
-        function cMethod() {
-            test_log.push('C');
-        }
-
-
-    
-        //Variables for counter
-        let roundNumberOne = 1;
-        const game = 2;
-        let flag = 0;  //flag will 
-        var count = 0;
-        var quiet = 0;
-        var confess = 0;
-        var countComp = 0;
-        var quietComp = 0;
-        var confessComp = 0;
-        var log = [];
-        var storedlog = [];
-        var Opponent_log = [];
-        let test_log = [];
-        var Opponentindex = 0;
-        var CurrMove = "None";
-        var turn = "None";
-        var recentMove = 'K';
-        var gameKnowledgetype = "lastFifty";
-        // Display history
-        var listMarkup = `
-        <ul class="historyList">
-        ${log.map(l =>'<li>{l}</li>')}
-        </ul>`;
+    //     window.addEventListener('load' , function() {
+    //         metaData()
+    //         roundSetToOne();
+    //     }, false);
 
 
-
-        function StartOver() {
-            count = 0;
-            quiet = 0;
-            confess = 0;
-            countComp = 0;
-            quietComp = 0;
-            confessComp = 0;
-            Opponent_log = [];
-            log = [];
-            storedlog = [];
-            Opponentindex = 0;
-            CurrMove = "None";
-            turn = "None";
-            recentMove = "None";
-            document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-        }
-        //Telling the user who is the current player
-
-
-        function codeGenerator() {
+    function codeGenerator() {
             let one = _.random(0, 9);
             let two = _.random(0, 9);
             let three = _.random(0, 9);
@@ -603,25 +546,59 @@
 
         const code = codeGenerator();
 
-
-  
-        // console.log(` AT THE START quiet = ${quiet} and confess = ${confess} and count = ${count} log = ${log.length} opp= ${Opponent_log.length} log array = ${log}`);
+        let date = new Date();
 
 
+     // Sending data to backend
+     function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+                code: code
+            }));
 
+        }
+
+        window.addEventListener('load', function () {
+            metaData();
+        }, false);
+      
+
+
+    
+        //Variables for counter
+        const game = 2;
+        let flag = 0;  //flag will 
+        var count = 0;
+        var quiet = 0;
+        var confess = 0;
+        var countComp = 0;
+        var quietComp = 0;
+        var confessComp = 0;
+        var log = [];
+        var storedlog = [];
+        var Opponent_log = [];
+        var Opponentindex = 0;
+        var CurrMove = "None";
+        var turn = "None";
+        var recentMove = 'K';
+        var gameKnowledgetype = "lastFifty";
+        // Display history
+        var listMarkup = `
+        <ul class="historyList">
+        ${log.map(l =>'<li>{l}</li>')}
+        </ul>`;
 
 
         function Switch() {
-            //if(count%2==0)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
-            //if(count%2==1)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("avatar").src = "https://i.imgur.com/6v16xN9.jpg"
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         function Switch2() {
@@ -633,9 +610,7 @@
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
             }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
+        
         }
 
 
@@ -676,12 +651,11 @@
             recentMove = 'C';
         }
 
-        //Opponent log (The three strategies)
+
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
-            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
 
 
@@ -690,7 +664,6 @@
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
-            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -761,17 +734,7 @@
         //Adding to total counter when on-click 
         function myFunction2() {
 
-        //   let roundNumber = `${
-        //       log.map((hist,index) =>  `${index + 1}`
-        //        )}`
-
-        // let tempRoundNumber = count + 1;
-        // let roundNumber = tempRoundNumber;
-
-        console.log(`user= ${log.length} and opp = ${Opponent_log.length} 
-        testLog=${test_log.length}`);
-
-
+     
             if (count === 0) {
                 strategy = _.random(1, 3);
 
@@ -798,10 +761,7 @@
               
 
           
-            // console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
-
-            // console.log(` 2 quiet = ${quiet} and confess = ${confess} and count = ${count} log = ${log.length} opp= ${Opponent_log.length} log array = ${log} Opp_log array = ${Opponent_log}  test log = ${test_log.length} test log array = ${test_log}`);
-
+        
 
             if (count < 50) { // hide last 50 moves
                 if (Opponent_log[Opponentindex] === 'C') {
@@ -857,119 +817,22 @@
                 document.getElementById("history").innerHTML = listMarkup;
                
               
-
-                    // If Moves greater than 50 Hide the moves 
-
-                //     if( count > 50){
-                // //         listMarkup =
-                // //     `
-                // //     <ul>
-                // //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
-                // //     </ul>
-                // // `;
-
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
-
-
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     } else {
-
-                
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
-
-            
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     }
              
-
 
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
-                    //quiet + confess
+                  
 
                 if ((count) === 100) {
 
                
-                    // count = count - 1;
-                    // countComp = countComp - 1;
-                    // Opponent_log.pop();
-
-
-                    // if (strategy === 2) {
-                    //     console.log(`the strategy is ${strategy}`);
-                    //     confessComp = confessComp - 1;
-                    // }
-
-                    // if (strategy === 1) {
-                    //     console.log(`the strategy is ${strategy}`);
-                    //     quietComp = quietComp - 1;
-                    // }
-
-                    // if (strategy === 3) {
-                    //     console.log(`the strategy is ${strategy}`);
-
-                   
-                    //     // check if  any are over 100
-                    //     if (quietComp > 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-                    //     if (confessComp > 100) {
-                    //         confessComp = confessComp - 1;
-                    //     }
-
-                    //     // greates one -1
-                    //     if (quietComp > confessComp && quietComp != 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-                    //     if (confessComp > quietComp && confessComp != 100) {
-                    //         confessComp = confessComp - 1;
-                    //     }
-
-                    //     if (quietComp === 1 && confessComp === 100) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-
-
-                    //     // handle 50/50 split 
-                    //     if (quietComp > 50 && confessComp === 50) {
-                    //         quietComp = quietComp - 1;
-                    //     }
-
-                    //     if (confessComp > 50 && quietComp === 50) {
-                    //         confessComp = confessComp - 1;
-                    //     }
-
-
-                    // }
-
-        
-
-
                     // Flag detrimes if any vaule is not equal to 100
                     if( (quiet + confess) === 100 && (quietComp + confessComp) === 100 ){
                         flag = 0; // All vaules are equal to 100
                     } else{
                         flag = 1; // Vaules are not equal to 100 
                     }
-
-
-
                     
                     sendData();
                 
@@ -986,19 +849,20 @@
             }
 
 
-            window.onbeforeunload = function(){
-            sendData();
-                
-            // pop up modal says go back to Qualtrics
-            if(count === 99 || count === 100){
-                openModal();
-            }
-                  
-            }
-
-
-
         }
+
+
+
+        window.onbeforeunload = function(){
+            
+            if( count < 100 ){
+                
+                sendData();
+                
+            }
+
+               
+            }
 
 
         
