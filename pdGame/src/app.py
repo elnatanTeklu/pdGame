@@ -48,7 +48,13 @@ def game2Demographics():
 def basicGameDemographics():
     title = 'Create the input'
     return render_template('basicGameDemographics.html',
-                           title=title)   
+                           title=title)
+
+@app.route('/basicGamePicturesDemographics', methods=['GET'])
+def basicGamePicturesDemographics():
+    title = 'Create the input'
+    return render_template('basicGamePicturesDemographics.html',
+                           title=title) 
 
 @app.route('/game', methods=['GET'])
 def game():
