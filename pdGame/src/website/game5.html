@@ -252,7 +252,7 @@
 
 
 
-        .modal{
+        .modal {
             display: none;
             position: fixed;
             z-index: 1;
@@ -264,7 +264,7 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modalContent{
+        .modalContent {
             background-color: #f4f4f4;
             margin: 20% auto;
             padding: 20px;
@@ -278,8 +278,13 @@
             align-items: center;
         }
 
+        .modalSpacing {
+            text-align: center;
+        }
 
-
+        .modalText {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -305,7 +310,7 @@
                     </li> -->
 
                 <li class="nav-item ml-4">
-                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : 0</h1>
+                    <h1 class="text-color__white " id="demo2" style="font-size: 25px"> Round : 1</h1>
                 </li>
                 <li class="nav-item ml-4">
                     <h1 class="text-color__white " id="Opp_move" style="font-size: 25px"> User 2 : Hidden </h1>
@@ -362,8 +367,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
                     </div>
 
 
@@ -402,7 +407,7 @@
 
                         </li>
 
-                        
+
                     </ul>
 
 
@@ -415,7 +420,7 @@
 
         </div>
 
-        
+
 
         <!-- about the game section END  -->
 
@@ -433,10 +438,14 @@
 
     <div id="popupModal" class="modal">
         <div class="modalContent">
-            <p>Return to Qualtrics to get your unique code</p>
+            <div class="modalText">
+                <div class="modalSpacing">Game Over </div> Here is your unique
+                <span id="text"></span>
+                <div>Please return to Amazon Mechanical Turk to submit it </div>
+            </div>
+
         </div>
     </div>
-
 
 
 
@@ -486,31 +495,124 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
+        function codeGenerator() {
+            let one = _.random(1, 9);
+            let two = _.random(0, 9);
+            let three = _.random(0, 9);
+            let four = _.random(0, 9);
+            let five = _.random(0, 9);
 
-    let date = new Date();
-        
-      // Sending data to backend
-      function metaData() {
+            one = one.toString();
+            two = two.toString();
+            three = three.toString();
+            four = four.toString();
+            five = five.toString();
+
+
+            const code = one + two + three + four + five;
+
+
+            return code;
+
+        }
+
+        const code = codeGenerator();
+
+        let date = new Date();
+
+        function imgPicker() {
+            let imagesArray
+            imagesArray = ['AfricanAmericanMale.png', 'AfricanAmericanWomen.png',
+                'asianMale.png', 'CaucasianMale.png', 'caucasianMale2.png',
+                'caucasianWomen.png', 'hispanicWomen.png', 'hispanicWomen2.png'
+            ];
+            console.log("test");
+            const tempInd = _.random(0, imagesArray.length);
+            const ind = tempInd;
+            let img = imagesArray[ind];
+            console.log(img);
+
+
+            return img;
+        }
+
+
+        img = imgPicker();
+       
+
+        console.log(`img url ${img}`);
+
+        function imageName(img) {
+            if (img === "AfricanAmericanMale.png") {
+                name = "African American Male Jackson"
+            }
+
+            if (img === "AfricanAmericanWomen.png") {
+                name = "African American Female Jessica"
+            }
+
+            if (img === "asianMale.png") {
+                name = "Asian Male Yujing"
+            }
+
+            if (img === "CaucasianMale.png") {
+                name = "Caucasian male Mikey"
+            }
+
+            if (img === "CaucasianMale2.png") {
+                name = "Caucasian Male Dax"
+            }
+
+            if (img === "caucasianWomen.png") {
+                name = "Caucasian Female Ashley"
+            }
+
+            if (img === "hispanicWomen.png") {
+                name = "Hispanic Female Ac"
+            }
+
+            if (img === "hispanicWomen2.png") {
+                name = "Hispanic Female Jasmine"
+            }
+
+            return name;
+
+        }
+
+        name = imageName(img);
+        let nameAndImageUrl = `${name} ${img} `;
+        console.log(`Pic name: ${nameAndImageUrl} img url: ${img}`);
+
+
+        // if img is undefined rerun 
+        if (img === undefined) {
+            img = "AfricanAmericanMale.png"
+            name = "Fall over image African American Male Jackson"
+            nameAndImageUrl = `${name} ${img} `;
+        }
+
+        // Sending data to backend
+        function metaData() {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/metaData", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
                 date: date,
+                code: code
             }));
 
         }
 
-       console.log(` ${date}`); 
-
-        window.addEventListener('load' , function() {
-            metaData()
+        window.addEventListener('load', function () {
+            metaData();
+            const img = imgPicker();
         }, false);
 
 
 
         //Variables for counter
-        const game = 5;
-        let flag = 0;  //flag will 
+        const game = 2;
+        let flag = 0; //flag will 
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -525,6 +627,7 @@
         var turn = "None";
         var recentMove = 'K';
         var gameKnowledgetype = "lastFifty";
+        const gameKnowledgetypeName = "lastFifty with pictures";
         // Display history
         var listMarkup = `
         <ul class="historyList">
@@ -533,59 +636,14 @@
 
 
 
-        function StartOver() {
-            count = 0;
-            quiet = 0;
-            confess = 0;
-            countComp = 0;
-            quietComp = 0;
-            confessComp = 0;
-            Opponent_log = [];
-            log = [];
-            storedlog = [];
-            Opponentindex = 0;
-            CurrMove = "None";
-            turn = "None";
-            recentMove = "None";
-            document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-        }
-        //Telling the user who is the current player
-
-
-        function imgPicker() {
-            let imagesArray
-            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
-                'https://i.imgur.com/6v16xN9.jpg'
-            ];
-            console.log("test");
-            const tempInd = _.random(0, imagesArray.length);
-            const ind = tempInd;
-            let img = imagesArray[ind];
-            console.log(img);
-
-
-            return img;
-        }
-
-        
-        const img = imgPicker();
-
-      
-      
 
         function Switch() {
-            //if(count%2==0)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
-            //if(count%2==1)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("avatar").src = img;
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+            setTimeout(Switch2, 2000);
         }
 
         function Switch2() {
@@ -597,10 +655,15 @@
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
             }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
+
         }
+
+
+
+
+
+
+
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
@@ -633,12 +696,11 @@
             recentMove = 'C';
         }
 
-        //Opponent log (The three strategies)
+
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
-            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
 
 
@@ -647,7 +709,6 @@
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
-            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -678,6 +739,7 @@
             xhr.open("POST", "/senddata", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
+                code: code,
                 flag: flag,
                 game: game,
                 strategy: strategy,
@@ -687,10 +749,11 @@
                 log: log,
                 storedlog: storedlog,
                 countComp: count,
-                quietComp: quietComp, 
+                quietComp: quietComp,
                 confessComp: confessComp,
                 Opponent_log: Opponent_log,
-                gameKnowledgetype: gameKnowledgetype
+                gameKnowledgetypeName: gameKnowledgetypeName,
+                nameAndImageUrl: nameAndImageUrl
             }));
 
             // When the user clicks on div, open the popup
@@ -707,14 +770,16 @@
 
 
 
-        function openModal(){
+        function openModal() {
             let modal = document.getElementById('popupModal');
             modal.style.display = 'block';
+            document.getElementById("text").innerText = "code: " + code;
         }
 
 
         //Adding to total counter when on-click 
         function myFunction2() {
+
 
             if (count === 0) {
                 strategy = _.random(1, 3);
@@ -733,10 +798,15 @@
             count = count + 1;
             countComp = countComp + 1;
 
-            if(count <=100){
-                document.getElementById("demo2").innerText = "Round : " + count;
+            console.log(`test count: ${count}`)
+
+
+            if (count <= 100) {
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}`;
             }
-           
+
+
+
 
 
             if (count < 50) { // hide last 50 moves
@@ -753,6 +823,8 @@
                 }
 
                 // Display Moves of opponents and user
+
+
                 listMarkup =
                     `
                     <ul>
@@ -765,19 +837,19 @@
 
 
                 document.getElementById("history").innerHTML = listMarkup;
-               
+
 
 
 
             } else {
 
-                     
-                 document.getElementById("Opp_move").innerText = "User 2 : " +
-                        "Hidden";
+
+                document.getElementById("Opp_move").innerText = "User 2 : " +
+                    "Hidden";
 
 
 
-                        listMarkup =
+                listMarkup =
                     `
                     <ul>
                     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
@@ -789,126 +861,30 @@
 
 
                 document.getElementById("history").innerHTML = listMarkup;
-               
-        
-
-                    // If Moves greater than 50 Hide the moves 
-
-                //     if( count > 50){
-                // //         listMarkup =
-                // //     `
-                // //     <ul>
-                // //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden </li> <br>`).join('')}
-                // //     </ul>
-                // // `;
-
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
 
 
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     } else {
-
-                
-                // listMarkup =
-                //     `
-                //     <ul>
-                //     ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
-                //     </ul>
-                // `;
-
-            
-                // document.getElementById("history").innerHTML = listMarkup;
-
-                //     }
-             
 
 
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
 
-                if ((quiet + confess) === 100) {
 
-               
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
-
-
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
-
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
-
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
-
-                   
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-
-
-                        // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
-
-
-                    }
-
-        
+                if ((count) === 100) {
 
 
                     // Flag detrimes if any vaule is not equal to 100
-                    if( (quiet + confess) === 100 && (quietComp + confessComp) === 100 ){
+                    if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
                         flag = 0; // All vaules are equal to 100
-                    } else{
+                    } else {
                         flag = 1; // Vaules are not equal to 100 
                     }
 
-
-
-                    
                     sendData();
-                
+
                     // pop up modal says go back to Qualtrics
                     openModal();
-                    
+
 
 
                 } // end of if statement 
@@ -919,22 +895,20 @@
             }
 
 
-            window.onbeforeunload = function(){
-            sendData();
-                
-            // pop up modal says go back to Qualtrics
-            if(count === 99 || count === 100){
-                openModal();
-            }
-                  
-            }
-
-
-
         }
 
 
-        
+
+        window.onbeforeunload = function () {
+
+            if (count < 100) {
+
+                sendData();
+
+            }
+
+
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

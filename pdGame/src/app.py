@@ -19,7 +19,7 @@ demogDict = {}
 
 
 
-app = Flask(__name__, template_folder='website')
+app = Flask(__name__, static_url_path='', static_folder='static', template_folder='website')
 app.secret_key = 's3cr3t'
 app.debug = True
 app._static_folder = os.path.abspath("website/")
@@ -29,6 +29,7 @@ def index():
     title = 'Create the input'
     return render_template('index.html',
                            title=title)
+
 
 @app.route('/game1Demographics', methods=['GET'])
 def game1Demographics():
@@ -47,6 +48,19 @@ def game2Demographics():
 def game():
     title = 'Create the input'
     return render_template('game.html',
+                           title=title)
+
+@app.route('/basicGame', methods=['GET'])
+def basicGame():
+    title = 'Create the input'
+    return render_template('basicGame.html',
+                           title=title)
+                           
+
+@app.route('/basicGamePictures', methods=['GET'])
+def basicGamePictures():
+    title = 'Create the input'
+    return render_template('basicGamePictures.html',
                            title=title)
 
 @app.route('/endGame', methods=['GET'])
@@ -77,9 +91,21 @@ def game9():
                            title=title)
 
 
+@app.route('/game4', methods=['GET'])
+def game4():
+    title = 'Create the input'
+    return render_template('game4.html',
+                           title=title)
+
+@app.route('/game5', methods=['GET'])
+def game5():
+    title = 'Create the input'
+    return render_template('game5.html',
+                           title=title)
+      
 
 @app.route('/downloads', methods=['GET'])
-def game4():
+def downlaods():
    title = 'Create the input'
    return render_template('downloads.html',
                           title=title)
@@ -196,5 +222,5 @@ def user_count():
         
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=8089)
 

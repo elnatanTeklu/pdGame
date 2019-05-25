@@ -252,7 +252,7 @@
 
 
 
-        .modal {
+        .modals {
             display: none;
             position: fixed;
             z-index: 1;
@@ -277,7 +277,16 @@
             justify-content: center;
             align-items: center;
         }
+
+        .modalSpacing {
+            text-align: center;
+        }
+
+        .modalText {
+            text-align: center;
+        }
     </style>
+
 </head>
 
 
@@ -359,8 +368,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
                     </div>
 
 
@@ -427,13 +436,54 @@
     <!-- histroy section END -->
 
 
-
-    <div id="popupModal" class="modal">
+    <div id="popupNotifyUser" class="modals">
         <div class="modalContent">
-            <p class="modalText">Return to Qualtrics to get your unique code</p>
-            <p id="text"></p>
+            <div class="modalText">
+                <div class="modalSpacing">You can now see user 2's past moves </div>
+            </div>
         </div>
     </div>
+
+    <div id="popupModal" class="modals">
+        <div class="modalContent">
+            <div class="modalText">
+                <div class="modalSpacing">Game Over </div> Here is your unique
+                <span id="text"></span>
+                <div>Please return to Amazon Mechanical Turk to submit it </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- <div id="popupNotifyUser" class="modals">
+        <div class="modalContent">
+            <div class="modalText">
+                <div class="modalSpacing">You can now see user 2's past moves </div>
+            </div>
+        </div> -->
+
+
+
+    <!-- <div  id="popupNotifyUser" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can now see user 2's past moves</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
 
 
 
@@ -484,30 +534,8 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
-        let date = new Date();
-
-        // Sending data to backend
-        function metaData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/metaData", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                date: date,
-                code: code
-            }));
-
-        }
-
-
-
-
-        window.addEventListener('load', function () {
-            metaData();
-        }, false);
-
-
         function codeGenerator() {
-            let one = _.random(0, 9);
+            let one = _.random(1, 9);
             let two = _.random(0, 9);
             let three = _.random(0, 9);
             let four = _.random(0, 9);
@@ -529,21 +557,14 @@
 
         const code = codeGenerator();
 
-
-        // function imgNames(ind){
-        //     let imgNmae = ['name1', 'name2', 'name3'];
-        //     const theImgName = imgName[ind];
-        //     console.log(` the image name: ${theImgName}`);
-        //     return theImgName;
-
-        // }
-
+        let date = new Date();
 
 
         function imgPicker() {
             let imagesArray
-            imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',
-                'https://i.imgur.com/6v16xN9.jpg'
+            imagesArray = ['AfricanAmericanMale.png', 'AfricanAmericanWomen.png',
+                'asianMale.png', 'CaucasianMale.png', 'caucasianMale2.png',
+                'caucasianWomen.png', 'hispanicWomen.png', 'hispanicWomen2.png'
             ];
             console.log("test");
             const tempInd = _.random(0, imagesArray.length);
@@ -554,20 +575,87 @@
 
             return img;
         }
-        const img = imgPicker();
-
-     
-     
 
 
+        img = imgPicker();
+       
 
-        // const imgName = img[0][1];
+        console.log(`img url ${img}`);
 
-        // console.log(` The image name:  ${imgName}`);
+        function imageName(img) {
+            if (img === "AfricanAmericanMale.png") {
+                name = "African American Male Jackson"
+            }
+
+            if (img === "AfricanAmericanWomen.png") {
+                name = "African American Female Jessica"
+            }
+
+            if (img === "asianMale.png") {
+                name = "Asian Male Yujing"
+            }
+
+            if (img === "CaucasianMale.png") {
+                name = "Caucasian male Mikey"
+            }
+
+            if (img === "CaucasianMale2.png") {
+                name = "Caucasian Male Dax"
+            }
+
+            if (img === "caucasianWomen.png") {
+                name = "Caucasian Female Ashley"
+            }
+
+            if (img === "hispanicWomen.png") {
+                name = "Asian Female Ac"
+            }
+
+            if (img === "hispanicWomen2.png") {
+                name = "Hispanic Female Jasmine"
+            }
+
+            return name;
+
+        }
+
+        name = imageName(img);
+        let nameAndImageUrl = `${name} ${img} `;
+        console.log(`Pic name: ${nameAndImageUrl} img url: ${img}`);
+
+
+        // if img is undefined rerun 
+        if (img === undefined) {
+            img = "AfricanAmericanMale.png"
+            name = "Fall over image African American Male Jackson"
+            nameAndImageUrl = `${name} ${img} `;
+        }
+
+
+        // Sending data to backend
+        function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+                code: code
+            }));
+
+        }
+
+        window.addEventListener('load', function () {
+            metaData();
+        }, false);
+
+
+
+
+ 
 
         //Variables for counter
         const game = 4;
-        let flag = 0; //flag will 
+        let flag = 0;
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -582,6 +670,9 @@
         var turn = "None";
         var recentMove = 'K';
         var gameKnowledgetype = "firstFifty";
+        const gameKnowledgetypeName = "firstFifty with pictures";
+
+
         // Display history
         var listMarkup = `
         <ul class="historyList">
@@ -590,55 +681,65 @@
 
 
 
-        function StartOver() {
-            count = 0;
-            quiet = 0;
-            confess = 0;
-            countComp = 0;
-            quietComp = 0;
-            confessComp = 0;
-            Opponent_log = [];
-            log = [];
-            storedlog = [];
-            Opponentindex = 0;
-            CurrMove = "None";
-            turn = "None";
-            recentMove = "None";
-            document.getElementById("demo2").innerText = "Round: " + count;
-            document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
-            document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
-        }
-        //Telling the user who is the current player
-
-
-
-        // function imgPicker(){
+        // function imgPicker() {
         //     let imagesArray
-        // imagesArray = ['https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg','https://i.imgur.com/6v16xN9.jpg',];
+        //     imagesArray = ['https://imgur.com/Evf3qPB.jpg', 'https://imgur.com/bsZ8Y09.jpg',
+        //         'https://imgur.com/Iu6F2BU.jpg','https://imgur.com/nFq39nB.jpg','https://imgur.com/aExdwq9.jpg','https://imgur.com/vjuzSCi.jpg','https://imgur.com/aCN192t.jpg','https://imgur.com/knzJE0g.jpg'
+        //     ];
+        //     console.log("test");
+        //     const tempInd = _.random(0, imagesArray.length);
+        //     const ind = tempInd;
+        //     let img = imagesArray[ind];
+        //     console.log(img);
 
 
-        // const temoInd = _.random(0, imagesArray.length );
-        // const ind = tempInd;
-
-        // let img = imagesArray[ind];
         //     return img;
+        // }
+
+        // const img = imgPicker();
+
+
+        // console.log(img);
+
+        // function imageName(img){
+        //     if( img === "https://imgur.com/Evf3qPB"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/bsZ8Y09.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/Iu6F2BU.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/nFq39nB.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/aExdwq9.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/vjuzSCi.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/aCN192t.jpg"){
+        //         name = "Mikey"
+        //     }
+
+        //     if( img === "https://imgur.com/knzJE0g.jpg"){
+        //         name = "Mikey"
+        //     }
+
         // }
 
 
 
-        console.log(img);
-
         function Switch() {
-            //if(count%2==0)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/6CdRG1v.png"
-            //if(count%2==1)
-            //    document.getElementById("avatar").src= "https://i.imgur.com/qde92cR.png"
             document.getElementById("switch").innerText = "Current Turn: User 2";
-
-            
-            // add array for all the images. 
-            //"https://i.imgur.com/6v16xN9.jpg"
-
             document.getElementById("avatar").src = img;
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
@@ -655,10 +756,8 @@
                 document.getElementById("demo3").disabled = false;
                 document.getElementById("demo4").disabled = false;
             }
-            //  else {
-            //     document.getElementById("demo4").disabled = false;
-            // }
         }
+
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
@@ -671,7 +770,6 @@
                     storedlog.push('K-PK');
                 }
             }
-
 
             recentMove = 'K';
         }
@@ -691,21 +789,16 @@
             recentMove = 'C';
         }
 
-        //Opponent log (The three strategies)
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
-            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
-
-
         }
 
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
-            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -751,7 +844,8 @@
                 quietComp: quietComp,
                 confessComp: confessComp,
                 Opponent_log: Opponent_log,
-                gameKnowledgetype: gameKnowledgetype
+                gameKnowledgetypeName: gameKnowledgetypeName,
+                nameAndImageUrl: nameAndImageUrl
             }));
 
             // When the user clicks on div, open the popup
@@ -773,6 +867,17 @@
             modal.style.display = 'block';
             document.getElementById("text").innerText = "code: " + code;
         }
+
+        function notifyUserModal() {
+            let modal2 = document.getElementById('popupNotifyUser');
+            modal2.style.display = 'block';
+        }
+
+        function closeNotifyUserModal() {
+            let modal3 = document.getElementById('popupNotifyUser');
+            modal3.style.display = 'none';
+        }
+
 
 
         //Adding to total counter when on-click 
@@ -796,10 +901,8 @@
             countComp = countComp + 1;
 
             if (count <= 100) {
-                document.getElementById("demo2").innerText = "Round : " + count;
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}`;
             }
-
-
 
             // Display Moves of opponents and user
             listMarkup =
@@ -812,6 +915,12 @@
             document.getElementById("history").innerHTML = listMarkup;
 
 
+            if (count === 51) {
+                notifyUserModal();
+                setTimeout(function () {
+                    closeNotifyUserModal();
+                }, 2900);
+            }
 
             if (count > 50) { // hide first 50 moves
                 if (Opponent_log[Opponentindex + 50] === 'C') {
@@ -837,119 +946,37 @@
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
 
-
                 document.getElementById("history").innerHTML = listMarkup;
-                // document.getElementById("Opp_move").innerText = "User 2 : " + 
-                // compScore;
-
 
 
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
 
-                if ((quiet + confess) === 100) {
-
-
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
-
-
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
-
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
-
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
-
-
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-
-
-                        // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
-
-
-                    }
-
-
-
-
+                if ((count) === 100) {
                     // Flag detrimes if any vaule is not equal to 100
                     if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
                         flag = 0; // All vaules are equal to 100
                     } else {
                         flag = 1; // Vaules are not equal to 100 
                     }
-
-
                     sendData();
-
                     // pop up modal says go back to Qualtrics
                     openModal();
-
-
-
-                } // end of if statement 
-
+                }
 
             }
-
-
         }
 
 
-        // function openModal(){
-        //     let modal = document.getElementById('popupModal');
-        //     modal.style.display = 'block';
-        // }
-
-
-
-
         window.onbeforeunload = function () {
-            sendData();
 
+            if (count < 100) {
 
-            // pop up modal says go back to Qualtrics
-            if (count === 99 || count === 100) {
+                sendData();
 
-                openModal();
             }
+
 
         }
     </script>
