@@ -62,6 +62,11 @@ def basicGamePictures():
     title = 'Create the input'
     return render_template('basicGamePictures.html',
                            title=title)
+@app.route('/imagesWithNames', methods=['GET'])
+def imagesWithNames():
+    title = 'Create the input'
+    return render_template('imagesWithNames.html',
+                           title=title)
 
 @app.route('/endGame', methods=['GET'])
 def game1():
