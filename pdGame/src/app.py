@@ -49,8 +49,7 @@ def game2Demographics():
     title = 'Create the input'
     return render_template('game2Demographics.html',
                            title=title)                                            
-                           title=title)
-
+                         
 
 
 
