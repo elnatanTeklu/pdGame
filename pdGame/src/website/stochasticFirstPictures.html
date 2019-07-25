@@ -252,7 +252,7 @@
 
 
 
-        .modals {
+        .modal {
             display: none;
             position: fixed;
             z-index: 1;
@@ -278,15 +278,37 @@
             align-items: center;
         }
 
-        .modalSpacing {
-            text-align: center;
+
+        .newModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modalText {
+        .newModalContent {
+            background-color: #f4f4f4;
+            margin: 20% auto;
+            padding: 20px;
+            width: 60%;
+            height: 30%;
             text-align: center;
+            font-size: 2em;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+
+
+
     </style>
-
 </head>
 
 
@@ -368,8 +390,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch();onClickCounter()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch();flagActivated()">Confess</button>
                     </div>
 
 
@@ -436,55 +458,23 @@
     <!-- histroy section END -->
 
 
-    <div id="popupNotifyUser" class="modals">
+
+    <div id="popupModal" class="modal">
         <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">You can now see user 2's past moves </div>
-            </div>
+            <p class="modalText">Return to Qualtrics to get your unique code</p>
+            <p id="text"></p>
         </div>
     </div>
 
-    <div id="popupModal" class="modals">
-        <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">Game Over </div> Here is your unique
-                <span id="text"></span>
-                <div>Please return to Amazon Mechanical Turk to submit it </div>
-            </div>
-
+    <div id="popupWarning" class="newModal">
+        <div class="newModalContent">
+            <p class="modalText">This button has been disabled for the next <br>    <i class="fas fa-times"></i> </p>
+            <p id="roundText"></p>
         </div>
     </div>
 
 
-    <!-- <div id="popupNotifyUser" class="modals">
-        <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">You can now see user 2's past moves </div>
-            </div>
-        </div> -->
-
-
-
-    <!-- <div  id="popupNotifyUser" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>You can now see user 2's past moves</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
+    
 
 
 
@@ -534,8 +524,28 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
+        let date = new Date();
+
+        // Sending data to backend
+        function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+                code: code
+            }));
+
+        }
+
+
+        window.addEventListener('load', function () {
+            metaData();
+        }, false);
+
+
         function codeGenerator() {
-            let one = _.random(1, 9);
+            let one = _.random(0, 9);
             let two = _.random(0, 9);
             let three = _.random(0, 9);
             let four = _.random(0, 9);
@@ -555,9 +565,6 @@
 
         }
 
-        const code = codeGenerator();
-
-        let date = new Date();
 
 
         function imgPicker() {
@@ -632,30 +639,23 @@
         }
 
 
-        // Sending data to backend
-        function metaData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/metaData", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                date: date,
-                code: code
-            }));
-
-        }
-
-        window.addEventListener('load', function () {
-            metaData();
-        }, false);
 
 
 
 
- 
+
+
+
+
+
+
+
+
+        const code = codeGenerator();
 
         //Variables for counter
-        const game = 4;
-        let flag = 0;
+        const game = "stochastic";
+        let flag = 0; //flag will 
         var count = 0;
         var quiet = 0;
         var confess = 0;
@@ -670,9 +670,6 @@
         var turn = "None";
         var recentMove = 'K';
         var gameKnowledgetype = "firstFifty";
-        const gameKnowledgetypeName = "firstFifty with pictures";
-
-
         // Display history
         var listMarkup = `
         <ul class="historyList">
@@ -681,82 +678,99 @@
 
 
 
-        // function imgPicker() {
-        //     let imagesArray
-        //     imagesArray = ['https://imgur.com/Evf3qPB.jpg', 'https://imgur.com/bsZ8Y09.jpg',
-        //         'https://imgur.com/Iu6F2BU.jpg','https://imgur.com/nFq39nB.jpg','https://imgur.com/aExdwq9.jpg','https://imgur.com/vjuzSCi.jpg','https://imgur.com/aCN192t.jpg','https://imgur.com/knzJE0g.jpg'
-        //     ];
-        //     console.log("test");
-        //     const tempInd = _.random(0, imagesArray.length);
-        //     const ind = tempInd;
-        //     let img = imagesArray[ind];
-        //     console.log(img);
-
-
-        //     return img;
-        // }
-
-        // const img = imgPicker();
-
-
-        // console.log(img);
-
-        // function imageName(img){
-        //     if( img === "https://imgur.com/Evf3qPB"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/bsZ8Y09.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/Iu6F2BU.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/nFq39nB.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/aExdwq9.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/vjuzSCi.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/aCN192t.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/knzJE0g.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        // }
-
-
-
+        //Telling the user who is the current player
         function Switch() {
+
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("avatar").src = img;
+
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
-            setTimeout(Switch2, 20);
+
+
+            setTimeout(Switch2, 2000);
         }
+
+        // global var's
+        let onClickFlag = false;
+        let clickCounter = 0;
+        const disabledRounds = 5;
+        let roundCount = disabledRounds;
+
+
+
+        function onClickCounter() {
+            if (clickCounter === disabledRounds) {
+                clickCounter = 0;
+                onClickFlag = false;
+                roundCount = disabledRounds;
+            } else {
+                if (onClickFlag === true) {
+                    clickCounter += 1;
+                    let roundCount = disabledRounds;
+                    roundCount -= 1;
+                }
+            }
+        } // end of function 
+
+
+        // function closePopupWarning() {
+        //     let modal = document.getElementById('popupWarning');
+        //     modal.style.display = "none";
+        // }
+
+        // function popupWarning() {
+        //     let modal = document.getElementById('popupWarning');
+        //     modal.style.display = 'block';
+        //     document.getElementById("roundText").innerText = " rounds: " + roundCount;
+        
+        // }
+
+
+
+
+        function flagActivated() {
+            // open popup
+            alert(`For the next ${roundCount} rounds you will not be able to use this button`);
+
+
+            return onClickFlag = true;
+        }
+
+
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
             document.getElementById("avatar").src = "https://i.imgur.com/Ik8uVx3.jpg"
             // Stop game after 100 rounds
             if (count <= 100) {
-                document.getElementById("demo").disabled = false;
+
                 document.getElementById("demo3").disabled = false;
+
+                if (onClickFlag === true) {
+                    document.getElementById("demo").disabled = true;
+                } else {
+                    document.getElementById("demo").disabled = false;
+                }
+
+
                 document.getElementById("demo4").disabled = false;
             }
+
         }
+
+
+        /*
+
+
+        Every on click event this get's triggered 
+
+
+         */
+
+
+
 
         //Adding to keep quiet counter
         function quietDecision() {
@@ -770,6 +784,7 @@
                     storedlog.push('K-PK');
                 }
             }
+
 
             recentMove = 'K';
         }
@@ -787,18 +802,56 @@
                 }
             }
             recentMove = 'C';
+
+
+
+            // stochastic()
+
         }
 
+
+        // if a user defects they should not be able to for another 5 moves 
+
+        // this will do these things for 5 rounds 
+
+        // have a modal popup saying you can't use this move for the next X amount of rounds 
+
+        // disable the button 
+        //  function stochastic(){
+
+        //     console.log(`the game count is at ${count}`);
+
+        //     let resumeRound = count + 5;
+
+
+        //     alert("You can't use this for the next 5 rounds");
+
+        //     if(count < resumeRound){
+        //         document.getElementById("demo").disabled = false;
+
+        //     } else {
+        //         document.getElementById("demo").disabled = true;
+        //     }
+
+        //  }
+
+
+
+        //Opponent log (The three strategies)
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
+            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
+
+
         }
 
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
+            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -844,7 +897,7 @@
                 quietComp: quietComp,
                 confessComp: confessComp,
                 Opponent_log: Opponent_log,
-                gameKnowledgetypeName: gameKnowledgetypeName,
+                gameKnowledgetype: gameKnowledgetype,
                 nameAndImageUrl: nameAndImageUrl
             }));
 
@@ -868,19 +921,8 @@
             document.getElementById("text").innerText = "code: " + code;
         }
 
-        function notifyUserModal() {
-            let modal2 = document.getElementById('popupNotifyUser');
-            modal2.style.display = 'block';
-        }
 
-        function closeNotifyUserModal() {
-            let modal3 = document.getElementById('popupNotifyUser');
-            modal3.style.display = 'none';
-        }
-
-
-
-        //Adding to total counter when on-click 
+              //Adding to total counter when on-click 
         function myFunction2() {
 
             if (count === 0) {
@@ -969,16 +1011,17 @@
         }
 
 
-        window.onbeforeunload = function () {
-
-            if (count < 100) {
-
+        window.onbeforeunload = function(){
+            
+            if( count < 100 ){
+                
                 sendData();
-
+                
             }
 
+               
+            }
 
-        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

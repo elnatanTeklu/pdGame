@@ -277,6 +277,37 @@
             justify-content: center;
             align-items: center;
         }
+
+
+        .newModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .newModalContent {
+            background-color: #f4f4f4;
+            margin: 20% auto;
+            padding: 20px;
+            width: 60%;
+            height: 30%;
+            text-align: center;
+            font-size: 2em;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+
     </style>
 </head>
 
@@ -435,6 +466,15 @@
         </div>
     </div>
 
+    <div id="popupWarning" class="newModal">
+        <div class="newModalContent">
+            <p class="modalText">This button has been disabled for the next <br>    <i class="fas fa-times"></i> </p>
+            <p id="roundText"></p>
+        </div>
+    </div>
+
+
+    
 
 
 
@@ -563,7 +603,7 @@
             document.getElementById("demo4").disabled = true;
 
 
-            setTimeout(Switch2, 2000);
+            setTimeout(Switch2, 20);
         }
 
         // global var's
@@ -588,9 +628,26 @@
             }
         } // end of function 
 
+
+        // function closePopupWarning() {
+        //     let modal = document.getElementById('popupWarning');
+        //     modal.style.display = "none";
+        // }
+
+        // function popupWarning() {
+        //     let modal = document.getElementById('popupWarning');
+        //     modal.style.display = 'block';
+        //     document.getElementById("roundText").innerText = " rounds: " + roundCount;
+        
+        // }
+
+
+
+
         function flagActivated() {
             // open popup
             alert(`For the next ${roundCount} rounds you will not be able to use this button`);
+
 
             return onClickFlag = true;
         }
@@ -778,7 +835,178 @@
         }
 
 
-        //Adding to total counter when on-click 
+        // //Adding to total counter when on-click 
+        // function myFunction2() {
+
+        //     if (count === 0) {
+        //         strategy = _.random(1, 3);
+
+        //     }
+        //     if (strategy === 1) {
+        //         quietDecisionComp();
+
+        //     }
+        //     if (strategy === 2) {
+        //         confessDecisionComp();
+        //     }
+        //     if (strategy === 3) {
+        //         TitForTat();
+        //     }
+        //     count = count + 1;
+        //     countComp = countComp + 1;
+
+        //     if (count <= 100) {
+        //         document.getElementById("demo2").innerText = "Round : " + `${count + 1}` ;
+        //     }
+
+
+
+        //     // Display Moves of opponents and user
+        //     listMarkup =
+        //         `
+        //             <ul>
+        //             ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
+        //             </ul>
+        //         `;
+
+        //     document.getElementById("history").innerHTML = listMarkup;
+
+
+
+        //     if (count > 50) { // hide first 50 moves
+        //         if (Opponent_log[Opponentindex + 50] === 'C') {
+        //             CurrMove = "Confess";
+        //             Opponentindex += 1;
+        //             document.getElementById("Opp_move").innerText = "User 2 : " +
+        //                 CurrMove;
+        //         } else {
+        //             CurrMove = "Keep Quiet";
+        //             Opponentindex += 1;
+        //             document.getElementById("Opp_move").innerText = "User 2 : " +
+        //                 CurrMove;
+        //         }
+
+        //         // Display Moves of opponents and user
+        //         listMarkup =
+        //             `
+        //             <ul>
+        //             ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : ${Opponent_log[index]}  <br> </li> <br>`).join('')}
+        //             </ul>
+        //         `;
+
+        //         console.log(`this is the opponent index: ${Opponentindex}`);
+
+
+
+        //         document.getElementById("history").innerHTML = listMarkup;
+        //         // document.getElementById("Opp_move").innerText = "User 2 : " + 
+        //         // compScore;
+
+
+
+        //         // if the count is equal to 100 send the data to the backend
+        //         console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
+
+
+        //         if ((quiet + confess) === 100) {
+
+
+        //             count = count - 1;
+        //             countComp = countComp - 1;
+        //             Opponent_log.pop();
+
+
+        //             if (strategy === 2) {
+        //                 console.log(`the strategy is ${strategy}`);
+        //                 confessComp = confessComp - 1;
+        //             }
+
+        //             if (strategy === 1) {
+        //                 console.log(`the strategy is ${strategy}`);
+        //                 quietComp = quietComp - 1;
+        //             }
+
+        //             if (strategy === 3) {
+        //                 console.log(`the strategy is ${strategy}`);
+
+
+        //                 // check if  any are over 100
+        //                 if (quietComp > 100) {
+        //                     quietComp = quietComp - 1;
+        //                 }
+
+        //                 if (confessComp > 100) {
+        //                     confessComp = confessComp - 1;
+        //                 }
+
+        //                 // greates one -1
+        //                 if (quietComp > confessComp && quietComp != 100) {
+        //                     quietComp = quietComp - 1;
+        //                 }
+
+        //                 if (confessComp > quietComp && confessComp != 100) {
+        //                     confessComp = confessComp - 1;
+        //                 }
+
+        //                 if (quietComp === 1 && confessComp === 100) {
+        //                     quietComp = quietComp - 1;
+        //                 }
+
+
+
+        //                 // handle 50/50 split 
+        //                 if (quietComp > 50 && confessComp === 50) {
+        //                     quietComp = quietComp - 1;
+        //                 }
+
+        //                 if (confessComp > 50 && quietComp === 50) {
+        //                     confessComp = confessComp - 1;
+        //                 }
+
+
+        //             }
+
+
+
+
+        //             // Flag detrimes if any vaule is not equal to 100
+        //             if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
+        //                 flag = 0; // All vaules are equal to 100
+        //             } else {
+        //                 flag = 1; // Vaules are not equal to 100 
+        //             }
+
+
+        //             sendData();
+
+        //             // pop up modal says go back to Qualtrics
+        //             openModal();
+
+
+
+        //         } // end of if statement 
+
+
+        //     }
+
+
+        // }
+
+
+        // window.onbeforeunload = function () {
+        //     sendData();
+
+
+        //     // pop up modal says go back to Qualtrics
+        //     if (count === 99 || count === 100) {
+
+        //         openModal();
+        //     }
+
+        // }
+
+
+              //Adding to total counter when on-click 
         function myFunction2() {
 
             if (count === 0) {
@@ -799,10 +1027,8 @@
             countComp = countComp + 1;
 
             if (count <= 100) {
-                document.getElementById("demo2").innerText = "Round : " + count;
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}`;
             }
-
-
 
             // Display Moves of opponents and user
             listMarkup =
@@ -815,6 +1041,12 @@
             document.getElementById("history").innerHTML = listMarkup;
 
 
+            if (count === 51) {
+                notifyUserModal();
+                setTimeout(function () {
+                    closeNotifyUserModal();
+                }, 2900);
+            }
 
             if (count > 50) { // hide first 50 moves
                 if (Opponent_log[Opponentindex + 50] === 'C') {
@@ -840,113 +1072,40 @@
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
 
-
                 document.getElementById("history").innerHTML = listMarkup;
-                // document.getElementById("Opp_move").innerText = "User 2 : " + 
-                // compScore;
-
 
 
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
 
-                if ((quiet + confess) === 100) {
-
-
-                    count = count - 1;
-                    countComp = countComp - 1;
-                    Opponent_log.pop();
-
-
-                    if (strategy === 2) {
-                        console.log(`the strategy is ${strategy}`);
-                        confessComp = confessComp - 1;
-                    }
-
-                    if (strategy === 1) {
-                        console.log(`the strategy is ${strategy}`);
-                        quietComp = quietComp - 1;
-                    }
-
-                    if (strategy === 3) {
-                        console.log(`the strategy is ${strategy}`);
-
-
-                        // check if  any are over 100
-                        if (quietComp > 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        // greates one -1
-                        if (quietComp > confessComp && quietComp != 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > quietComp && confessComp != 100) {
-                            confessComp = confessComp - 1;
-                        }
-
-                        if (quietComp === 1 && confessComp === 100) {
-                            quietComp = quietComp - 1;
-                        }
-
-
-
-                        // handle 50/50 split 
-                        if (quietComp > 50 && confessComp === 50) {
-                            quietComp = quietComp - 1;
-                        }
-
-                        if (confessComp > 50 && quietComp === 50) {
-                            confessComp = confessComp - 1;
-                        }
-
-
-                    }
-
-
-
-
+                if ((count) === 100) {
                     // Flag detrimes if any vaule is not equal to 100
                     if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
                         flag = 0; // All vaules are equal to 100
                     } else {
                         flag = 1; // Vaules are not equal to 100 
                     }
-
-
                     sendData();
-
                     // pop up modal says go back to Qualtrics
                     openModal();
-
-
-
-                } // end of if statement 
-
+                }
 
             }
-
-
         }
 
 
-        window.onbeforeunload = function () {
-            sendData();
-
-
-            // pop up modal says go back to Qualtrics
-            if (count === 99 || count === 100) {
-
-                openModal();
+        window.onbeforeunload = function(){
+            
+            if( count < 100 ){
+                
+                sendData();
+                
             }
 
-        }
+               
+            }
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

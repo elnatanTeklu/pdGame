@@ -37,25 +37,49 @@ def game1Demographics():
     return render_template('game1Demographics.html',
                            title=title)
 
-
-@app.route('/game2Demographics', methods=['GET'])
-def game2Demographics():
-    title = 'Create the input'
-    return render_template('game2Demographics.html',
-                           title=title)                                                      
-
 @app.route('/game', methods=['GET'])
 def game():
     title = 'Create the input'
     return render_template('game.html',
                            title=title)
 
+
+@app.route('/game2Demographics', methods=['GET'])
+def game2Demographics():
+    title = 'Create the input'
+    return render_template('game2Demographics.html',
+                           title=title)                                            
+
+
+
+@app.route('/game2', methods=['GET'])
+def game2():
+    title = 'Create the input'
+    return render_template('game2.html',
+                           title=title)  
+
+
+
+@app.route('/basicDemographic', methods=['GET'])
+def basicDemographic():
+    title = 'Create the input'
+    return render_template('basicDemographic.html',
+                           title=title)
+
+
 @app.route('/basicGame', methods=['GET'])
 def basicGame():
     title = 'Create the input'
     return render_template('basicGame.html',
                            title=title)
-                           
+
+
+@app.route('/basicPicturesDemographic', methods=['GET'])
+def basicPicturesDemographic():
+    title = 'Create the input'
+    return render_template('basicPicturesDemographic.html',
+                           title=title)      
+
 
 @app.route('/basicGamePictures', methods=['GET'])
 def basicGamePictures():
@@ -68,33 +92,11 @@ def imagesWithNames():
     return render_template('imagesWithNames.html',
                            title=title)
 
-@app.route('/endGame', methods=['GET'])
-def game1():
-   title = 'Create the input'
-   return render_template('endGame.html',
-                          title=title)
-
-
-@app.route('/game2', methods=['GET'])
-def game2():
+@app.route('/game4Demographic', methods=['GET'])
+def game4Demographic():
     title = 'Create the input'
-    return render_template('game2.html',
-                           title=title)  
-
-@app.route('/stochastic', methods=['GET'])
-def stochastic():
-    title = 'Create the input'
-    return render_template('stochastic.html',
-                           title=title)                             
-
-
-
-@app.route('/level2', methods=['GET'])
-def game9():
-    title = 'Create the input'
-    return render_template('level2.html',
-                           title=title)
-
+    return render_template('game4Demographic.html',
+                           title=title)   
 
 @app.route('/game4', methods=['GET'])
 def game4():
@@ -102,12 +104,108 @@ def game4():
     return render_template('game4.html',
                            title=title)
 
+@app.route('/game5Demographic', methods=['GET'])
+def game5Demographic():
+    title = 'Create the input'
+    return render_template('game5Demographic.html',
+                           title=title)   
+
 @app.route('/game5', methods=['GET'])
 def game5():
     title = 'Create the input'
     return render_template('game5.html',
                            title=title)
-      
+
+
+
+@app.route('/stochasticDemographic', methods=['GET'])
+def stochasticDemographic():
+    title = 'Create the input'
+    return render_template('stochasticDemographic.html',
+                           title=title)  
+
+@app.route('/stochastic', methods=['GET'])
+def stochastic():
+    title = 'Create the input'
+    return render_template('stochastic.html',
+                           title=title)   
+
+
+
+@app.route('/stochasticLastDemographic', methods=['GET'])
+def stochasticLastDemographic():
+    title = 'Create the input'
+    return render_template('stochasticLastDemographic.html',
+                           title=title)  
+
+@app.route('/stochasticLast', methods=['GET'])
+def stochasticLast():
+    title = 'Create the input'
+    return render_template('stochasticLast.html',
+                           title=title)
+
+
+
+
+@app.route('/stochasticBasicDemographic', methods=['GET'])
+def stochasticBasicDemographic():
+    title = 'Create the input'
+    return render_template('stochasticBasicDemographic.html',
+                           title=title)  
+
+@app.route('/stochasticBasic', methods=['GET'])
+def stochasticBasic():
+    title = 'Create the input'
+    return render_template('stochasticBasic.html',
+                           title=title)   
+
+
+
+
+@app.route('/stochasticFirstPicturesDemographic', methods=['GET'])
+def stochasticFirstPicturesDemographic():
+    title = 'Create the input'
+    return render_template('stochasticFirstPicturesDemographic.html',
+                           title=title)  
+
+@app.route('/stochasticFirstPictures', methods=['GET'])
+def stochasticFirstPictures():
+    title = 'Create the input'
+    return render_template('stochasticFirstPictures.html',
+                           title=title)    
+
+
+
+
+@app.route('/stochasticLastPicturesDemographic', methods=['GET'])
+def stochasticLastPicturesDemographic():
+    title = 'Create the input'
+    return render_template('stochasticLastPicturesDemographic.html',
+                           title=title)  
+
+@app.route('/stochasticLastPictures', methods=['GET'])
+def stochasticLastPictures():
+    title = 'Create the input'
+    return render_template('stochasticLastPictures.html',
+                           title=title)  
+
+
+
+@app.route('/stochasticBasicPicturesDemographic', methods=['GET'])
+def stochasticBasicPicturesDemographic():
+    title = 'Create the input'
+    return render_template('stochasticBasicPicturesDemographic.html',
+                           title=title)  
+
+@app.route('/stochasticBasicPictures', methods=['GET'])
+def stochasticBasicPictures():
+    title = 'Create the input'
+    return render_template('stochasticBasicPictures.html',
+                           title=title)                                            
+
+
+                           
+                                            
 
 @app.route('/downloads', methods=['GET'])
 def downlaods():
@@ -127,8 +225,22 @@ def return_csv(password):
 def game3():
    title = 'Create the input'
    return render_template('gameResults.html',
-                          title=title)   
+                          title=title) 
 
+
+@app.route('/endGame', methods=['GET'])
+def game1():
+   title = 'Create the input'
+   return render_template('endGame.html',
+                          title=title)
+
+
+                          
+@app.route('/level2', methods=['GET'])
+def game9():
+    title = 'Create the input'
+    return render_template('level2.html',
+                           title=title) 
 
 @app.route('/senddemogdata', methods = ['POST'])
 def post_javascript_demogdata():

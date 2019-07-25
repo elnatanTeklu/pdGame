@@ -252,7 +252,7 @@
 
 
 
-        .modals {
+        .modal {
             display: none;
             position: fixed;
             z-index: 1;
@@ -278,15 +278,37 @@
             align-items: center;
         }
 
-        .modalSpacing {
-            text-align: center;
+
+        .newModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modalText {
+        .newModalContent {
+            background-color: #f4f4f4;
+            margin: 20% auto;
+            padding: 20px;
+            width: 60%;
+            height: 30%;
             text-align: center;
+            font-size: 2em;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+
+
+
     </style>
-
 </head>
 
 
@@ -368,8 +390,8 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: white;">
-                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="quietDecision();myFunction2();Switch()">Keep Quiet</button>
-                        <button class="button button1 btn-black m-2" id="demo" onclick="confessDecision();myFunction2();Switch()">Confess</button>
+                        <button class="button button2 btn-black m-2 ml-5" id="demo3" onclick="myFunction2();quietDecision();Switch();onClickCounter()">Keep Quiet</button>
+                        <button class="button button1 btn-black m-2" id="demo" onclick="myFunction2();confessDecision();Switch();flagActivated()">Confess</button>
                     </div>
 
 
@@ -436,55 +458,23 @@
     <!-- histroy section END -->
 
 
-    <div id="popupNotifyUser" class="modals">
+
+    <div id="popupModal" class="modal">
         <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">You can now see user 2's past moves </div>
-            </div>
+            <p class="modalText">Return to Qualtrics to get your unique code</p>
+            <p id="text"></p>
         </div>
     </div>
 
-    <div id="popupModal" class="modals">
-        <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">Game Over </div> Here is your unique
-                <span id="text"></span>
-                <div>Please return to Amazon Mechanical Turk to submit it </div>
-            </div>
-
+    <div id="popupWarning" class="newModal">
+        <div class="newModalContent">
+            <p class="modalText">This button has been disabled for the next <br>    <i class="fas fa-times"></i> </p>
+            <p id="roundText"></p>
         </div>
     </div>
 
 
-    <!-- <div id="popupNotifyUser" class="modals">
-        <div class="modalContent">
-            <div class="modalText">
-                <div class="modalSpacing">You can now see user 2's past moves </div>
-            </div>
-        </div> -->
-
-
-
-    <!-- <div  id="popupNotifyUser" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>You can now see user 2's past moves</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
+    
 
 
 
@@ -534,8 +524,28 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- keep script in this file becuase of flask  -->
     <script>
+        let date = new Date();
+
+        // Sending data to backend
+        function metaData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/metaData", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                date: date,
+                code: code
+            }));
+
+        }
+
+
+        window.addEventListener('load', function () {
+            metaData();
+        }, false);
+
+
         function codeGenerator() {
-            let one = _.random(1, 9);
+            let one = _.random(0, 9);
             let two = _.random(0, 9);
             let three = _.random(0, 9);
             let four = _.random(0, 9);
@@ -557,7 +567,31 @@
 
         const code = codeGenerator();
 
-        let date = new Date();
+        //Variables for counter
+        const game = "stochasticlastpictures";
+        let flag = 0; //flag will 
+        var count = 0;
+        var quiet = 0;
+        var confess = 0;
+        var countComp = 0;
+        var quietComp = 0;
+        var confessComp = 0;
+        var log = [];
+        var storedlog = [];
+        var Opponent_log = [];
+        var Opponentindex = 0;
+        var CurrMove = "None";
+        var turn = "None";
+        var recentMove = 'K';
+        var gameKnowledgetype = "lastFifty";
+        // Display history
+        var listMarkup = `
+        <ul class="historyList">
+        ${log.map(l =>'<li>{l}</li>')}
+        </ul>`;
+
+
+
 
 
         function imgPicker() {
@@ -632,144 +666,111 @@
         }
 
 
-        // Sending data to backend
-        function metaData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/metaData", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                date: date,
-                code: code
-            }));
-
-        }
-
-        window.addEventListener('load', function () {
-            metaData();
-        }, false);
 
 
 
 
- 
-
-        //Variables for counter
-        const game = 4;
-        let flag = 0;
-        var count = 0;
-        var quiet = 0;
-        var confess = 0;
-        var countComp = 0;
-        var quietComp = 0;
-        var confessComp = 0;
-        var log = [];
-        var storedlog = [];
-        var Opponent_log = [];
-        var Opponentindex = 0;
-        var CurrMove = "None";
-        var turn = "None";
-        var recentMove = 'K';
-        var gameKnowledgetype = "firstFifty";
-        const gameKnowledgetypeName = "firstFifty with pictures";
-
-
-        // Display history
-        var listMarkup = `
-        <ul class="historyList">
-        ${log.map(l =>'<li>{l}</li>')}
-        </ul>`;
 
 
 
-        // function imgPicker() {
-        //     let imagesArray
-        //     imagesArray = ['https://imgur.com/Evf3qPB.jpg', 'https://imgur.com/bsZ8Y09.jpg',
-        //         'https://imgur.com/Iu6F2BU.jpg','https://imgur.com/nFq39nB.jpg','https://imgur.com/aExdwq9.jpg','https://imgur.com/vjuzSCi.jpg','https://imgur.com/aCN192t.jpg','https://imgur.com/knzJE0g.jpg'
-        //     ];
-        //     console.log("test");
-        //     const tempInd = _.random(0, imagesArray.length);
-        //     const ind = tempInd;
-        //     let img = imagesArray[ind];
-        //     console.log(img);
 
 
-        //     return img;
-        // }
-
-        // const img = imgPicker();
-
-
-        // console.log(img);
-
-        // function imageName(img){
-        //     if( img === "https://imgur.com/Evf3qPB"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/bsZ8Y09.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/Iu6F2BU.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/nFq39nB.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/aExdwq9.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/vjuzSCi.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/aCN192t.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        //     if( img === "https://imgur.com/knzJE0g.jpg"){
-        //         name = "Mikey"
-        //     }
-
-        // }
-
-
-
+        //Telling the user who is the current player
         function Switch() {
+
             document.getElementById("switch").innerText = "Current Turn: User 2";
             document.getElementById("avatar").src = img;
+
             document.getElementById("demo").disabled = true;
             document.getElementById("demo3").disabled = true;
             document.getElementById("demo4").disabled = true;
+
+
             setTimeout(Switch2, 20);
         }
+
+        // global var's
+        let onClickFlag = false;
+        let clickCounter = 0;
+        const disabledRounds = 5;
+        let roundCount = disabledRounds;
+
+
+
+        function onClickCounter() {
+            if (clickCounter === disabledRounds) {
+                clickCounter = 0;
+                onClickFlag = false;
+                roundCount = disabledRounds;
+            } else {
+                if (onClickFlag === true) {
+                    clickCounter += 1;
+                    let roundCount = disabledRounds;
+                    roundCount -= 1;
+                }
+            }
+        } // end of function 
+
+
+       
+
+
+
+        function flagActivated() {
+            // open popup
+            alert(`For the next ${roundCount} rounds you will not be able to use this button`);
+
+
+            return onClickFlag = true;
+        }
+
+
 
         function Switch2() {
             document.getElementById("switch").innerText = "Current Turn: You";
             document.getElementById("avatar").src = "https://i.imgur.com/Ik8uVx3.jpg"
             // Stop game after 100 rounds
             if (count <= 100) {
-                document.getElementById("demo").disabled = false;
+
                 document.getElementById("demo3").disabled = false;
+
+                if (onClickFlag === true) {
+                    document.getElementById("demo").disabled = true;
+                } else {
+                    document.getElementById("demo").disabled = false;
+                }
+
+
                 document.getElementById("demo4").disabled = false;
             }
+
         }
+
+
+        /*
+
+
+        Every on click event this get's triggered 
+
+
+         */
+
+
+
 
         //Adding to keep quiet counter
         function quietDecision() {
             quiet = quiet + 1;
             document.getElementById("user_quiet1").innerText = "Keep Quiet Counter: " + quiet;
             log.push('K');
-            if (gameKnowledgetype = "firstFifty") {
+            if (gameKnowledgetype = "lastFifty") {
                 if ((quiet + confess) <= 50) {
-                    storedlog.push('K-IK');
-                } else if ((quiet + confess) >= 51) {
                     storedlog.push('K-PK');
+                } else if ((quiet + confess) >= 51) {
+                    storedlog.push('K-IK');
                 }
             }
+
 
             recentMove = 'K';
         }
@@ -779,26 +780,64 @@
             confess = confess + 1;
             document.getElementById("user_confess1").innerText = "Confess Counter: " + confess;
             log.push('C');
-            if (gameKnowledgetype = "firstFifty") {
+            if (gameKnowledgetype = "lastFifty") {
                 if ((quiet + confess) <= 50) {
-                    storedlog.push('C-IK');
-                } else if ((quiet + confess) >= 51) {
                     storedlog.push('C-PK');
+                } else if ((quiet + confess) >= 51) {
+                    storedlog.push('C-IK');
                 }
             }
             recentMove = 'C';
+
+
+
+            // stochastic()
+
         }
 
+
+        // if a user defects they should not be able to for another 5 moves 
+
+        // this will do these things for 5 rounds 
+
+        // have a modal popup saying you can't use this move for the next X amount of rounds 
+
+        // disable the button 
+        //  function stochastic(){
+
+        //     console.log(`the game count is at ${count}`);
+
+        //     let resumeRound = count + 5;
+
+
+        //     alert("You can't use this for the next 5 rounds");
+
+        //     if(count < resumeRound){
+        //         document.getElementById("demo").disabled = false;
+
+        //     } else {
+        //         document.getElementById("demo").disabled = true;
+        //     }
+
+        //  }
+
+
+
+        //Opponent log (The three strategies)
 
         //Computer quiet decision
         function quietDecisionComp() {
             quietComp = quietComp + 1;
+            // document.getElementById("quiet1").innerText = "Keep Quiet Counter: " + quietComp;
             Opponent_log.push('K');
+
+
         }
 
         //Computer Confess Decision
         function confessDecisionComp() {
             confessComp = confessComp + 1;
+            // document.getElementById("confess1").innerText = "Confess Counter: " + confessComp;
             Opponent_log.push('C');
         }
 
@@ -844,7 +883,7 @@
                 quietComp: quietComp,
                 confessComp: confessComp,
                 Opponent_log: Opponent_log,
-                gameKnowledgetypeName: gameKnowledgetypeName,
+                gameKnowledgetype: gameKnowledgetype,
                 nameAndImageUrl: nameAndImageUrl
             }));
 
@@ -868,21 +907,11 @@
             document.getElementById("text").innerText = "code: " + code;
         }
 
-        function notifyUserModal() {
-            let modal2 = document.getElementById('popupNotifyUser');
-            modal2.style.display = 'block';
-        }
 
-        function closeNotifyUserModal() {
-            let modal3 = document.getElementById('popupNotifyUser');
-            modal3.style.display = 'none';
-        }
+       //Adding to total counter when on-click 
+       function myFunction2() {
 
-
-
-        //Adding to total counter when on-click 
-        function myFunction2() {
-
+     
             if (count === 0) {
                 strategy = _.random(1, 3);
 
@@ -900,30 +929,19 @@
             count = count + 1;
             countComp = countComp + 1;
 
-            if (count <= 100) {
-                document.getElementById("demo2").innerText = "Round : " + `${count + 1}`;
+            console.log(`test count: ${count}`)
+
+            
+                if(count <=100){
+                document.getElementById("demo2").innerText = "Round : " + `${count + 1}` ;
             }
+              
 
-            // Display Moves of opponents and user
-            listMarkup =
-                `
-                    <ul>
-                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
-                    </ul>
-                `;
+          
+        
 
-            document.getElementById("history").innerHTML = listMarkup;
-
-
-            if (count === 51) {
-                notifyUserModal();
-                setTimeout(function () {
-                    closeNotifyUserModal();
-                }, 2900);
-            }
-
-            if (count > 50) { // hide first 50 moves
-                if (Opponent_log[Opponentindex + 50] === 'C') {
+            if (count < 50) { // hide last 50 moves
+                if (Opponent_log[Opponentindex] === 'C') {
                     CurrMove = "Confess";
                     Opponentindex += 1;
                     document.getElementById("Opp_move").innerText = "User 2 : " +
@@ -936,6 +954,8 @@
                 }
 
                 // Display Moves of opponents and user
+
+
                 listMarkup =
                     `
                     <ul>
@@ -946,39 +966,81 @@
                 console.log(`this is the opponent index: ${Opponentindex}`);
 
 
-                document.getElementById("history").innerHTML = listMarkup;
 
+                document.getElementById("history").innerHTML = listMarkup;
+               
+
+
+
+            } else {
+
+                     
+                 document.getElementById("Opp_move").innerText = "User 2 : " +
+                        "Hidden";
+
+
+
+                        listMarkup =
+                    `
+                    <ul>
+                    ${log.map((hist,index) =>`<li>Round :  ${index + 1} <br>  You : ${log[index]} <br> User2 : Hidden  <br> </li> <br>`).join('')}
+                    </ul>
+                `;
+
+                console.log(`this is the opponent index: ${Opponentindex}`);
+
+
+
+                document.getElementById("history").innerHTML = listMarkup;
+               
+              
+             
 
                 // if the count is equal to 100 send the data to the backend
                 console.log(`quiet = ${quiet} and confess = ${confess} and count = ${count}`);
 
+                  
 
                 if ((count) === 100) {
+
+               
                     // Flag detrimes if any vaule is not equal to 100
-                    if ((quiet + confess) === 100 && (quietComp + confessComp) === 100) {
+                    if( (quiet + confess) === 100 && (quietComp + confessComp) === 100 ){
                         flag = 0; // All vaules are equal to 100
-                    } else {
+                    } else{
                         flag = 1; // Vaules are not equal to 100 
                     }
+
                     sendData();
+                
                     // pop up modal says go back to Qualtrics
                     openModal();
-                }
+                    
+
+
+                } // end of if statement 
+
+
+
 
             }
+
+
         }
 
 
-        window.onbeforeunload = function () {
 
-            if (count < 100) {
-
+        window.onbeforeunload = function(){
+            
+            if( count < 100 ){
+                
                 sendData();
-
+                
             }
 
-
-        }
+               
+            }
+  
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
